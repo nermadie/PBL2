@@ -20,7 +20,7 @@ public:
     void DeleteatPosition(const int&);
     int BinarySearch(int, int, int);
     int IndexOf(int);
-    // void Sort(bool (*CTH)(int a, int b) = TD);
+    void Sort(bool (*CTH)(int a, int b));
     friend class Film;
 };
 

@@ -42,6 +42,10 @@ void NhanVien::ShowNV()
         cout << "Nam";
     cout << ", Luong: " << _Wage << endl;
 }
+int NhanVien::ID()
+{
+    return this->_ID;
+}
 void NhanVien::ID(int value)
 {
     this->_ID = value;

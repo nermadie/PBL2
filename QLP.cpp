@@ -1,5 +1,14 @@
 #include "QLP.h"
 
+bool GD(int a, int b)
+{
+    return a < b;
+}
+bool TD(int a, int b)
+{
+    return a > b;
+}
+
 QLP::QLP()
 {
     this->_QLP = nullptr;
@@ -217,3 +226,36 @@ int QLP::BinarySearch(int l, int r, int id) // Vi ID chua sort nen xet ca 2 phia
     return -1;
 }
 
+// Tim kiem(BinarySearch)-----------------------------------
+//+ Tim Index tuong ung voi ID
+
+int QLP::IndexOf(int id)
+{
+    return BinarySearch(0, _Quantity - 1, id);
+}
+
+// Sap xep(InsertionSort) voi thuoc tinh _ID----------------
+// Ham TD và GD đã được định nghĩa ở phía bên trên cùng
+void QLP::Sort(bool (*CTH)(int a, int b) = TD)
+{
+    int *tempIndex = new int[_Quantity];
+    for (int i = 0; i < _Quantity; i++)
+        *(tempIndex + i) = i; // Mang index
+    int i, j;
+    for (i = 1; i < _Quantity; i++)
+    {
+        j = i - 1;
+        while (j >= 0 && CTH((this->_QLP + j)->IDP(), (this->_QLP + i)->IDP()))
+        {
+            tempIndex[j + 1] = tempIndex[j];
+            j--;
+        }
+        tempIndex[j + 1] = i;
+    }
+    Film *temp = new Film[this->_Quantity];
+    for (int i = 0; i < this->_Quantity; i++)
+        *(temp + i) = *(this->_QLP + i);
+    for (int i = 0; i < this->_Quantity; i++)
+        *(this->_QLP + i) = *(temp + *(tempIndex + i));
+    delete[] temp;
+}

@@ -19,7 +19,8 @@ public:
     void DeleteTop();
     void DeleteEnd();
     void DeleteatPosition(const int&);
-    int IndexOf(int id);
-    // void Sort(bool (*CTH)(int a, int b) = TD);
+    int BinarySearch(int, int, int);
+    int IndexOf(int);
+    void Sort(bool (*CTH)(int a, int b));
     friend class NhanVien;
 };

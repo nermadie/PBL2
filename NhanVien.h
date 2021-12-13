@@ -19,6 +19,7 @@ public:
     NhanVien(const NhanVien &);
     ~NhanVien();
     void ShowNV();
+    int ID();
     void ID(int);
     void Name(string);
     void Birthday(Date);
