@@ -1,0 +1,2 @@
+id_dt1 10 A B 
+id_dt2 6 C C B B B 
