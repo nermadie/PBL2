@@ -1,5 +1,7 @@
 #include "NhanVien.h"
+
 NhanVien::NhanVien() {}
+
 NhanVien::NhanVien(int id, string name, Date bi, Date ad, string pn, string address, bool g, double w)
 {
     this->_ID = id;

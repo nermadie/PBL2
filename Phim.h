@@ -3,7 +3,7 @@
 using namespace std;
 class Film
 {
-    private:
+    protected:
         int _IDP;
         string _FilmName;
         string _MainActor;
@@ -11,6 +11,7 @@ class Film
         string _MovieDuration; // Phút
         Date _MeettingDay;
     public:
+        Film();
         Film(int, string , string , string , string , Date);
         ~Film();
         Film(const Film&);
