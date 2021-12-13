@@ -5,7 +5,7 @@ int main()
 {
 
     ifstream input("a.txt");
-    fstream output;us
+    fstream output;
     output.open("result.txt", ios::out);
     string str;
     input >> str;            // lấy giá trị biến str từ file input
