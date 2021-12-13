@@ -12,6 +12,11 @@ void Date::ShowDate()
 {
     cout << _Day << "/" << _Month << "/" << _Year;
 }
+ostream &operator<<(ostream &o, Date &d)
+{
+    o << d._Day << "/" << d._Month << "/" << d._Year;
+    return o;
+}
 istream &operator>>(istream &in, Date &d)
 {
     int check;

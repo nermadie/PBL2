@@ -9,9 +9,9 @@ Film::Film(int _IDP, string _FilmName, string _MainActor, string _Category, stri
     this->_MovieDuration = _MovieDuration;
     this->_MeettingDay = _MeettingDay;
 }
-Film::~Film(){}
+Film::~Film() {}
 
-Film::Film(const Film& f)
+Film::Film(const Film &f)
 {
     this->_IDP = f._IDP;
     this->_FilmName = f._FilmName;
@@ -77,7 +77,7 @@ void Film::ShowPhim()
     _MeettingDay.ShowDate();
 }
 
-ostream& operator<<(ostream& o, const Film& f)
+ostream &operator<<(ostream &o, const Film &f)
 {
     o << "Ma phim: " << f._IDP;
     o << ", Ten phim: " << f._FilmName;
