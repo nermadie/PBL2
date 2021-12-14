@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-#include "dohoa.h"
+
 void thanh_sang(int x, int y,int w, int h, int b_color, string nd)
 {
     for (int iy = y + 1; iy <= y+h - 1; iy++)
