@@ -1,5 +1,5 @@
 #include "NhanVien.h"
-
+#include <fstream>
 NhanVien::NhanVien() {}
 
 NhanVien::NhanVien(int id, string name, Date bi, Date ad, string pn, string address, bool g, double w)
@@ -28,7 +28,7 @@ NhanVien::~NhanVien() {}
 void NhanVien::ShowNV()
 {
     cout << "ID: " << _ID;
-    cout << "Ten nhan vien: " << _Name;
+    cout << ", Ten nhan vien: " << _Name;
     cout << ", Ngay sinh: ";
     _Birthday.ShowDate();
     cout << ", Ngay nhan vao: ";
@@ -81,7 +81,7 @@ void NhanVien::Wage(double value)
 ostream &operator<<(ostream &o, const NhanVien &nv) // Tương tự hàm ShowNV
 {
     o << "ID: " << nv._ID;
-    o << "Ten nhan vien: " << nv._Name;
+    o << ", Ten nhan vien: " << nv._Name;
     cout << ", Ngay sinh: ";
     Date temp = nv._Birthday;
     temp.ShowDate();
@@ -138,4 +138,15 @@ istream &operator>>(istream &in, NhanVien &nv)
     cout << "Nhap luong: ";
     in >> nv._Wage;
     return in;
+}
+void NhanVien::InsertObjecttoFile(ofstream &FileOut)
+{
+    FileOut << _ID << ',';
+    FileOut << _Name << ',';
+    FileOut << _Birthday << ',';
+    FileOut << _AdmissionDate << ',';
+    FileOut << _PhoneNumber << ',';
+    FileOut << _Address << ',';
+    FileOut << _Gender << ',';
+    FileOut << _Wage << '\n';
 }
