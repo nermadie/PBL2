@@ -1,5 +1,6 @@
 #include "NhanVien.h"
-class QLNV:
+
+class QLNV
 {
 protected:
     NhanVien *_List;
@@ -22,3 +23,11 @@ public:
     void Sort(bool (*CTH)(int a, int b) = TD);
     friend class NhanVien;
 };
+bool GD(int a, int b)
+{
+    return a < b;
+}
+bool TD(int a, int b)
+{
+    return a > b;
+}
