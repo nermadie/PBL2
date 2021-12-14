@@ -1,6 +1,6 @@
 #include "NhanVien.h"
 
-class QLNV : public NhanVien
+class QLNV
 {
 protected:
     NhanVien *_QLNV;
@@ -8,19 +8,22 @@ protected:
 
 public:
     QLNV();
-    QLNV(NhanVien*, int);
-    QLNV(const QLNV&);
+    QLNV(NhanVien *, int);
+    QLNV(const QLNV &);
     ~QLNV();
     void Show();
-    void AddtotheEnd(const NhanVien&);
-    void AddtoTop(const NhanVien&);
-    void AddtoPosition(const NhanVien&, int);
-    void Update(const int&);
+    void AddtotheEnd(NhanVien &);
+    void AddtotheEnd(NhanVien &, ifstream &);
+    void AddtoTop(NhanVien &);
+    void AddtoTop(NhanVien &, ifstream &);
+    void AddtoPosition(NhanVien &, int);
+    void AddtoPosition(NhanVien &, int, ifstream &);
+    void Update(const int &);
     void DeleteTop();
     void DeleteEnd();
-    void DeleteatPosition(const int&);
+    void DeleteatPosition(const int &);
     int BinarySearch(int, int, int);
     int IndexOf(int);
     void Sort(bool (*CTH)(int a, int b));
-    friend class NhanVien;
+    void ImportFromFile();
 };
