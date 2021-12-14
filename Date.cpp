@@ -10,9 +10,26 @@ Date::Date(const Date &d)
 Date::~Date() {}
 void Date::ShowDate()
 {
-    cout << _Day << "/" << _Month << "/" << _Year;
+    cout <<  this->_Day;
+    if (this->_Month < 10 && this->_Month >= 1)
+    {
+        cout << "/0" << this->_Month << "/" << this->_Year << endl; 
+    }
+    else cout << "/" << this->_Month << "/" << this->_Year << endl; 
 }
-istream &operator>>(istream &in, Date &d)
+
+ostream &operator<<(ostream& o, const Date& d)
+{
+    o << d._Day;
+    if (d._Month < 10 && d._Month >= 1)
+    {
+        cout << "/0" << d._Month << "/" << d._Year << endl; 
+    }
+    else cout << "/" << d._Month << "/" << d._Year << endl; 
+}
+
+
+istream &operator>>(istream& in, Date &d)
 {
     int check;
     char separator;

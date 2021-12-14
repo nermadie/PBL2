@@ -11,5 +11,6 @@ public:
     Date(const Date &);
     ~Date();
     void ShowDate();
+    friend ostream &operator<<(ostream &,const Date &);
     friend istream &operator>>(istream &, Date &);
 };

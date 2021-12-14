@@ -18,13 +18,9 @@ class Film
         void ShowPhim();
         int IDP();
         void IDP(int);
-        string FilmName();
         void FilmName(string);
-        string MainActor();
         void MainActor(string);
-        string Category();
         void Category(string);
-        string MovieDuration();
         void MovieDuration(string);
         void MeetingDay(Date);
         friend ostream& operator<<(ostream&, const Film&);

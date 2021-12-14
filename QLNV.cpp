@@ -269,26 +269,26 @@ int QLNV::IndexOf(int id)
 }
 // Sap xep(InsertionSort) voi thuoc tinh _ID----------------
 // Ham TD và GD đã được định nghĩa ở phía bên trên cùng
-// void QLNV::Sort(bool (*CTH)(int a, int b) = TD)
-// {
-//     int *tempIndex = new int[_Quantity];
-//     for (int i = 0; i < _Quantity; i++)
-//         *(tempIndex + i) = i; // Mang index
-//     int i, j;
-//     for (i = 1; i < _Quantity; i++)
-//     {
-//         j = i - 1;
-//         while (j >= 0 && CTH((this->_QLNV + j)->ID(), (this->_QLNV + i)->ID()))
-//         {
-//             tempIndex[j + 1] = tempIndex[j];
-//             j--;
-//         }
-//         tempIndex[j + 1] = i;
-//     }
-//     NhanVien *temp = new NhanVien[this->_Quantity];
-//     for (int i = 0; i < this->_Quantity; i++)
-//         *(temp + i) = *(this->_QLNV + i);
-//     for (int i = 0; i < this->_Quantity; i++)
-//         *(this->_QLNV + i) = *(temp + *(tempIndex + i));
-//     delete[] temp;
-// }
+void QLNV::Sort(bool (*CTH)(int a, int b) = TD)
+{
+    int *tempIndex = new int[_Quantity];
+    for (int i = 0; i < _Quantity; i++)
+        *(tempIndex + i) = i; // Mang index
+    int i, j;
+    for (i = 1; i < _Quantity; i++)
+    {
+        j = i - 1;
+        while (j >= 0 && CTH((this->_QLNV + j)->ID(), (this->_QLNV + i)->ID()))
+        {
+            tempIndex[j + 1] = tempIndex[j];
+            j--;
+        }
+        tempIndex[j + 1] = i;
+    }
+    NhanVien *temp = new NhanVien[this->_Quantity];
+    for (int i = 0; i < this->_Quantity; i++)
+        *(temp + i) = *(this->_QLNV + i);
+    for (int i = 0; i < this->_Quantity; i++)
+        *(this->_QLNV + i) = *(temp + *(tempIndex + i));
+    delete[] temp;
+}
