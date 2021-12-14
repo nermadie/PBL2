@@ -19,6 +19,7 @@ public:
     NhanVien(const NhanVien &);
     ~NhanVien();
     void ShowNV();
+    int ID();
     void ID(int);
     void Name(string);
     void Birthday(Date);
@@ -28,5 +29,5 @@ public:
     void Gender(bool);
     void Wage(double);
     friend ostream &operator<<(ostream &, const NhanVien &);
-    // friend istream &operator>>(istream &, NhanVien &);
+    friend istream &operator>>(istream &, NhanVien &);
 };
