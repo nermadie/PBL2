@@ -12,9 +12,9 @@ public:
     QLNV(const QLNV &);
     ~QLNV();
     void Show();
-    void AddtotheEnd(const NhanVien &);
-    void AddtoTop(const NhanVien &);
-    void AddtoPosition(const NhanVien &, int);
+    void AddtotheEnd(NhanVien &);
+    void AddtoTop(NhanVien &);
+    void AddtoPosition(NhanVien &, int);
     void Update(const int &);
     void DeleteTop();
     void DeleteEnd();
@@ -22,12 +22,5 @@ public:
     int BinarySearch(int, int, int);
     int IndexOf(int);
     void Sort(bool (*CTH)(int a, int b));
+    void ImportFromFile();
 };
-bool GD(int a, int b)
-{
-    return a < b;
-}
-bool TD(int a, int b)
-{
-    return a > b;
-}

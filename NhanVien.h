@@ -30,4 +30,5 @@ public:
     void Wage(double);
     friend ostream &operator<<(ostream &, const NhanVien &);
     friend istream &operator>>(istream &, NhanVien &);
+    void InsertObjecttoFile(ofstream &);
 };
