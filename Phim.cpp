@@ -2,7 +2,6 @@
 
 Film::Film()
 {
-
 }
 
 Film::Film(int _IDP, string _FilmName, string _MainActor, string _Category, string _MovieDuration, Date _MeettingDay)

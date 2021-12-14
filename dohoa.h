@@ -16,17 +16,17 @@ void resizeConsole(int width, int height)
 void textcolor(int x)
 {
 	HANDLE mau;
-	mau=GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(mau,x);
+	mau = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(mau, x);
 }
 
 // Hàm dịch chuyển con trỏ đến tọa độ x, y.
-void gotoxy(int x,int y)
-{    
-	HANDLE hConsoleOutput;    
-	COORD Cursor_an_Pos = {x-1,y-1};   
-	hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);    
-	SetConsoleCursorPosition(hConsoleOutput , Cursor_an_Pos);
+void gotoxy(int x, int y)
+{
+	HANDLE hConsoleOutput;
+	COORD Cursor_an_Pos = {x - 1, y - 1};
+	hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleCursorPosition(hConsoleOutput, Cursor_an_Pos);
 }
 
 // Hàm xóa màn hình.
@@ -41,7 +41,7 @@ void XoaManHinh()
 }
 
 // Hàm lấy Key từ bàn phím
-/* GetAsyncKeyState(VK_ESCAPE) => bắt sự kiện phím Esc */ 
+/* GetAsyncKeyState(VK_ESCAPE) => bắt sự kiện phím Esc */
 
 // Hàm tự viết
 void ToMau(int x, int y, char *a, int color) // x, y là tọa độ con trỏ cần nhảy đến để viết, a là chuỗi cần truyền vào, color là màu truyền vào.
