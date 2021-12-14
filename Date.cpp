@@ -23,9 +23,10 @@ ostream &operator<<(ostream& o, const Date& d)
     o << d._Day;
     if (d._Month < 10 && d._Month >= 1)
     {
-        cout << "/0" << d._Month << "/" << d._Year << endl; 
+        o << "/0" << d._Month << "/" << d._Year << endl; 
     }
-    else cout << "/" << d._Month << "/" << d._Year << endl; 
+    else o << "/" << d._Month << "/" << d._Year << endl; 
+    return o;
 }
 
 
