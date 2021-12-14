@@ -141,12 +141,12 @@ istream &operator>>(istream &in, NhanVien &nv)
 }
 void NhanVien::InsertObjecttoFile(ofstream &FileOut)
 {
-    FileOut << _ID << ',';
-    FileOut << _Name << ',';
-    FileOut << _Birthday << ',';
-    FileOut << _AdmissionDate << ',';
-    FileOut << _PhoneNumber << ',';
-    FileOut << _Address << ',';
-    FileOut << _Gender << ',';
+    FileOut << _ID << '|';
+    FileOut << _Name << '|';
+    FileOut << _Birthday << '|';
+    FileOut << _AdmissionDate << '|';
+    FileOut << _PhoneNumber << '|';
+    FileOut << _Address << '|';
+    FileOut << _Gender << '|';
     FileOut << _Wage;
 }

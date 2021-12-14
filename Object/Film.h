@@ -1,4 +1,6 @@
 #include <iostream>
+// #include "../Library/List/List.cpp"
+class PhongChieu;
 using namespace std;
 class Film
 {
@@ -8,6 +10,7 @@ private:
     string _MainActor;
     string _Category;   // Thể loại
     int _MovieDuration; // Phút
+    // List<PhongChieu> *_PhongChieu;
 
 public:
     Film();
@@ -17,9 +20,10 @@ public:
     void ShowPhim();
     int IDFilm();
     void IDFilm(int);
-    void FilmName(string);
-    void MainActor(string);
-    void Category(string);
-    void MovieDuration(int);
-    friend ostream &operator<<(ostream &, const Film &);
+    // void FilmName(string);
+    // void MainActor(string);
+    // void Category(string);
+    // void MovieDuration(int);
+    friend istream &operator>>(istream &, Film &);
+    void InsertObjecttoFile(ofstream &);
 };

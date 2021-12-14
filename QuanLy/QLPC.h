@@ -1,24 +1,24 @@
-#include "../Object/Film.cpp"
+#include "../Object/PhongChieu.cpp"
 bool GD(int a, int b);
 bool TD(int a, int b);
-class QLP
+class QLPC
 {
 protected:
-    Film *_QLP;
+    PhongChieu *_QLPC;
     int _Quantity;
 
 public:
-    QLP();
-    QLP(Film *, int);
-    QLP(const QLP &);
-    ~QLP();
+    QLPC();
+    QLPC(PhongChieu *, int);
+    QLPC(const QLPC &);
+    ~QLPC();
     void Show();
-    void AddtotheEnd(Film &);
-    void AddtotheEnd(Film &, ifstream &);
-    void AddtoTop(Film &);
-    void AddtoTop(Film &, ifstream &);
-    void AddtoPosition(Film &, int);
-    void AddtoPosition(Film &, int, ifstream &);
+    void AddtotheEnd(PhongChieu &);
+    void AddtotheEnd(PhongChieu &, ifstream &);
+    void AddtoTop(PhongChieu &);
+    void AddtoTop(PhongChieu &, ifstream &);
+    void AddtoPosition(PhongChieu &, int);
+    void AddtoPosition(PhongChieu &, int, ifstream &);
     void Update(const int &);
     void DeleteTop();
     void DeleteEnd();

@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 template <class T>
-List<T>::List() : length(0), data(nullptr)
+List<T>::List(T t) : length(0), data(nullptr)
 {
 }
 template <class T>
@@ -11,7 +11,7 @@ List<T>::List(int length) : length(length)
 {
     assert(this->length >= 0);
     if (length > 0)
-        this->data = new int[this->length];
+        this->data = new T[this->length];
     else
         this->data = nullptr;
 }

@@ -1,7 +1,7 @@
-#include "QLP.h"
+#include "QLPC.h"
 #include <fstream>
 #include <conio.h>
-QLP::QLP()
+QLPC::QLPC()
 {
     ifstream FileIn("Database/Phim/phim.txt", ios_base::in);
     if (FileIn.fail())
@@ -16,7 +16,7 @@ QLP::QLP()
             }
             else if (key == 'Y' || key == 'y')
             {
-                this->_QLP = nullptr;
+                this->_QLPC = nullptr;
                 this->_Quantity = 0;
             }
         }
@@ -40,25 +40,25 @@ QLP::QLP()
     }
     FileIn.close();
 }
-QLP::QLP(Film *QLP, int quantity) : _QLP(QLP), _Quantity(quantity) {}
-QLP::QLP(const QLP &l)
+QLPC::QLPC(Film *QLPC, int quantity) : _QLPC(QLPC), _Quantity(quantity) {}
+QLPC::QLPC(const QLPC &l)
 {
-    this->_QLP = l._QLP;
+    this->_QLPC = l._QLPC;
     this->_Quantity = l._Quantity;
 }
-QLP::~QLP()
+QLPC::~QLPC()
 {
     ofstream FileOut("Database/Phim/phim.txt", ios_base::out);
     for (int i = 0; i < this->_Quantity; i++)
     {
-        (_QLP + i)->InsertObjecttoFile(FileOut);
+        (_QLPC + i)->InsertObjecttoFile(FileOut);
         if (i != this->_Quantity - 1)
             FileOut << "\n";
     }
     FileOut.close();
-    delete[] this->_QLP;
+    delete[] this->_QLPC;
 }
-void QLP::Show()
+void QLPC::Show()
 {
     cout << "\t+==========================================================================================================================+" << endl;
     cout << "\t|                                                 ** DANH SACH PHIM **                                                     |" << endl;
@@ -66,13 +66,13 @@ void QLP::Show()
     cout << "\t| Ma phim |                Ten phim                 |             Dien vien chinh            |    The loai    | Thoi luong |" << endl;
     cout << "\t+=========+=========================================+========================================+================+============+" << endl;
     for (int i = 0; i < this->_Quantity; i++)
-        _QLP[i].ShowPhim();
+        _QLPC[i].ShowPhim();
     cout << "\t+=========+=========================================+========================================+================+============+" << endl;
 }
 // Them doi tuong-------------------------------------------------
 //  + Them vao cuoi danh sach
 //  + Them vao dau danh sach
-void QLP::AddtotheEnd(Film &p)
+void QLPC::AddtotheEnd(Film &p)
 {
     if (-1 != IndexOf(p.IDFilm()))
     {
@@ -83,24 +83,24 @@ void QLP::AddtotheEnd(Film &p)
     }
     if (this->_Quantity == 0)
     {
-        this->_QLP = new Film[this->_Quantity + 1];
-        *(this->_QLP + this->_Quantity) = p;
+        this->_QLPC = new Film[this->_Quantity + 1];
+        *(this->_QLPC + this->_Quantity) = p;
     }
     else
     {
         Film *temp = new Film[this->_Quantity];
         for (int i = 0; i < this->_Quantity; i++)
-            *(temp + i) = *(this->_QLP + i);
-        delete[] this->_QLP;
-        this->_QLP = new Film[this->_Quantity + 1];
+            *(temp + i) = *(this->_QLPC + i);
+        delete[] this->_QLPC;
+        this->_QLPC = new Film[this->_Quantity + 1];
         for (int i = 0; i < this->_Quantity; i++)
-            *(this->_QLP + i) = *(temp + i);
+            *(this->_QLPC + i) = *(temp + i);
         delete[] temp;
-        *(this->_QLP + this->_Quantity) = p;
+        *(this->_QLPC + this->_Quantity) = p;
     }
     this->_Quantity++;
 }
-void QLP::AddtotheEnd(Film &p, ifstream &FileIn)
+void QLPC::AddtotheEnd(Film &p, ifstream &FileIn)
 {
     if (-1 != IndexOf(p.IDFilm()))
     {
@@ -112,24 +112,24 @@ void QLP::AddtotheEnd(Film &p, ifstream &FileIn)
     }
     if (this->_Quantity == 0)
     {
-        this->_QLP = new Film[this->_Quantity + 1];
-        *(this->_QLP + this->_Quantity) = p;
+        this->_QLPC = new Film[this->_Quantity + 1];
+        *(this->_QLPC + this->_Quantity) = p;
     }
     else
     {
         Film *temp = new Film[this->_Quantity];
         for (int i = 0; i < this->_Quantity; i++)
-            *(temp + i) = *(this->_QLP + i);
-        delete[] this->_QLP;
-        this->_QLP = new Film[this->_Quantity + 1];
+            *(temp + i) = *(this->_QLPC + i);
+        delete[] this->_QLPC;
+        this->_QLPC = new Film[this->_Quantity + 1];
         for (int i = 0; i < this->_Quantity; i++)
-            *(this->_QLP + i) = *(temp + i);
+            *(this->_QLPC + i) = *(temp + i);
         delete[] temp;
-        *(this->_QLP + this->_Quantity) = p;
+        *(this->_QLPC + this->_Quantity) = p;
     }
     this->_Quantity++;
 }
-void QLP::AddtoTop(Film &p)
+void QLPC::AddtoTop(Film &p)
 {
     if (-1 != IndexOf(p.IDFilm()))
     {
@@ -140,24 +140,24 @@ void QLP::AddtoTop(Film &p)
     }
     if (this->_Quantity == 0)
     {
-        this->_QLP = new Film[this->_Quantity + 1];
-        *(this->_QLP + this->_Quantity) = p;
+        this->_QLPC = new Film[this->_Quantity + 1];
+        *(this->_QLPC + this->_Quantity) = p;
     }
     else
     {
         Film *temp = new Film[this->_Quantity];
         for (int i = 0; i < this->_Quantity; i++)
-            *(temp + i) = *(this->_QLP + i);
-        delete[] this->_QLP;
-        this->_QLP = new Film[this->_Quantity + 1];
+            *(temp + i) = *(this->_QLPC + i);
+        delete[] this->_QLPC;
+        this->_QLPC = new Film[this->_Quantity + 1];
         for (int i = 1; i <= this->_Quantity; i++)
-            *(this->_QLP + i) = *(temp + i - 1);
+            *(this->_QLPC + i) = *(temp + i - 1);
         delete[] temp;
-        *(this->_QLP) = p;
+        *(this->_QLPC) = p;
     }
     this->_Quantity++;
 }
-void QLP::AddtoTop(Film &p, ifstream &FileIn)
+void QLPC::AddtoTop(Film &p, ifstream &FileIn)
 {
     if (-1 != IndexOf(p.IDFilm()))
     {
@@ -169,25 +169,25 @@ void QLP::AddtoTop(Film &p, ifstream &FileIn)
     }
     if (this->_Quantity == 0)
     {
-        this->_QLP = new Film[this->_Quantity + 1];
-        *(this->_QLP + this->_Quantity) = p;
+        this->_QLPC = new Film[this->_Quantity + 1];
+        *(this->_QLPC + this->_Quantity) = p;
     }
     else
     {
         Film *temp = new Film[this->_Quantity];
         for (int i = 0; i < this->_Quantity; i++)
-            *(temp + i) = *(this->_QLP + i);
-        delete[] this->_QLP;
-        this->_QLP = new Film[this->_Quantity + 1];
+            *(temp + i) = *(this->_QLPC + i);
+        delete[] this->_QLPC;
+        this->_QLPC = new Film[this->_Quantity + 1];
         for (int i = 1; i <= this->_Quantity; i++)
-            *(this->_QLP + i) = *(temp + i - 1);
+            *(this->_QLPC + i) = *(temp + i - 1);
         delete[] temp;
-        *(this->_QLP) = p;
+        *(this->_QLPC) = p;
     }
     this->_Quantity++;
 }
 //  + Them vao vi tri bat ky
-void QLP::AddtoPosition(Film &p, int position)
+void QLPC::AddtoPosition(Film &p, int position)
 {
     if (-1 != IndexOf(p.IDFilm()))
     {
@@ -202,8 +202,8 @@ void QLP::AddtoPosition(Film &p, int position)
             cout << "Loi vi tri!" << endl; // Vi tri>_Quantity hoac Vi tri<0
         else
         {
-            this->_QLP = new Film[this->_Quantity + 1];
-            *(this->_QLP + this->_Quantity) = p;
+            this->_QLPC = new Film[this->_Quantity + 1];
+            *(this->_QLPC + this->_Quantity) = p;
             this->_Quantity++;
         }
     }
@@ -215,20 +215,20 @@ void QLP::AddtoPosition(Film &p, int position)
         {
             Film *temp = new Film[this->_Quantity];
             for (int i = 0; i < this->_Quantity; i++)
-                *(temp + i) = *(this->_QLP + i);
-            delete[] this->_QLP;
-            this->_QLP = new Film[this->_Quantity + 1];
+                *(temp + i) = *(this->_QLPC + i);
+            delete[] this->_QLPC;
+            this->_QLPC = new Film[this->_Quantity + 1];
             for (int i = 0; i < position; i++)
-                *(this->_QLP + i) = *(temp + i);
+                *(this->_QLPC + i) = *(temp + i);
             for (int i = position + 1; i <= this->_Quantity; i++)
-                *(this->_QLP + i) = *(temp + i - 1);
+                *(this->_QLPC + i) = *(temp + i - 1);
             delete[] temp;
-            *(this->_QLP + position) = p;
+            *(this->_QLPC + position) = p;
             this->_Quantity++;
         }
     }
 }
-void QLP::AddtoPosition(Film &p, int position, ifstream &FileIn)
+void QLPC::AddtoPosition(Film &p, int position, ifstream &FileIn)
 {
     if (-1 != IndexOf(p.IDFilm()))
     {
@@ -244,8 +244,8 @@ void QLP::AddtoPosition(Film &p, int position, ifstream &FileIn)
             cout << "Loi vi tri!" << endl; // Vi tri>_Quantity hoac Vi tri<0
         else
         {
-            this->_QLP = new Film[this->_Quantity + 1];
-            *(this->_QLP + this->_Quantity) = p;
+            this->_QLPC = new Film[this->_Quantity + 1];
+            *(this->_QLPC + this->_Quantity) = p;
             this->_Quantity++;
         }
     }
@@ -257,22 +257,22 @@ void QLP::AddtoPosition(Film &p, int position, ifstream &FileIn)
         {
             Film *temp = new Film[this->_Quantity];
             for (int i = 0; i < this->_Quantity; i++)
-                *(temp + i) = *(this->_QLP + i);
-            delete[] this->_QLP;
-            this->_QLP = new Film[this->_Quantity + 1];
+                *(temp + i) = *(this->_QLPC + i);
+            delete[] this->_QLPC;
+            this->_QLPC = new Film[this->_Quantity + 1];
             for (int i = 0; i < position; i++)
-                *(this->_QLP + i) = *(temp + i);
+                *(this->_QLPC + i) = *(temp + i);
             for (int i = position + 1; i <= this->_Quantity; i++)
-                *(this->_QLP + i) = *(temp + i - 1);
+                *(this->_QLPC + i) = *(temp + i - 1);
             delete[] temp;
-            *(this->_QLP + position) = p;
+            *(this->_QLPC + position) = p;
             this->_Quantity++;
         }
     }
 }
 // Cap nhat thong tin(Theo thuoc tinh MS Nhan vien(ID))-------------
 // Cap nhat : Thay doi ca ID, Name, AdmissionDate, Gender, Wage
-void QLP::Update(const int &id)
+void QLPC::Update(const int &id)
 {
     int index = IndexOf(id);
     if (index >= 0)
@@ -289,9 +289,9 @@ void QLP::Update(const int &id)
             }
             else
             {
-                (this->_QLP + index)->IDFilm(ID);
+                (this->_QLPC + index)->IDFilm(ID);
                 check = 0;
-                cin >> *(this->_QLP + index);
+                cin >> *(this->_QLPC + index);
             }
         }
     }
@@ -300,87 +300,87 @@ void QLP::Update(const int &id)
 }
 // Xoa doi tuong---------------------------------------------------------
 //  + Xoa doi tuong dau tien
-void QLP::DeleteTop()
+void QLPC::DeleteTop()
 {
     int index = 0;
     if (this->_Quantity == 1)
     {
-        delete[] this->_QLP;
+        delete[] this->_QLPC;
     }
     else
     {
         Film *temp = new Film[this->_Quantity];
         for (int i = 0; i < this->_Quantity; i++)
-            *(temp + i) = *(this->_QLP + i);
-        delete[] this->_QLP;
-        this->_QLP = new Film[this->_Quantity - 1];
+            *(temp + i) = *(this->_QLPC + i);
+        delete[] this->_QLPC;
+        this->_QLPC = new Film[this->_Quantity - 1];
         for (int i = 0; i < this->_Quantity - 1; i++)
         {
             if (i < index)
             {
-                *(this->_QLP + i) = *(temp + i);
+                *(this->_QLPC + i) = *(temp + i);
             }
             else
             {
-                *(this->_QLP + i) = *(temp + i + 1);
+                *(this->_QLPC + i) = *(temp + i + 1);
             }
         }
     }
     this->_Quantity--;
 }
 //  + Xoa doi tuong cuoi cung
-void QLP::DeleteEnd()
+void QLPC::DeleteEnd()
 {
     int index = _Quantity - 1;
     if (this->_Quantity == 1)
     {
-        delete[] this->_QLP;
+        delete[] this->_QLPC;
     }
     else
     {
         Film *temp = new Film[this->_Quantity];
         for (int i = 0; i < this->_Quantity; i++)
-            *(temp + i) = *(this->_QLP + i);
-        delete[] this->_QLP;
-        this->_QLP = new Film[this->_Quantity - 1];
+            *(temp + i) = *(this->_QLPC + i);
+        delete[] this->_QLPC;
+        this->_QLPC = new Film[this->_Quantity - 1];
         for (int i = 0; i < this->_Quantity - 1; i++)
         {
             if (i < index)
             {
-                *(this->_QLP + i) = *(temp + i);
+                *(this->_QLPC + i) = *(temp + i);
             }
             else
             {
-                *(this->_QLP + i) = *(temp + i + 1);
+                *(this->_QLPC + i) = *(temp + i + 1);
             }
         }
     }
     this->_Quantity--;
 }
 //  + Xoa tai vi tri k bat ky
-void QLP::DeleteatPosition(const int &position)
+void QLPC::DeleteatPosition(const int &position)
 {
     int index = position;
     if (this->_Quantity == 1)
     {
-        delete[] this->_QLP;
+        delete[] this->_QLPC;
     }
     else
     {
         Film *temp = new Film[this->_Quantity];
         for (int i = 0; i < this->_Quantity; i++)
-            *(temp + i) = *(this->_QLP + i);
-        delete[] this->_QLP;
-        this->_QLP = new Film[this->_Quantity - 1];
+            *(temp + i) = *(this->_QLPC + i);
+        delete[] this->_QLPC;
+        this->_QLPC = new Film[this->_Quantity - 1];
         for (int i = 0; i < this->_Quantity - 1; i++)
         {
             if (i < index)
             {
-                *(this->_QLP + i) = *(temp + i);
+                *(this->_QLPC + i) = *(temp + i);
             }
             else
             {
-                *(this->_QLP + i) = *(temp + i + 1);
+                *(this->_QLPC + i) = *(temp + i + 1);
             }
         }
     }
@@ -388,12 +388,12 @@ void QLP::DeleteatPosition(const int &position)
 }
 // Tim kiem(BinarySearch)-----------------------------------
 //  + Tim Index tuong ung voi ID
-int QLP::BinarySearch(int l, int r, int id) // Vi ID chua sort nen xet ca 2 phia
+int QLPC::BinarySearch(int l, int r, int id) // Vi ID chua sort nen xet ca 2 phia
 {
     if (r >= l)
     {
         int mid = l + (r - l) / 2;
-        if ((this->_QLP + mid)->IDFilm() == id)
+        if ((this->_QLPC + mid)->IDFilm() == id)
             return mid;
         int A = BinarySearch(l, mid - 1, id);
         int B = BinarySearch(mid + 1, r, id);
@@ -406,22 +406,22 @@ int QLP::BinarySearch(int l, int r, int id) // Vi ID chua sort nen xet ca 2 phia
     }
     return -1;
 }
-int QLP::IndexOf(int id)
+int QLPC::IndexOf(int id)
 {
     return BinarySearch(0, _Quantity - 1, id);
 }
 // Sap xep(QuickSort) voi thuoc tinh _ID----------------
 // Ham TD và GD được định nghĩa ở duoi
-int QLP::Partition(int *arr, int low, int high, bool (*CTH)(int a, int b))
+int QLPC::Partition(int *arr, int low, int high, bool (*CTH)(int a, int b))
 {
-    int pivot = (this->_QLP + arr[high])->IDFilm(); // pivot
+    int pivot = (this->_QLPC + arr[high])->IDFilm(); // pivot
     int left = low;
     int right = high - 1;
     while (true)
     {
-        while (left <= right && !CTH((this->_QLP + arr[left])->IDFilm(), pivot))
+        while (left <= right && !CTH((this->_QLPC + arr[left])->IDFilm(), pivot))
             left++;
-        while (right >= left && CTH((this->_QLP + arr[right])->IDFilm(), pivot))
+        while (right >= left && CTH((this->_QLPC + arr[right])->IDFilm(), pivot))
             right--;
         if (left >= right)
             break;
@@ -432,7 +432,7 @@ int QLP::Partition(int *arr, int low, int high, bool (*CTH)(int a, int b))
     swap(arr[left], arr[high]);
     return left;
 }
-void QLP::QuickSort(int *arr, int low, int high, bool (*CTH)(int a, int b))
+void QLPC::QuickSort(int *arr, int low, int high, bool (*CTH)(int a, int b))
 {
     if (low < high)
     {
@@ -441,7 +441,7 @@ void QLP::QuickSort(int *arr, int low, int high, bool (*CTH)(int a, int b))
         QuickSort(arr, pi + 1, high, CTH);
     }
 }
-void QLP::Sort(bool (*CTH)(int a, int b))
+void QLPC::Sort(bool (*CTH)(int a, int b))
 {
     int *arr = new int[_Quantity];
     for (int i = 0; i < _Quantity; i++)
@@ -449,15 +449,15 @@ void QLP::Sort(bool (*CTH)(int a, int b))
     QuickSort(arr, 0, this->_Quantity - 1, CTH);
     Film *temp = new Film[this->_Quantity];
     for (int i = 0; i < this->_Quantity; i++)
-        *(temp + i) = *(this->_QLP + i);
-    delete[] this->_QLP;
-    this->_QLP = new Film[this->_Quantity];
+        *(temp + i) = *(this->_QLPC + i);
+    delete[] this->_QLPC;
+    this->_QLPC = new Film[this->_Quantity];
     for (int i = 0; i < this->_Quantity; i++)
-        *(this->_QLP + i) = *(temp + *(arr + i));
+        *(this->_QLPC + i) = *(temp + *(arr + i));
     delete[] temp;
 }
 // Nhập dữ liệu từ file vào trong danh sách
-void QLP::ImportFromFile()
+void QLPC::ImportFromFile()
 {
     ifstream FileIn("Database/Phim/import.txt", ios_base::in);
     if (FileIn.fail())

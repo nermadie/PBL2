@@ -1,4 +1,3 @@
-#include "../Phim.h"
 template <class T>
 class List
 {
