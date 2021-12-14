@@ -3,13 +3,7 @@
 #include <Windows.h>
 using namespace std;
 
-void InLine1(int n){
-    for (int i = 0; i < n; i++) 
-        cout<<"=";
-}
-
 // Hàm thay đổi kích cỡ của khung cmd với tham số truyền vào là chiều cao, chiều rộng.
-// trục ox mặc định là 80, oy là 25
 void resizeConsole(int width, int height)
 {
 	HWND console = GetConsoleWindow();
@@ -18,12 +12,21 @@ void resizeConsole(int width, int height)
 	MoveWindow(console, r.left, r.top, width, height, TRUE);
 }
 
-// Hàm tô màu. từ 0->255
+// Hàm tô màu.
 void textcolor(int x)
 {
 	HANDLE mau;
 	mau=GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(mau,x);
+}
+
+// Hàm dịch chuyển con trỏ đến tọa độ x, y.
+void gotoxy(int x,int y)
+{    
+	HANDLE hConsoleOutput;    
+	COORD Cursor_an_Pos = {x-1,y-1};   
+	hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);    
+	SetConsoleCursorPosition(hConsoleOutput , Cursor_an_Pos);
 }
 
 // Hàm xóa màn hình.
@@ -35,4 +38,16 @@ void XoaManHinh()
 	Position.X = 0;
 	Position.Y = 0;
 	SetConsoleCursorPosition(hOut, Position);
+}
+
+// Hàm lấy Key từ bàn phím
+/* GetAsyncKeyState(VK_ESCAPE) => bắt sự kiện phím Esc */ 
+
+// Hàm tự viết
+void ToMau(int x, int y, char *a, int color) // x, y là tọa độ con trỏ cần nhảy đến để viết, a là chuỗi cần truyền vào, color là màu truyền vào.
+{
+	gotoxy(x, y);
+	textcolor(color);
+	cout << a;
+	textcolor(7);
 }
