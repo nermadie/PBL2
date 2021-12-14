@@ -1,28 +1,25 @@
-#include "Date.h"
 #include <iostream>
 using namespace std;
 class Film
 {
-protected:
-    int _IDP;
+private:
+    int _IDFilm;
     string _FilmName;
     string _MainActor;
-    string _Category;      // Thể loại
-    string _MovieDuration; // Phút
-    Date _MeettingDay;
+    string _Category;   // Thể loại
+    int _MovieDuration; // Phút
 
 public:
     Film();
-    Film(int, string, string, string, string, Date);
+    Film(int, string, string, string, int);
     ~Film();
     Film(const Film &);
     void ShowPhim();
-    int IDP();
-    void IDP(int);
+    int IDFilm();
+    void IDFilm(int);
     void FilmName(string);
     void MainActor(string);
     void Category(string);
-    void MovieDuration(string);
-    void MeetingDay(Date);
+    void MovieDuration(int);
     friend ostream &operator<<(ostream &, const Film &);
 };

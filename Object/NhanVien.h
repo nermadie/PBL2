@@ -1,9 +1,7 @@
-#include "Date.h"
-#include <iostream>
-using namespace std;
+#include "Date.cpp"
 class NhanVien
 {
-protected:
+private:
     int _ID;
     string _Name;
     Date _Birthday;

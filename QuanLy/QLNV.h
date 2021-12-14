@@ -1,5 +1,6 @@
-#include "NhanVien.h"
-
+#include "../Object/NhanVien.cpp"
+bool GD(int a, int b);
+bool TD(int a, int b);
 class QLNV
 {
 protected:
@@ -22,8 +23,12 @@ public:
     void DeleteTop();
     void DeleteEnd();
     void DeleteatPosition(const int &);
+    // BinarySearch
     int BinarySearch(int, int, int);
     int IndexOf(int);
-    void Sort(bool (*CTH)(int a, int b));
+    // QuickSort
+    int Partition(int *, int, int, bool (*CTH)(int a, int b));
+    void QuickSort(int *, int, int, bool (*CTH)(int a, int b));
+    void Sort(bool (*CTH)(int a, int b) = TD);
     void ImportFromFile();
 };

@@ -2,7 +2,7 @@
 using namespace std;
 class Date
 {
-protected:
+private:
     int _Day, _Month, _Year;
 
 public:

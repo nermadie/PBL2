@@ -1,7 +1,7 @@
 #include "NhanVien.h"
 #include <fstream>
+#include <iomanip>
 NhanVien::NhanVien() {}
-
 NhanVien::NhanVien(int id, string name, Date bi, Date ad, string pn, string address, bool g, double w)
 {
     this->_ID = id;
@@ -27,20 +27,20 @@ NhanVien::NhanVien(const NhanVien &nv)
 NhanVien::~NhanVien() {}
 void NhanVien::ShowNV()
 {
-    cout << "ID: " << _ID;
-    cout << ", Ten nhan vien: " << _Name;
-    cout << ", Ngay sinh: ";
+    cout << "\t|" << setw(5) << right << _ID << " |";
+    cout << " " << setw(28) << left << _Name << "|";
+    cout << " ";
     _Birthday.ShowDate();
-    cout << ", Ngay nhan vao: ";
+    cout << " |  ";
     _AdmissionDate.ShowDate();
-    cout << ", SDT: " << _PhoneNumber;
-    cout << ", Dia chi: " << _Address;
-    cout << ", Gioi tinh: ";
+    cout << "   | " << setw(12) << left << _PhoneNumber;
+    cout << "| " << setw(24) << left << _Address;
+    cout << "|     ";
     if (_Gender)
-        cout << "Nu";
+        cout << setw(9) << left << " Nu";
     else
-        cout << "Nam";
-    cout << ", Luong: " << _Wage << endl;
+        cout << setw(9) << left << " Nam";
+    cout << "| " << setw(11) << right << _Wage << " |" << endl;
 }
 int NhanVien::ID()
 {
@@ -80,22 +80,22 @@ void NhanVien::Wage(double value)
 }
 ostream &operator<<(ostream &o, const NhanVien &nv) // Tương tự hàm ShowNV
 {
-    o << "ID: " << nv._ID;
-    o << ", Ten nhan vien: " << nv._Name;
-    cout << ", Ngay sinh: ";
-    Date temp = nv._Birthday;
-    temp.ShowDate();
-    cout << ", Ngay nhan vao: ";
-    temp = nv._AdmissionDate;
-    temp.ShowDate();
-    o << ", SDT: " << nv._PhoneNumber;
-    o << ", Dia chi: " << nv._Address;
-    o << ", Gioi tinh: ";
+    o << "\t|" << setw(5) << right << nv._ID << " |";
+    o << " " << setw(28) << left << nv._Name << "|";
+    o << " ";
+    Date a = nv._Birthday;
+    a.ShowDate();
+    o << " |  ";
+    a = nv._AdmissionDate;
+    a.ShowDate();
+    o << "   | " << setw(12) << left << nv._PhoneNumber;
+    o << "| " << setw(24) << left << nv._Address;
+    o << "|     ";
     if (nv._Gender)
-        o << "Nu";
+        o << setw(9) << left << " Nu";
     else
-        o << "Nam";
-    o << ", Luong: " << nv._Wage << endl;
+        o << setw(9) << left << " Nam";
+    o << "| " << setw(11) << right << nv._Wage << " |" << endl;
     return o;
 }
 

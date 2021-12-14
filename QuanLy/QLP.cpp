@@ -212,7 +212,7 @@ int QLP::BinarySearch(int l, int r, int id) // Vi ID chua sort nen xet ca 2 phia
     if (r >= l)
     {
         int mid = l + (r - l) / 2;
-        if ((this->_QLP + mid)->IDP() == id)
+        if ((this->_QLP + mid)->IDFilm() == id)
             return mid;
         int A = BinarySearch(l, mid - 1, id);
         int B = BinarySearch(mid + 1, r, id);
@@ -245,7 +245,7 @@ void QLP::Sort(bool (*CTH)(int a, int b) = TD)
     for (i = 1; i < _Quantity; i++)
     {
         j = i - 1;
-        while (j >= 0 && CTH((this->_QLP + j)->IDP(), (this->_QLP + i)->IDP()))
+        while (j >= 0 && CTH((this->_QLP + j)->IDFilm(), (this->_QLP + i)->IDFilm()))
         {
             tempIndex[j + 1] = tempIndex[j];
             j--;

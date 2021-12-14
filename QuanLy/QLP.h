@@ -1,5 +1,5 @@
-#include "Phim.h"
-
+#include "../Object/Phim.h"
+#include "PhongChieu.h"
 class QLP
 {
 protected:

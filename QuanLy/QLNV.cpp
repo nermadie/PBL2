@@ -66,9 +66,14 @@ QLNV::~QLNV()
 }
 void QLNV::Show()
 {
-    cout << "Danh Sach Nhan Vien:" << endl;
+    cout << "\t+======================================================================================================================================+" << endl;
+    cout << "\t|                                                    ** DANH SACH NHAN VIEN **                                                         |" << endl;
+    cout << "\t+======+=============================+============+===============+=============+=========================+==============+=============+" << endl;
+    cout << "\t|  ID  |        Ten nhan vien        | Ngay sinh  | Ngay gia nhap |     SDT     |         Dia chi         |  Gioi tinh   |    Luong    |" << endl;
+    cout << "\t+======+=============================+============+===============+=============+=========================+==============+=============+" << endl;
     for (int i = 0; i < this->_Quantity; i++)
-        _QLNV[i].ShowNV();
+        cout << _QLNV[i];
+    cout << "\t+======+=============================+============+===============+=============+=========================+==============+=============+" << endl;
 }
 // Them doi tuong-------------------------------------------------
 //  + Them vao cuoi danh sach
@@ -411,39 +416,53 @@ int QLNV::IndexOf(int id)
 {
     return BinarySearch(0, _Quantity - 1, id);
 }
-// Sap xep(InsertionSort) voi thuoc tinh _ID----------------
+// Sap xep(QuickSort) voi thuoc tinh _ID----------------
 // Ham TD và GD được định nghĩa ở duoi
-bool GD(int a, int b)
+int QLNV::Partition(int *arr, int low, int high, bool (*CTH)(int a, int b))
 {
-    return a < b;
-}
-bool TD(int a, int b)
-{
-    return a > b;
-}
-void QLNV::Sort(bool (*CTH)(int a, int b) = TD)
-{
-    int *tempIndex = new int[_Quantity];
-    for (int i = 0; i < _Quantity; i++)
-        *(tempIndex + i) = i; // Mang index
-    int i, j;
-    for (i = 1; i < _Quantity; i++)
+    int pivot = (this->_QLNV + arr[high])->ID(); // pivot
+    int left = low;
+    int right = high - 1;
+    while (true)
     {
-        j = i - 1;
-        while (j >= 0 && CTH((this->_QLNV + j)->ID(), (this->_QLNV + i)->ID()))
-        {
-            tempIndex[j + 1] = tempIndex[j];
-            j--;
-        }
-        tempIndex[j + 1] = i;
+        while (left <= right && !CTH((this->_QLNV + arr[left])->ID(), pivot))
+            left++;
+        while (right >= left && CTH((this->_QLNV + arr[right])->ID(), pivot))
+            right--;
+        if (left >= right)
+            break;
+        swap(arr[left], arr[right]);
+        left++;
+        right--;
     }
+    swap(arr[left], arr[high]);
+    return left;
+}
+void QLNV::QuickSort(int *arr, int low, int high, bool (*CTH)(int a, int b))
+{
+    if (low < high)
+    {
+        int pi = Partition(arr, low, high, CTH);
+        QuickSort(arr, low, pi - 1, CTH);
+        QuickSort(arr, pi + 1, high, CTH);
+    }
+}
+void QLNV::Sort(bool (*CTH)(int a, int b))
+{
+    int *arr = new int[_Quantity];
+    for (int i = 0; i < _Quantity; i++)
+        *(arr + i) = i; // Mang index
+    QuickSort(arr, 0, this->_Quantity - 1, CTH);
     NhanVien *temp = new NhanVien[this->_Quantity];
     for (int i = 0; i < this->_Quantity; i++)
         *(temp + i) = *(this->_QLNV + i);
+    delete[] this->_QLNV;
+    this->_QLNV = new NhanVien[this->_Quantity];
     for (int i = 0; i < this->_Quantity; i++)
-        *(this->_QLNV + i) = *(temp + *(tempIndex + i));
+        *(this->_QLNV + i) = *(temp + *(arr + i));
     delete[] temp;
 }
+// Nhập dữ liệu từ file vào trong danh sách
 void QLNV::ImportFromFile()
 {
     ifstream FileIn("Database/NhanVien/import.txt", ios_base::in);
