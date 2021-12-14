@@ -24,7 +24,7 @@ void Date::ShowDate()
         cout << _Month << "/";
     cout << _Year;
 }
-ostream &operator<<(ostream &o, Date &d)
+ostream &operator<<(ostream &o, const Date &d)
 {
     if (d._Day < 10)
     {
@@ -41,6 +41,7 @@ ostream &operator<<(ostream &o, Date &d)
     o << d._Year;
     return o;
 }
+
 istream &operator>>(istream &in, Date &d)
 {
     int check;

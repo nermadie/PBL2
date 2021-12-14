@@ -13,7 +13,7 @@ public:
         if (FileIn.fail())
         {
             cout << "Khong tim thay Database! Ban co muon tao Database moi?(Y/N)" << endl;
-            if (kbhit())
+            if (!kbhit())
             {
                 char key = getch();
                 if (key == 27 || key == 'n' || key == 'N')
@@ -24,10 +24,13 @@ public:
                 {
                     this->_QLNV = nullptr;
                     this->_Quantity = 0;
-                    break;
                 }
             }
         }
+        while (FileIn.eof() == false)
+        {
+        }
+        FileIn.close();
     }
     QLNV(NhanVien *QLNV, int quantity) : _QLNV(QLNV), _Quantity(quantity) {}
     QLNV(const QLNV &l)

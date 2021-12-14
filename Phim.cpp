@@ -1,5 +1,9 @@
 #include "Phim.h"
 
+Film::Film()
+{
+}
+
 Film::Film(int _IDP, string _FilmName, string _MainActor, string _Category, string _MovieDuration, Date _MeettingDay)
 {
     this->_IDP = _IDP;
@@ -29,33 +33,17 @@ void Film::IDP(int value)
 {
     this->_IDP = value;
 }
-string Film::FilmName()
-{
-    return _FilmName;
-}
 void Film::FilmName(string value)
 {
     this->_FilmName = value;
-}
-string Film::MainActor()
-{
-    return _MainActor;
 }
 void Film::MainActor(string value)
 {
     this->_MainActor = value;
 }
-string Film::Category()
-{
-    return _Category;
-}
 void Film::Category(string value)
 {
     this->_Category = value;
-}
-string Film::MovieDuration()
-{
-    return _MovieDuration;
 }
 void Film::MovieDuration(string value)
 {
