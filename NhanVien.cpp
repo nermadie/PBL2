@@ -148,5 +148,5 @@ void NhanVien::InsertObjecttoFile(ofstream &FileOut)
     FileOut << _PhoneNumber << ',';
     FileOut << _Address << ',';
     FileOut << _Gender << ',';
-    FileOut << _Wage << '\n';
+    FileOut << _Wage;
 }

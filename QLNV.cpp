@@ -24,7 +24,7 @@ QLNV::QLNV()
     else
     {
         _Quantity = 0;
-        while (FileIn.eof() == false)
+        while (!FileIn.eof())
         {
             int id;
             string name, phonenumber, address;
@@ -41,7 +41,7 @@ QLNV::QLNV()
             FileIn >> gender >> separator;
             FileIn >> wage;
             NhanVien A(id, name, Date(dd1, mm1, yyyy1), Date(dd2, mm2, yyyy2), phonenumber, address, gender, wage);
-            AddtotheEnd(A);
+            AddtotheEnd(A, FileIn);
         }
     }
     FileIn.close();
@@ -55,9 +55,11 @@ QLNV::QLNV(const QLNV &l)
 QLNV::~QLNV()
 {
     ofstream FileOut("Database/NhanVien/nhanvien.txt", ios_base::out);
-    for (int i = 0; i < _Quantity; i++)
+    for (int i = 0; i < this->_Quantity; i++)
     {
         (_QLNV + i)->InsertObjecttoFile(FileOut);
+        if (i != this->_Quantity - 1)
+            FileOut << "\n";
     }
     FileOut.close();
     delete[] this->_QLNV;
@@ -70,9 +72,9 @@ void QLNV::Show()
 }
 // Them doi tuong-------------------------------------------------
 //  + Them vao cuoi danh sach
+//  + Them vao dau danh sach
 void QLNV::AddtotheEnd(NhanVien &nv)
 {
-    // Ngoại lệ:
     if (-1 != IndexOf(nv.ID()))
     {
         string a = "ID ";
@@ -80,7 +82,6 @@ void QLNV::AddtotheEnd(NhanVien &nv)
         string bug = a + id + " da bi trung trong Database! Hay xem lai Database hoac du lieu dau vao";
         throw bug;
     }
-    // Không lỗi:
     if (this->_Quantity == 0)
     {
         this->_QLNV = new NhanVien[this->_Quantity + 1];
@@ -100,11 +101,68 @@ void QLNV::AddtotheEnd(NhanVien &nv)
     }
     this->_Quantity++;
 }
-//  + Them vao dau danh sach
+void QLNV::AddtotheEnd(NhanVien &nv, ifstream &FileIn)
+{
+    if (-1 != IndexOf(nv.ID()))
+    {
+        FileIn.close();
+        string a = "ID ";
+        string id = to_string(nv.ID());
+        string bug = a + id + " da bi trung trong Database! Hay xem lai Database hoac du lieu dau vao";
+        throw bug;
+    }
+    if (this->_Quantity == 0)
+    {
+        this->_QLNV = new NhanVien[this->_Quantity + 1];
+        *(this->_QLNV + this->_Quantity) = nv;
+    }
+    else
+    {
+        NhanVien *temp = new NhanVien[this->_Quantity];
+        for (int i = 0; i < this->_Quantity; i++)
+            *(temp + i) = *(this->_QLNV + i);
+        delete[] this->_QLNV;
+        this->_QLNV = new NhanVien[this->_Quantity + 1];
+        for (int i = 0; i < this->_Quantity; i++)
+            *(this->_QLNV + i) = *(temp + i);
+        delete[] temp;
+        *(this->_QLNV + this->_Quantity) = nv;
+    }
+    this->_Quantity++;
+}
 void QLNV::AddtoTop(NhanVien &nv)
 {
     if (-1 != IndexOf(nv.ID()))
     {
+        string a = "ID ";
+        string id = to_string(nv.ID());
+        string bug = a + id + " da bi trung trong Database! Hay xem lai Database hoac du lieu dau vao";
+        throw bug;
+    }
+    if (this->_Quantity == 0)
+    {
+        this->_QLNV = new NhanVien[this->_Quantity + 1];
+        *(this->_QLNV + this->_Quantity) = nv;
+    }
+    else
+    {
+        NhanVien *temp = new NhanVien[this->_Quantity];
+        for (int i = 0; i < this->_Quantity; i++)
+            *(temp + i) = *(this->_QLNV + i);
+        delete[] this->_QLNV;
+        this->_QLNV = new NhanVien[this->_Quantity + 1];
+        for (int i = 1; i <= this->_Quantity; i++)
+            *(this->_QLNV + i) = *(temp + i - 1);
+        delete[] temp;
+        *(this->_QLNV) = nv;
+    }
+    this->_Quantity++;
+}
+void QLNV::AddtoTop(NhanVien &nv, ifstream &FileIn)
+{
+    if (-1 != IndexOf(nv.ID()))
+    {
+        FileIn.close();
         string a = "ID ";
         string id = to_string(nv.ID());
         string bug = a + id + " da bi trung trong Database! Hay xem lai Database hoac du lieu dau vao";
@@ -134,6 +192,48 @@ void QLNV::AddtoPosition(NhanVien &nv, int position)
 {
     if (-1 != IndexOf(nv.ID()))
     {
+        string a = "ID ";
+        string id = to_string(nv.ID());
+        string bug = a + id + " da bi trung trong Database! Hay xem lai Database hoac du lieu dau vao";
+        throw bug;
+    }
+    if (this->_Quantity == 0)
+    {
+        if (position > 0 || position < 0)
+            cout << "Loi vi tri!" << endl; // Vi tri>_Quantity hoac Vi tri<0
+        else
+        {
+            this->_QLNV = new NhanVien[this->_Quantity + 1];
+            *(this->_QLNV + this->_Quantity) = nv;
+            this->_Quantity++;
+        }
+    }
+    else
+    {
+        if (position > _Quantity || position < 0)
+            cout << "Loi vi tri!" << endl; // Vi tri>_Quantity hoac Vi tri<0
+        else
+        {
+            NhanVien *temp = new NhanVien[this->_Quantity];
+            for (int i = 0; i < this->_Quantity; i++)
+                *(temp + i) = *(this->_QLNV + i);
+            delete[] this->_QLNV;
+            this->_QLNV = new NhanVien[this->_Quantity + 1];
+            for (int i = 0; i < position; i++)
+                *(this->_QLNV + i) = *(temp + i);
+            for (int i = position + 1; i <= this->_Quantity; i++)
+                *(this->_QLNV + i) = *(temp + i - 1);
+            delete[] temp;
+            *(this->_QLNV + position) = nv;
+            this->_Quantity++;
+        }
+    }
+}
+void QLNV::AddtoPosition(NhanVien &nv, int position, ifstream &FileIn)
+{
+    if (-1 != IndexOf(nv.ID()))
+    {
+        FileIn.close();
         string a = "ID ";
         string id = to_string(nv.ID());
         string bug = a + id + " da bi trung trong Database! Hay xem lai Database hoac du lieu dau vao";
@@ -346,24 +446,35 @@ void QLNV::Sort(bool (*CTH)(int a, int b) = TD)
 }
 void QLNV::ImportFromFile()
 {
-    ifstream FileIn("Database/NhanVien/import.txtimport.txt", ios_base::in);
-    while (FileIn.eof() == false)
+    ifstream FileIn("Database/NhanVien/import.txt", ios_base::in);
+    if (FileIn.fail())
     {
-        int id;
-        string name, phonenumber, address;
-        bool gender;
-        double wage;
-        char separator;
-        int dd1, mm1, yyyy1, dd2, mm2, yyyy2;
-        FileIn >> id >> separator;
-        getline(FileIn, name, ',');
-        FileIn >> dd1 >> separator >> mm1 >> separator >> yyyy1 >> separator;
-        FileIn >> dd2 >> separator >> mm2 >> separator >> yyyy2 >> separator;
-        getline(FileIn, phonenumber, ',');
-        getline(FileIn, address, ',');
-        FileIn >> gender >> separator;
-        FileIn >> wage;
-        NhanVien A(id, name, Date(dd1, mm1, yyyy1), Date(dd2, mm2, yyyy2), phonenumber, address, gender, wage);
-        AddtotheEnd(A);
+        cout << "Khong tim thay file Import! Import khong thanh cong" << endl;
+    }
+    else
+    {
+        int count = 0;
+        while (!FileIn.eof())
+        {
+            int id;
+            string name, phonenumber, address;
+            bool gender;
+            double wage;
+            char separator;
+            int dd1, mm1, yyyy1, dd2, mm2, yyyy2;
+            FileIn >> id >> separator;
+            getline(FileIn, name, ',');
+            FileIn >> dd1 >> separator >> mm1 >> separator >> yyyy1 >> separator;
+            FileIn >> dd2 >> separator >> mm2 >> separator >> yyyy2 >> separator;
+            getline(FileIn, phonenumber, ',');
+            getline(FileIn, address, ',');
+            FileIn >> gender >> separator;
+            FileIn >> wage;
+            NhanVien A(id, name, Date(dd1, mm1, yyyy1), Date(dd2, mm2, yyyy2), phonenumber, address, gender, wage);
+            AddtotheEnd(A, FileIn);
+            count++;
+        }
+        cout << "Da them thanh cong " << count << " nhan vien vao Database!" << endl;
+        FileIn.close();
     }
 }
