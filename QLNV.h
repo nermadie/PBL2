@@ -13,8 +13,11 @@ public:
     ~QLNV();
     void Show();
     void AddtotheEnd(NhanVien &);
+    void AddtotheEnd(NhanVien &, ifstream &);
     void AddtoTop(NhanVien &);
+    void AddtoTop(NhanVien &, ifstream &);
     void AddtoPosition(NhanVien &, int);
+    void AddtoPosition(NhanVien &, int, ifstream &);
     void Update(const int &);
     void DeleteTop();
     void DeleteEnd();
