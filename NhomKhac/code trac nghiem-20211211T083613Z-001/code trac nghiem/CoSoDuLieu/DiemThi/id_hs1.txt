@@ -1,2 +1,0 @@
-id_dt2 4 A C A C A 
-id_dt1 10 A B 
