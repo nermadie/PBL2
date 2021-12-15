@@ -13,8 +13,6 @@ Film::Film(int id, string fn, string ma, string ca, int md)
     this->_Category = ca;
     this->_MovieDuration = md;
 }
-Film::~Film() {}
-
 Film::Film(const Film &f)
 {
     this->_IDFilm = f._IDFilm;
@@ -23,6 +21,7 @@ Film::Film(const Film &f)
     this->_Category = f._Category;
     this->_MovieDuration = f._MovieDuration;
 }
+Film::~Film() {}
 
 int Film::IDFilm()
 {

@@ -30,9 +30,9 @@ QLP::QLP()
             string name, mainactor, category;
             char separator;
             FileIn >> id >> separator;
-            std::getline(FileIn, name, '|');
-            std::getline(FileIn, mainactor, '|');
-            std::getline(FileIn, category, '|');
+            getline(FileIn, name, '|');
+            getline(FileIn, mainactor, '|');
+            getline(FileIn, category, '|');
             FileIn >> duration;
             Film A(id, name, mainactor, category, duration);
             AddtotheEnd(A, FileIn);

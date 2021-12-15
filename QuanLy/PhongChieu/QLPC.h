@@ -1,24 +1,24 @@
-#include "../Object/NhanVien.cpp"
+#include "../../Object/Film_PhongChieu/PhongChieu.cpp"
 bool GD(int a, int b);
 bool TD(int a, int b);
-class QLNV
+class QLPC
 {
 protected:
-    NhanVien *_QLNV;
+    PhongChieu *_QLPC;
     int _Quantity;
 
 public:
-    QLNV();
-    QLNV(NhanVien *, int);
-    QLNV(const QLNV &);
-    ~QLNV();
+    QLPC();
+    QLPC(PhongChieu *, int);
+    QLPC(const QLPC &);
+    ~QLPC();
     void Show();
-    void AddtotheEnd(NhanVien &);
-    void AddtotheEnd(NhanVien &, ifstream &);
-    void AddtoTop(NhanVien &);
-    void AddtoTop(NhanVien &, ifstream &);
-    void AddtoPosition(NhanVien &, int);
-    void AddtoPosition(NhanVien &, int, ifstream &);
+    void AddtotheEnd(PhongChieu &);
+    void AddtotheEnd(PhongChieu &, ifstream &);
+    void AddtoTop(PhongChieu &);
+    void AddtoTop(PhongChieu &, ifstream &);
+    void AddtoPosition(PhongChieu &, int);
+    void AddtoPosition(PhongChieu &, int, ifstream &);
     void Update(const int &);
     void DeleteTop();
     void DeleteEnd();

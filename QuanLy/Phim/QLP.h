@@ -1,4 +1,4 @@
-#include "../Object/Film.cpp"
+#include "../../Object/Film_PhongChieu/Film.cpp"
 bool GD(int a, int b);
 bool TD(int a, int b);
 class QLP
