@@ -1,4 +1,4 @@
-#include "./QuanLy/LichChieu/QLLC.cpp"
+#include "./KhachHang/Register.cpp"
 bool GD(int a, int b)
 {
     return a < b;
@@ -11,10 +11,7 @@ int main()
 {
     try
     {
-        QLLC temp;
-        temp.Show();
-        temp.Sort();
-        temp.Show();
+        Register::NhapThongTinKhachHang();
     }
     catch (const char *msg)
     {

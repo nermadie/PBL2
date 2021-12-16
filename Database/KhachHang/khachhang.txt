@@ -1,0 +1,5 @@
+1|Nguyen Van A|22/12/2002|090513099|38 Do Anh Han|0
+2|Nguyen Van B|22/12/2002|090513099|38 Do Anh Han|0
+3|Nguyen Van C|22/12/2002|090513099|38 Do Anh Han|0
+4|Nguyen Van D|22/12/2002|012391023|39 Do Anh Han|1
+5|Tran Nhat Minh|22/08/2002|0775513097|38 Do Anh Han|0

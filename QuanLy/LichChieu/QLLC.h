@@ -30,7 +30,7 @@ public:
     void DeleteEnd();
     void DeleteatPosition(const int &);
     int FindIndexPhong(int, int);
-    // Interpolation Sort
-    void Sort(bool (*CTH)(int a, int b) = TD);
+    // Bubble Sort
+    void Sort();
     void ImportFromFile();
 };

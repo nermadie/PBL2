@@ -593,63 +593,63 @@ int QLLC::FindIndexPhong(int id, int cur)
     return index;
 }
 // Sap xep
-void QLLC::Sort(bool (*CTH)(int a, int b))
+void QLLC::Sort()
 {
-    // Sort Phong
     int *arr = new int[_Quantity];
     for (int i = 0; i < _Quantity; i++)
         *(arr + i) = i;
-    for (int i = 0; i < _Quantity; i++)
+    // Sort Phong
+    for (int i = 0; i < _Quantity - 1; i++)
     {
-        for (int j = i + 1; j < _Quantity; j++)
+        for (int j = 0; j < _Quantity - i - 1; j++)
         {
-            if (CTH((this->_QLLC + arr[i])->IDPhong(), (this->_QLLC + arr[j])->IDPhong()))
-                swap(arr[i], arr[j]);
+            if ((this->_QLLC + arr[j])->IDPhong() > (this->_QLLC + arr[j + 1])->IDPhong())
+                swap(arr[j], arr[j + 1]);
         }
     }
-    // Sort Gio
-    for (int i = 0; i < _Quantity; i++)
+    // Sort gio
+    for (int i = 0; i < _Quantity - 1; i++)
     {
-        for (int j = i + 1; j < _Quantity; j++)
+        for (int j = 0; j < _Quantity - i - 1; j++)
         {
-            if (CTH((this->_QLLC + arr[i])->ThoiGian().Hour(), (this->_QLLC + arr[j])->ThoiGian().Hour()))
-                swap(arr[i], arr[j]);
+            if ((this->_QLLC + arr[j])->ThoiGian().Hour() > (this->_QLLC + arr[j + 1])->ThoiGian().Hour())
+                swap(arr[j], arr[j + 1]);
         }
     }
     // Sort ten phim
-    for (int i = 0; i < _Quantity; i++)
+    for (int i = 0; i < _Quantity - 1; i++)
     {
-        for (int j = i + 1; j < _Quantity; j++)
+        for (int j = 0; j < _Quantity - i - 1; j++)
         {
-            if (CTH((this->_QLLC + arr[i])->IDPhim(), (this->_QLLC + arr[j])->IDPhim()))
-                swap(arr[i], arr[j]);
+            if ((this->_QLLC + arr[j])->IDPhim() > (this->_QLLC + arr[j + 1])->IDPhim())
+                swap(arr[j], arr[j + 1]);
         }
     }
-    // Sort Ngay
-    for (int i = 0; i < _Quantity; i++)
+    // Sort ngay
+    for (int i = 0; i < _Quantity - 1; i++)
     {
-        for (int j = i + 1; j < _Quantity; j++)
+        for (int j = 0; j < _Quantity - i - 1; j++)
         {
-            if (CTH((this->_QLLC + arr[i])->ThoiGian().Day(), (this->_QLLC + arr[j])->ThoiGian().Day()))
-                swap(arr[i], arr[j]);
+            if ((this->_QLLC + arr[j])->ThoiGian().Day() > (this->_QLLC + arr[j + 1])->ThoiGian().Day())
+                swap(arr[j], arr[j + 1]);
         }
     }
-    // Sort Thang
-    for (int i = 0; i < _Quantity; i++)
+    // Theo thang
+    for (int i = 0; i < _Quantity - 1; i++)
     {
-        for (int j = i + 1; j < _Quantity; j++)
+        for (int j = 0; j < _Quantity - i - 1; j++)
         {
-            if (CTH((this->_QLLC + arr[i])->ThoiGian().Month(), (this->_QLLC + arr[j])->ThoiGian().Month()))
-                swap(arr[i], arr[j]);
+            if ((this->_QLLC + arr[j])->ThoiGian().Month() > (this->_QLLC + arr[j + 1])->ThoiGian().Month())
+                swap(arr[j], arr[j + 1]);
         }
     }
-    // Sort Nam
-    for (int i = 0; i < _Quantity; i++)
+    // Theo nam
+    for (int i = 0; i < _Quantity - 1; i++)
     {
-        for (int j = i + 1; j < _Quantity; j++)
+        for (int j = 0; j < _Quantity - i - 1; j++)
         {
-            if (CTH((this->_QLLC + arr[i])->ThoiGian().Year(), (this->_QLLC + arr[j])->ThoiGian().Year()))
-                swap(arr[i], arr[j]);
+            if ((this->_QLLC + arr[j])->ThoiGian().Year() > (this->_QLLC + arr[j + 1])->ThoiGian().Year())
+                swap(arr[j], arr[j + 1]);
         }
     }
     // Thay doi du lieu theo mang index
