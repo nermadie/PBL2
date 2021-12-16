@@ -1,4 +1,5 @@
-#include "./KhachHang/Register.cpp"
+#include "./KhachHang/MuaVe.h"
+// #include "./KhachHang/Register.cpp"
 bool GD(int a, int b)
 {
     return a < b;
@@ -11,7 +12,7 @@ int main()
 {
     try
     {
-        Register::NhapThongTinKhachHang();
+        MuaVe::MuaVeXemPhim();
     }
     catch (const char *msg)
     {

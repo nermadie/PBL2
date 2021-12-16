@@ -8,6 +8,18 @@ Date::Date(const Date &d)
     this->_Year = d._Year;
 }
 Date::~Date() {}
+int Date::Day()
+{
+    return _Day;
+}
+int Date::Month()
+{
+    return _Month;
+}
+int Date::Year()
+{
+    return _Year;
+}
 void Date::ShowDate()
 {
     if (_Day < 10)

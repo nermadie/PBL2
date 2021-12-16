@@ -37,6 +37,14 @@ Ca LichChieu::ThoiGian()
 {
     return this->_ThoiGian;
 }
+int LichChieu::GheConLai()
+{
+    return this->_GheConLai;
+}
+int LichChieu::GiaVe()
+{
+    return this->_GiaVe;
+}
 void LichChieu::IDPhim(int value)
 {
     this->_IDPhim = value;
@@ -70,6 +78,18 @@ void LichChieu::ShowLichChieu()
     cout << "   |           ";
     cout << setw(3) << left << _GheConLai << "          | ";
     cout << setw(6) << left << _GiaVe << " |";
+}
+bool LichChieu::DateCompare(Date &d)
+{
+    if (_ThoiGian.Day() == d.Day() && _ThoiGian.Month() == d.Month() && _ThoiGian.Year() == d.Year())
+        return 1;
+    return 0;
+}
+bool LichChieu::IDPhimCompare(int &idp)
+{
+    if (idp == this->_IDPhim)
+        return 1;
+    return 0;
 }
 ostream &operator<<(ostream &o, const LichChieu &nv) // Tương tự hàm ShowNV
 {

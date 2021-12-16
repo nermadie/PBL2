@@ -1,4 +1,5 @@
 #include "Register.h"
+#include <fstream>
 void Register::NhapThongTinKhachHang()
 {
     KhachHang tempKH;
@@ -11,6 +12,9 @@ void Register::NhapThongTinKhachHang()
     tempDSAcc.AddtotheEnd(tempAcc);
     tempDSAcc.Update(newID);
     tempQLKH.AddtotheEnd(tempKH);
+    string Path = "./Database/MuaVe/KH" + to_string(newID) + ".txt";
+    ofstream FileOut(Path);
+    FileOut.close();
     cout << endl
          << "Tu bay gio ban co the dang nhap voi username(ID): " << newID << " va password ban vua tao!";
 }

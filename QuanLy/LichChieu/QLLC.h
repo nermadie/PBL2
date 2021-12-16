@@ -17,8 +17,11 @@ public:
     ~QLLC();
     void Show();
     void XemtenPhim_ungvoiID(int);
-    void XemlaidanhsachPhim();
-    void XemlaidanhsachPhongChieu();
+    void XemLichChieuTheoNgay(Date &);  // Khach
+    void XemLichChieuTheoPhim(int &);   // Khach
+    void DaMuaVe(const Ca &, int, int); // Khach
+    void XemlaidanhsachPhim();          // Quan ly
+    void XemlaidanhsachPhongChieu();    // Quan ly
     void AddtotheEnd(LichChieu &);
     void AddtotheEnd(LichChieu &, ifstream &);
     void AddtoTop(LichChieu &);

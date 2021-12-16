@@ -18,6 +18,8 @@ public:
     int IDPhim();
     int IDPhong();
     Ca ThoiGian();
+    int GheConLai();
+    int GiaVe();
     void IDPhim(int);
     void IDPhong(int);
     void ThoiGian(Ca);
@@ -26,6 +28,8 @@ public:
     void GiaVe(int);
     ~LichChieu();
     void ShowLichChieu();
+    bool DateCompare(Date &);
+    bool IDPhimCompare(int &);
     friend ostream &operator<<(ostream &, const LichChieu &);
     friend istream &operator>>(istream &, LichChieu &);
     void InsertObjecttoFile(ofstream &);
