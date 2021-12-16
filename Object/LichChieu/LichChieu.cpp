@@ -3,28 +3,27 @@
 #include <iomanip>
 LichChieu::LichChieu()
 {
-    this->_Ghe = nullptr;
-    this->_SLGhe = 0;
 }
-LichChieu::LichChieu(int idf, int idp, Ca c, bool *ghe, int soluong)
+LichChieu::LichChieu(int idf, int idp, Ca c, int ghecl, int soluongbd, int giave)
 {
     this->_IDPhim = idf;
     this->_IDPhong = idp;
     this->_ThoiGian = c;
-    this->_Ghe = ghe;
-    this->_SLGhe = soluong;
+    this->_GheConLai = ghecl;
+    this->_SLGhe = soluongbd;
+    this->_GiaVe = giave;
 }
 LichChieu::LichChieu(const LichChieu &nv)
 {
     this->_IDPhim = nv._IDPhim;
     this->_IDPhong = nv._IDPhong;
     this->_ThoiGian = nv._ThoiGian;
-    this->_Ghe = nv._Ghe;
+    this->_GheConLai = nv._GheConLai;
     this->_SLGhe = nv._SLGhe;
+    this->_GiaVe = nv._GiaVe;
 }
 LichChieu::~LichChieu()
 {
-    delete[] this->_Ghe;
 }
 int LichChieu::IDPhim()
 {
@@ -38,17 +37,39 @@ Ca LichChieu::ThoiGian()
 {
     return this->_ThoiGian;
 }
+void LichChieu::IDPhim(int value)
+{
+    this->_IDPhim = value;
+}
+void LichChieu::IDPhong(int value)
+{
+    this->_IDPhong = value;
+}
+void LichChieu::ThoiGian(Ca value)
+{
+    this->_ThoiGian = value;
+}
+void LichChieu::GheConLai(int value)
+{
+    this->_GheConLai = value;
+}
+void LichChieu::SLGhe(int value)
+{
+    this->_SLGhe = value;
+}
+void LichChieu::GiaVe(int value)
+{
+    this->_GiaVe = value;
+}
 void LichChieu::ShowLichChieu()
 {
-    cout << _IDPhim << '|';
-    cout << _IDPhong << "|";
-    cout << _ThoiGian;
-    for (int i = 0; i < _SLGhe; i++)
-    {
-        cout << *(this->_Ghe + i);
-    }
-    cout << "|";
-    cout << _SLGhe;
+    cout << "|    " << setw(3) << left << _IDPhong << "   | ";
+    _ThoiGian.ShowDate();
+    cout << " |   ";
+    _ThoiGian.ShowCa();
+    cout << "   |           ";
+    cout << setw(3) << left << _GheConLai << "          | ";
+    cout << setw(6) << left << _GiaVe << " |";
 }
 ostream &operator<<(ostream &o, const LichChieu &nv) // Tương tự hàm ShowNV
 {
@@ -64,10 +85,7 @@ void LichChieu::InsertObjecttoFile(ofstream &FileOut)
     FileOut << _IDPhim << '|';
     FileOut << _IDPhong << "|";
     _ThoiGian.InsertObjecttoFile(FileOut);
-    for (int i = 0; i < _SLGhe; i++)
-    {
-        FileOut << *(this->_Ghe + i);
-    }
-    FileOut << "|";
-    FileOut << _SLGhe;
+    FileOut << _GheConLai << "|";
+    FileOut << _SLGhe << "|";
+    FileOut << _GiaVe;
 }

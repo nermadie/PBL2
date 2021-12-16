@@ -1,3 +1,4 @@
+#pragma once
 #include "../../Object/LichChieu/LichChieu.cpp"
 #include "../Phim/QLP.cpp"
 #include "../PhongChieu/QLPC.cpp"
@@ -15,6 +16,7 @@ public:
     QLLC(const QLLC &);
     ~QLLC();
     void Show();
+    void XemtenPhim_ungvoiID(int);
     void XemlaidanhsachPhim();
     void XemlaidanhsachPhongChieu();
     void AddtotheEnd(LichChieu &);
@@ -28,9 +30,7 @@ public:
     void DeleteEnd();
     void DeleteatPosition(const int &);
     int FindIndexPhong(int, int);
-    // QuickSort
-    int Partition(int *, int, int, bool (*CTH)(int a, int b));
-    void QuickSort(int *, int, int, bool (*CTH)(int a, int b));
+    // Interpolation Sort
     void Sort(bool (*CTH)(int a, int b) = TD);
     void ImportFromFile();
 };

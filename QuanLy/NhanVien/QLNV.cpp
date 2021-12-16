@@ -461,6 +461,7 @@ void QLNV::Sort(bool (*CTH)(int a, int b))
     for (int i = 0; i < this->_Quantity; i++)
         *(this->_QLNV + i) = *(temp + *(arr + i));
     delete[] temp;
+    delete[] arr;
 }
 // Nhập dữ liệu từ file vào trong danh sách
 void QLNV::ImportFromFile()

@@ -1,6 +1,7 @@
 #include "QLP.h"
 #include <fstream>
 #include <conio.h>
+#include <iomanip>
 QLP::QLP()
 {
     ifstream FileIn("Database/Phim/phim.txt", ios_base::in);
@@ -74,11 +75,11 @@ void QLP::ShowTenPhim(int id)
     int Index = IndexOf(id);
     if (Index == -1)
     {
-        cout << "IDPhim khong ton tai";
+        cout << setw(38) << left << "IDPhim khong ton tai";
     }
     else if (Index > -1)
     {
-        cout << _QLP[Index].FilmName();
+        cout << setw(38) << left << _QLP[Index].FilmName();
     }
 }
 
@@ -468,6 +469,7 @@ void QLP::Sort(bool (*CTH)(int a, int b))
     for (int i = 0; i < this->_Quantity; i++)
         *(this->_QLP + i) = *(temp + *(arr + i));
     delete[] temp;
+    delete[] arr;
 }
 // Nhập dữ liệu từ file vào trong danh sách
 void QLP::ImportFromFile()

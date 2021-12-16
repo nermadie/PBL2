@@ -24,21 +24,16 @@ QLLC::QLLC()
         _Quantity = 0;
         while (!FileIn.eof())
         {
-            int idphim, idphong, day, month, year, hour, soluongghe;
-            bool *listghe;
-            string temp;
+            int idphim, idphong, day, month, year, hour, soluonggheconlai, soluongghebandau, giave;
             char separator;
             FileIn >> idphim >> separator;
             FileIn >> idphong >> separator;
             FileIn >> day >> separator >> month >> separator >> year >> separator;
             FileIn >> hour >> separator;
-            getline(FileIn, temp, '|');
-            FileIn >> soluongghe;
-            for (int i = 0; i < soluongghe; i++)
-            {
-                *(listghe + i) = bool(temp[i] - 48);
-            }
-            LichChieu A(idphim, idphong, Ca(day, month, year, hour), listghe, soluongghe);
+            FileIn >> soluonggheconlai >> separator;
+            FileIn >> soluongghebandau >> separator;
+            FileIn >> giave;
+            LichChieu A(idphim, idphong, Ca(day, month, year, hour), soluonggheconlai, soluongghebandau, giave);
             AddtotheEnd(A, FileIn);
         }
     }
@@ -65,19 +60,19 @@ QLLC::~QLLC()
 void QLLC::Show()
 {
     QLP temp;
-    cout << "\t+====================================================================================================+" << endl;
-    cout << "\t|                                       ** DANH SACH LICH CHIEU **                                   |" << endl;
-    cout << "\t+================+===================================================================================+" << endl;
-    cout << "\t|               Ten phim                | Ma phong | Ngay chieu | Thoi gian | So luong ghe con trong |" << endl;
-    cout << "\t+================+===================================================================================+" << endl;
+    cout << "\t\t\t+=============================================================================================================+" << endl;
+    cout << "\t\t\t|                                           ** DANH SACH LICH CHIEU **                                        |" << endl;
+    cout << "\t\t\t+================+============================================================================================+" << endl;
+    cout << "\t\t\t|               Ten phim                | Ma phong | Ngay chieu | Thoi gian | So luong ghe con trong | Gia ve |" << endl;
+    cout << "\t\t\t+================+============================================================================================+" << endl;
     for (int i = 0; i < this->_Quantity; i++)
     {
-        cout << "| ";
+        cout << "\t\t\t| ";
         temp.ShowTenPhim(_QLLC[i].IDPhim());
-        cout << " |";
         _QLLC[i].ShowLichChieu();
+        cout << endl;
     }
-    cout << "\t+================+===================================================================================+" << endl;
+    cout << "\t\t\t+=================+===========================================================================================+" << endl;
 }
 void QLLC::XemlaidanhsachPhim()
 {
@@ -91,7 +86,7 @@ void QLLC::XemlaidanhsachPhongChieu()
 }
 void QLLC::AddtotheEnd(LichChieu &lc)
 {
-    int check;
+    int check = 1;
     for (int i = 0; i < _Quantity; i++)
     {
         int IndexPhongChieu = FindIndexPhong(lc.IDPhong(), i);
@@ -141,7 +136,7 @@ void QLLC::AddtotheEnd(LichChieu &lc)
 }
 void QLLC::AddtotheEnd(LichChieu &lc, ifstream &FileIn)
 {
-    int check;
+    int check = 1;
     for (int i = 0; i < _Quantity; i++)
     {
         int IndexPhongChieu = FindIndexPhong(lc.IDPhong(), i);
@@ -149,6 +144,11 @@ void QLLC::AddtotheEnd(LichChieu &lc, ifstream &FileIn)
         {
             if ((this->_QLLC + IndexPhongChieu)->ThoiGian() == lc.ThoiGian())
             {
+                (this->_QLLC + IndexPhongChieu)->ThoiGian().ShowCa();
+                lc.ThoiGian().ShowCa();
+                cout << endl
+                     << IndexPhongChieu << endl;
+                cout << "true" << endl;
                 check = 0;
                 break;
             }
@@ -192,7 +192,7 @@ void QLLC::AddtotheEnd(LichChieu &lc, ifstream &FileIn)
 }
 void QLLC::AddtoTop(LichChieu &lc)
 {
-    int check;
+    int check = 1;
     for (int i = 0; i < _Quantity; i++)
     {
         int IndexPhongChieu = FindIndexPhong(lc.IDPhong(), i);
@@ -242,7 +242,7 @@ void QLLC::AddtoTop(LichChieu &lc)
 }
 void QLLC::AddtoTop(LichChieu &lc, ifstream &FileIn)
 {
-    int check;
+    int check = 1;
     for (int i = 0; i < _Quantity; i++)
     {
         int IndexPhongChieu = FindIndexPhong(lc.IDPhong(), i);
@@ -294,7 +294,7 @@ void QLLC::AddtoTop(LichChieu &lc, ifstream &FileIn)
 //  + Them vao vi tri bat ky
 void QLLC::AddtoPosition(LichChieu &lc, int position)
 {
-    int check;
+    int check = 1;
     for (int i = 0; i < _Quantity; i++)
     {
         int IndexPhongChieu = FindIndexPhong(lc.IDPhong(), i);
@@ -357,7 +357,7 @@ void QLLC::AddtoPosition(LichChieu &lc, int position)
 }
 void QLLC::AddtoPosition(LichChieu &lc, int position, ifstream &FileIn)
 {
-    int check;
+    int check = 1;
     for (int i = 0; i < _Quantity; i++)
     {
         int IndexPhongChieu = FindIndexPhong(lc.IDPhong(), i);
@@ -423,29 +423,73 @@ void QLLC::AddtoPosition(LichChieu &lc, int position, ifstream &FileIn)
 // Cap nhat : Thay doi ca ID, Name, AdmissionDate, Gender, Wage
 void QLLC::Update(const int &idphong, const int &day, const int &month, const int &year, const int &hour)
 {
-    int index = IndexOf(id);
-    if (index >= 0)
+    int index = -1;
+    Ca tempca(day, month, year, hour);
+    for (int i = 0; i < _Quantity; i++)
     {
-        int check = 1;
-        cout << "Nhap ID phong chieu: ";
-        while (check)
+        int IndexPhongChieu = FindIndexPhong(idphong, i);
+        if (IndexPhongChieu != -1)
         {
-            int ID;
-            cin >> ID;
-            if (-1 != IndexOf(ID))
+            if ((this->_QLLC + IndexPhongChieu)->ThoiGian() == tempca)
             {
-                cout << "Da co phong chieu co ID nay!! Xin moi ban nhap lai: ";
-            }
-            else
-            {
-                (this->_QLLC + index)->IDLichChieu(ID);
-                check = 0;
-                cin >> *(this->_QLLC + index);
+                index = i;
+                break;
             }
         }
     }
+    if (index >= 0)
+    {
+        int check = 1;
+        int IDPhim;
+        cout << "Nhap ID phim: ";
+        QLP tempQLP;
+        while (check)
+        {
+            cin >> IDPhim;
+            if (tempQLP.IndexOf(IDPhim) == -1)
+            {
+                cout << "Hien chua co phim co ID nay! Moi ban nhap lai: ";
+                continue;
+            }
+            check = 0;
+        }
+        check = 1;
+        int IDPhong;
+        cout << "Nhap ID phong: ";
+        QLPC tempQLPC;
+        while (check)
+        {
+            cin >> IDPhong;
+            if (tempQLPC.IndexOf(IDPhong) == -1)
+            {
+                cout << "Hien chua co phong chieu co ID nay! Moi ban nhap lai: ";
+                continue;
+            }
+            check = 0;
+        }
+        Ca tempca2;
+        cin >> tempca2;
+        int slghe;
+        cout << "Nhap so luong ghe co trong phong: ";
+        cin >> slghe;
+        cout << "Nhap gia ve: ";
+        int giave;
+        cin >> giave;
+        (this->_QLLC + index)->IDPhim(IDPhim);
+        (this->_QLLC + index)->IDPhong(IDPhong);
+        (this->_QLLC + index)->ThoiGian(tempca2);
+        (this->_QLLC + index)->GheConLai(slghe);
+        (this->_QLLC + index)->SLGhe(slghe);
+        (this->_QLLC + index)->GiaVe(giave);
+    }
     else
-        cout << "Khong co phong chieu co ID: " << id << endl;
+    {
+        cout << "Khong co lich chieu co IDPhong: " << idphong << " vao ngay ";
+        tempca.ShowDate();
+        cout << " ca ";
+        tempca.ShowCa();
+        cout << endl;
+    }
 }
 // Xoa doi tuong---------------------------------------------------------
 //  + Xoa doi tuong dau tien
@@ -541,47 +585,74 @@ int QLLC::FindIndexPhong(int id, int cur)
     for (int i = cur; i < _Quantity; i++)
     {
         if ((this->_QLLC + i)->IDPhong() == id)
+        {
             index = i;
+            break;
+        }
     }
     return index;
 }
-// Sap xep(QuickSort) voi thuoc tinh _ID----------------
-// Ham TD và GD được định nghĩa ở duoi
-int QLLC::Partition(int *arr, int low, int high, bool (*CTH)(int a, int b))
-{
-    int pivot = (this->_QLLC + arr[high])->IDLichChieu(); // pivot
-    int left = low;
-    int right = high - 1;
-    while (true)
-    {
-        while (left <= right && !CTH((this->_QLLC + arr[left])->IDLichChieu(), pivot))
-            left++;
-        while (right >= left && CTH((this->_QLLC + arr[right])->IDLichChieu(), pivot))
-            right--;
-        if (left >= right)
-            break;
-        swap(arr[left], arr[right]);
-        left++;
-        right--;
-    }
-    swap(arr[left], arr[high]);
-    return left;
-}
-void QLLC::QuickSort(int *arr, int low, int high, bool (*CTH)(int a, int b))
-{
-    if (low < high)
-    {
-        int pi = Partition(arr, low, high, CTH);
-        QuickSort(arr, low, pi - 1, CTH);
-        QuickSort(arr, pi + 1, high, CTH);
-    }
-}
+// Sap xep
 void QLLC::Sort(bool (*CTH)(int a, int b))
 {
+    // Sort Phong
     int *arr = new int[_Quantity];
     for (int i = 0; i < _Quantity; i++)
-        *(arr + i) = i; // Mang index
-    QuickSort(arr, 0, this->_Quantity - 1, CTH);
+        *(arr + i) = i;
+    for (int i = 0; i < _Quantity; i++)
+    {
+        for (int j = i + 1; j < _Quantity; j++)
+        {
+            if (CTH((this->_QLLC + arr[i])->IDPhong(), (this->_QLLC + arr[j])->IDPhong()))
+                swap(arr[i], arr[j]);
+        }
+    }
+    // Sort Gio
+    for (int i = 0; i < _Quantity; i++)
+    {
+        for (int j = i + 1; j < _Quantity; j++)
+        {
+            if (CTH((this->_QLLC + arr[i])->ThoiGian().Hour(), (this->_QLLC + arr[j])->ThoiGian().Hour()))
+                swap(arr[i], arr[j]);
+        }
+    }
+    // Sort ten phim
+    for (int i = 0; i < _Quantity; i++)
+    {
+        for (int j = i + 1; j < _Quantity; j++)
+        {
+            if (CTH((this->_QLLC + arr[i])->IDPhim(), (this->_QLLC + arr[j])->IDPhim()))
+                swap(arr[i], arr[j]);
+        }
+    }
+    // Sort Ngay
+    for (int i = 0; i < _Quantity; i++)
+    {
+        for (int j = i + 1; j < _Quantity; j++)
+        {
+            if (CTH((this->_QLLC + arr[i])->ThoiGian().Day(), (this->_QLLC + arr[j])->ThoiGian().Day()))
+                swap(arr[i], arr[j]);
+        }
+    }
+    // Sort Thang
+    for (int i = 0; i < _Quantity; i++)
+    {
+        for (int j = i + 1; j < _Quantity; j++)
+        {
+            if (CTH((this->_QLLC + arr[i])->ThoiGian().Month(), (this->_QLLC + arr[j])->ThoiGian().Month()))
+                swap(arr[i], arr[j]);
+        }
+    }
+    // Sort Nam
+    for (int i = 0; i < _Quantity; i++)
+    {
+        for (int j = i + 1; j < _Quantity; j++)
+        {
+            if (CTH((this->_QLLC + arr[i])->ThoiGian().Year(), (this->_QLLC + arr[j])->ThoiGian().Year()))
+                swap(arr[i], arr[j]);
+        }
+    }
+    // Thay doi du lieu theo mang index
     LichChieu *temp = new LichChieu[this->_Quantity];
     for (int i = 0; i < this->_Quantity; i++)
         *(temp + i) = *(this->_QLLC + i);
@@ -590,6 +661,7 @@ void QLLC::Sort(bool (*CTH)(int a, int b))
     for (int i = 0; i < this->_Quantity; i++)
         *(this->_QLLC + i) = *(temp + *(arr + i));
     delete[] temp;
+    delete[] arr;
 }
 void QLLC::ImportFromFile()
 {
@@ -603,21 +675,16 @@ void QLLC::ImportFromFile()
         int count = 0;
         while (!FileIn.eof())
         {
-            int idphim, idphong, day, month, year, hour, soluongghe;
-            bool *listghe;
-            string temp;
+            int idphim, idphong, day, month, year, hour, soluonggheconlai, soluongghebandau, giave;
             char separator;
             FileIn >> idphim >> separator;
             FileIn >> idphong >> separator;
             FileIn >> day >> separator >> month >> separator >> year >> separator;
             FileIn >> hour >> separator;
-            getline(FileIn, temp, '|');
-            FileIn >> soluongghe;
-            for (int i = 0; i < soluongghe; i++)
-            {
-                *(listghe + i) = bool(temp[i] - 48);
-            }
-            LichChieu A(idphim, idphong, Ca(day, month, year, hour), listghe, soluongghe);
+            FileIn >> soluonggheconlai >> separator;
+            FileIn >> soluongghebandau >> separator;
+            FileIn >> giave;
+            LichChieu A(idphim, idphong, Ca(day, month, year, hour), soluonggheconlai, soluongghebandau, giave);
             AddtotheEnd(A, FileIn);
             count++;
         }

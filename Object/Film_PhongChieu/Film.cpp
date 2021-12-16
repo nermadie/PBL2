@@ -1,3 +1,4 @@
+#pragma once
 #include "Film.h"
 #include <iomanip>
 #include <fstream>

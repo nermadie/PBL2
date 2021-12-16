@@ -7,16 +7,23 @@ private:
     int _IDPhim;
     int _IDPhong;
     Ca _ThoiGian;
-    bool *_Ghe;
+    int _GheConLai;
     int _SLGhe;
+    int _GiaVe;
 
 public:
     LichChieu();
-    LichChieu(int, int, Ca, bool *, int);
+    LichChieu(int, int, Ca, int, int, int);
     LichChieu(const LichChieu &);
     int IDPhim();
     int IDPhong();
     Ca ThoiGian();
+    void IDPhim(int);
+    void IDPhong(int);
+    void ThoiGian(Ca);
+    void GheConLai(int);
+    void SLGhe(int);
+    void GiaVe(int);
     ~LichChieu();
     void ShowLichChieu();
     friend ostream &operator<<(ostream &, const LichChieu &);

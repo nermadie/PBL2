@@ -1,3 +1,4 @@
+#pragma once
 #include "Ca.h"
 #include <iostream>
 using namespace std;
@@ -71,7 +72,7 @@ istream &operator>>(istream &in, Ca &c)
     char separator;
     int dd, mm, yyyy;
     check = 0;
-    cout << "Nhap ngay: ";
+    cout << "Nhap ngay/thang/nam: ";
     do
     {
         if (check == 1)
