@@ -2,7 +2,7 @@
 using namespace std;
 class Film
 {
-private:
+protected:
     int _IDFilm;
     string _FilmName;
     string _MainActor;
@@ -17,6 +17,7 @@ public:
     void ShowPhim();
     int IDFilm();
     void IDFilm(int);
+    string FilmName(); // Dành cho hàm QLLC
     friend istream &operator>>(istream &, Film &);
     void InsertObjecttoFile(ofstream &);
 };

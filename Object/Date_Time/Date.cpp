@@ -44,7 +44,7 @@ ostream &operator<<(ostream &o, const Date &d)
 
 istream &operator>>(istream &in, Date &d)
 {
-    int check;
+    int check = 0;
     char separator;
     int dd, mm, yyyy;
     do

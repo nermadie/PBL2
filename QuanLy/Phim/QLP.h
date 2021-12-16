@@ -13,6 +13,7 @@ public:
     QLP(const QLP &);
     ~QLP();
     void Show();
+    void ShowTenPhim(int); // Cho class QLLC
     void AddtotheEnd(Film &);
     void AddtotheEnd(Film &, ifstream &);
     void AddtoTop(Film &);

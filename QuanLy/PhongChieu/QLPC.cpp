@@ -3,7 +3,6 @@
 #include <conio.h>
 QLPC::QLPC()
 {
-    cout << "done" << endl;
     ifstream FileIn("Database/PhongChieu/phongchieu.txt", ios_base::in);
     if (FileIn.fail())
     {
@@ -30,15 +29,8 @@ QLPC::QLPC()
             int id, soluong;
             char separator;
             FileIn >> id >> separator;
-            string temp;
-            getline(FileIn, temp, '|');
             FileIn >> soluong;
-            bool *ghe = new bool[soluong];
-            for (int i = 0; i < soluong; i++)
-            {
-                *(ghe + i) = bool(temp[i] - 48);
-            }
-            PhongChieu A(id, ghe, soluong);
+            PhongChieu A(id, soluong);
             AddtotheEnd(A, FileIn);
         }
     }
@@ -64,14 +56,14 @@ QLPC::~QLPC()
 }
 void QLPC::Show()
 {
-    cout << "\t\t\t\t+============================================================+" << endl;
-    cout << "\t\t\t\t|               ** DANH SACH PHONG CHIEU **                  |" << endl;
-    cout << "\t\t\t\t+================+====================+======================+" << endl;
-    cout << "\t\t\t\t| Ma phong chieu | So luong ghe trong | So luong ghe ban dau |" << endl;
-    cout << "\t\t\t\t+================+====================+======================+" << endl;
+    cout << "\t\t\t\t\t\t+===============================+" << endl;
+    cout << "\t\t\t\t\t\t|  ** DANH SACH PHONG CHIEU **  |" << endl;
+    cout << "\t\t\t\t\t\t+================+==============+" << endl;
+    cout << "\t\t\t\t\t\t| Ma phong chieu | So luong ghe |" << endl;
+    cout << "\t\t\t\t\t\t+================+==============+" << endl;
     for (int i = 0; i < this->_Quantity; i++)
         _QLPC[i].ShowPhongChieu();
-    cout << "\t\t\t\t+================+====================+======================+" << endl;
+    cout << "\t\t\t\t\t\t+================+==============+" << endl;
 }
 // Them doi tuong-------------------------------------------------
 //  + Them vao cuoi danh sach
@@ -488,7 +480,7 @@ void QLPC::ImportFromFile()
             {
                 *(ghe + i) = bool(temp[i] - 48);
             }
-            PhongChieu A(id, ghe, soluong);
+            PhongChieu A(id, soluong);
             AddtotheEnd(A, FileIn);
             count++;
         }

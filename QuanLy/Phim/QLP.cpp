@@ -69,6 +69,19 @@ void QLP::Show()
         _QLP[i].ShowPhim();
     cout << "\t+=========+=========================================+========================================+================+============+" << endl;
 }
+void QLP::ShowTenPhim(int id)
+{
+    int Index = IndexOf(id);
+    if (Index == -1)
+    {
+        cout << "IDPhim khong ton tai";
+    }
+    else if (Index > -1)
+    {
+        cout << _QLP[Index].FilmName();
+    }
+}
+
 // Them doi tuong-------------------------------------------------
 //  + Them vao cuoi danh sach
 //  + Them vao dau danh sach

@@ -31,6 +31,10 @@ void Film::IDFilm(int value)
 {
     this->_IDFilm = value;
 }
+string Film::FilmName()
+{
+    return this->_FilmName;
+}
 // void Film::FilmName(string value)
 // {
 //     this->_FilmName = value;
