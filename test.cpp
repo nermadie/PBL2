@@ -14,7 +14,10 @@ int main()
         // QuanLyPhim::ThemPhim();
         // QuanLyPhim::XoaPhim();
         // QuanLyPhim::SuaThongTinPhim();
-        QuanLyPhim::TimKiemPhimTheoIDPhim();
+        // QuanLyPhim::TimKiemPhimTheoIDPhim();
+        // QuanLyLichChieu::ThemLichChieu();
+        // QuanLyLichChieu::XoaLichChieu();
+        QuanLyLichChieu::SuaThongTinLichChieu();
     }
     catch (const char *msg)
     {

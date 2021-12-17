@@ -235,3 +235,106 @@ void QuanLyPhim::TimKiemPhimTheoIDPhim()
     }
 }
 //=====================================================================================================================
+void QuanLyLichChieu::DanhSachLichChieu()
+{
+    QLLC temp;
+    temp.Sort();
+    temp.Show();
+}
+void QuanLyLichChieu::ThemLichChieu()
+{
+    DanhSachLichChieu();
+    QLLC tempQLLC;
+    Ca tempCa;
+    int IDPhongChieu;
+    int Success;
+    do
+    {
+        int check = 1;
+        cout << "\t\t\t\t\t\tNhap ID phong chieu cho lich chieu muon them: ";
+        while (check)
+        {
+            cin >> IDPhongChieu;
+            cin >> tempCa;
+            if (-1 != tempQLLC.FindIndex(IDPhongChieu, tempCa))
+            {
+                cout << "\t\t\t\t\t\tDa bi trung voi 1 lich chieu khac!! Xin moi ban nhap lai: ";
+            }
+            else
+            {
+                QLP tempQLP;
+                int IDPhim, SLGhe, GiaVe;
+                cout << "\t\t\t\t\t\tNhap ID phim cho lich chieu: ";
+                while (1)
+                {
+                    cin >> IDPhim;
+                    if (-1 != tempQLP.IndexOf(IDPhim))
+                    {
+                        break;
+                    }
+                    else
+                        cout << "\t\t\t\t\t\tID phim khong ton tai! Moi ban nhap lai: ";
+                }
+                cout << "\t\t\t\t\t\tNhap so luong ghe cho lich chieu nay: ";
+                cin >> SLGhe;
+                cout << "\t\t\t\t\t\tNhap gia ve: ";
+                cin >> GiaVe;
+                LichChieu tempLich(IDPhim, IDPhongChieu, tempCa, SLGhe, SLGhe, GiaVe);
+                Success = tempQLLC.AddtotheEnd(tempLich);
+                check = 0;
+            }
+        }
+        cout << "\t\t\t\t\t\tDa them thanh cong 1 lich chieu moi!" << endl;
+        break;
+
+    } while (1);
+}
+void QuanLyLichChieu::XoaLichChieu()
+{
+    DanhSachLichChieu();
+    QLLC tempQLLC;
+    Ca tempCa;
+    int IDPhongChieu;
+    cout << "\t\t\t\t\t\tNhap ID phong chieu cua lich chieu muon xoa: ";
+    while (1)
+    {
+        cin >> IDPhongChieu;
+        cin >> tempCa;
+        int index = tempQLLC.FindIndex(IDPhongChieu, tempCa);
+        if (-1 == tempQLLC.FindIndex(IDPhongChieu, tempCa))
+        {
+            cout << "\t\t\t\t\t\tKhong tim thay lich chieu!! Xin moi ban nhap lai ID phong chieu : ";
+        }
+        else
+        {
+            tempQLLC.DeleteatPosition(index);
+            break;
+        }
+    }
+    cout << "\t\t\t\t\t\tDa xoa thanh cong 1 lich chieu!" << endl;
+}
+void QuanLyLichChieu::SuaThongTinLichChieu()
+{
+    DanhSachLichChieu();
+    QLLC tempQLLC;
+    Ca tempCa;
+    int IDPhongChieu;
+    cout << "\t\t\t\t\t\tNhap ID phong chieu cua lich chieu muon sua: ";
+    while (1)
+    {
+        cin >> IDPhongChieu;
+        cin >> tempCa;
+        int index = tempQLLC.FindIndex(IDPhongChieu, tempCa);
+        if (-1 == tempQLLC.FindIndex(IDPhongChieu, tempCa))
+        {
+            cout << "\t\t\t\t\t\tKhong tim thay lich chieu!! Xin moi ban nhap lai: ";
+        }
+        else
+        {
+            tempQLLC.Update(index);
+            break;
+        }
+    }
+    cout << "\t\t\t\t\t\tDa cap nhat thanh cong 1 lich chieu!" << endl;
+}
+//============================================================================================

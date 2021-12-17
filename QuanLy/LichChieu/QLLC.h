@@ -24,17 +24,18 @@ public:
     void ThongKeKhungGio();             // Quan ly
     void XemlaidanhsachPhim();          // Quan ly
     void XemlaidanhsachPhongChieu();    // Quan ly
-    void AddtotheEnd(LichChieu &);
+    int AddtotheEnd(LichChieu &);
     void AddtotheEnd(LichChieu &, ifstream &);
     void AddtoTop(LichChieu &);
     void AddtoTop(LichChieu &, ifstream &);
     void AddtoPosition(LichChieu &, int);
     void AddtoPosition(LichChieu &, int, ifstream &);
-    void Update(const int &, const int &, const int &, const int &, const int &);
+    void Update(int);
     void DeleteTop();
     void DeleteEnd();
     void DeleteatPosition(const int &);
     int FindIndexPhong(int, int);
+    int FindIndex(int, const Ca &);
     // Bubble Sort
     void Sort();
     void ImportFromFile();

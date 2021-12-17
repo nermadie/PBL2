@@ -26,3 +26,11 @@ public:
     static void SuaThongTinPhim();
     static void TimKiemPhimTheoIDPhim();
 };
+class QuanLyLichChieu
+{
+public:
+    static void DanhSachLichChieu();
+    static void ThemLichChieu();
+    static void XoaLichChieu();
+    static void SuaThongTinLichChieu();
+};
