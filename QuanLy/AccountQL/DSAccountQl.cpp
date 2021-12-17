@@ -1,9 +1,9 @@
-#include "DSAccount.h"
+#include "DSAccountQL.h"
 #include <fstream>
 #include <conio.h>
-DSAccount::DSAccount()
+DSAccountQL::DSAccountQL()
 {
-    ifstream FileIn("Database/ID_Password/id_password.txt", ios_base::in);
+    ifstream FileIn("Database/ID_Password/id_passwordQL.txt", ios_base::in);
     if (FileIn.fail())
     {
         cout << "Khong tim thay Database! Ban co muon tao Database moi?(Y/N)" << endl;
@@ -16,7 +16,7 @@ DSAccount::DSAccount()
             }
             else if (key == 'Y' || key == 'y')
             {
-                this->_DSAccount = nullptr;
+                this->_DSAccountQL = nullptr;
                 this->_Quantity = 0;
             }
         }
@@ -37,73 +37,73 @@ DSAccount::DSAccount()
     }
     FileIn.close();
 }
-DSAccount::DSAccount(Account *DSAccount, int quantity) : _DSAccount(DSAccount), _Quantity(quantity) {}
-DSAccount::DSAccount(const DSAccount &l)
+DSAccountQL::DSAccountQL(Account *DSAccountQL, int quantity) : _DSAccountQL(DSAccountQL), _Quantity(quantity) {}
+DSAccountQL::DSAccountQL(const DSAccountQL &l)
 {
-    this->_DSAccount = l._DSAccount;
+    this->_DSAccountQL = l._DSAccountQL;
     this->_Quantity = l._Quantity;
 }
-DSAccount::~DSAccount()
+DSAccountQL::~DSAccountQL()
 {
-    ofstream FileOut("Database/ID_Password/id_password.txt", ios_base::out);
+    ofstream FileOut("Database/ID_Password/id_passwordQL.txt", ios_base::out);
     for (int i = 0; i < this->_Quantity; i++)
     {
-        (_DSAccount + i)->InsertObjecttoFile(FileOut);
+        (_DSAccountQL + i)->InsertObjecttoFile(FileOut);
         if (i != this->_Quantity - 1)
             FileOut << "\n";
     }
     FileOut.close();
-    delete[] this->_DSAccount;
+    delete[] this->_DSAccountQL;
 }
-int DSAccount::Quantity()
+int DSAccountQL::Quantity()
 {
     return this->_Quantity;
 }
-void DSAccount::AddtotheEnd(Account &nv)
+void DSAccountQL::AddtotheEnd(Account &nv)
 {
     if (this->_Quantity == 0)
     {
-        this->_DSAccount = new Account[this->_Quantity + 1];
-        *(this->_DSAccount + this->_Quantity) = nv;
+        this->_DSAccountQL = new Account[this->_Quantity + 1];
+        *(this->_DSAccountQL + this->_Quantity) = nv;
     }
     else
     {
         Account *temp = new Account[this->_Quantity];
         for (int i = 0; i < this->_Quantity; i++)
-            *(temp + i) = *(this->_DSAccount + i);
-        delete[] this->_DSAccount;
-        this->_DSAccount = new Account[this->_Quantity + 1];
+            *(temp + i) = *(this->_DSAccountQL + i);
+        delete[] this->_DSAccountQL;
+        this->_DSAccountQL = new Account[this->_Quantity + 1];
         for (int i = 0; i < this->_Quantity; i++)
-            *(this->_DSAccount + i) = *(temp + i);
+            *(this->_DSAccountQL + i) = *(temp + i);
         delete[] temp;
-        *(this->_DSAccount + this->_Quantity) = nv;
+        *(this->_DSAccountQL + this->_Quantity) = nv;
     }
     this->_Quantity++;
 }
-int DSAccount::FindUsername(int id)
+int DSAccountQL::FindUsername(int id)
 {
     int index = -1;
     for (int i = 0; i < this->_Quantity; i++)
     {
-        if ((this->_DSAccount + i)->IDNguoiDung() == id)
+        if ((this->_DSAccountQL + i)->IDNguoiDung() == id)
         {
             index = i;
         }
     }
     return index;
 }
-string DSAccount::GivePass(int index)
+string DSAccountQL::GivePass(int index)
 {
-    return (_DSAccount + index)->Password();
+    return (_DSAccountQL + index)->Password();
 }
-void DSAccount::Update(const int &id)
+void DSAccountQL::Update(const int &id)
 {
-    int index = id - 1;
+    int index = -(id - 1);
     if (index >= 0)
     {
         cout << "Moi ban nhap password moi: ";
-        cin >> (*(this->_DSAccount + index));
+        cin >> (*(this->_DSAccountQL + index));
     }
     else
-        cout << "Khong co khach hang co ID: " << id << endl;
+        cout << "Khong co quan ly co ID: " << id << endl;
 }

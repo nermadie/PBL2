@@ -1,4 +1,6 @@
+#pragma once
 #include "QLLC.h"
+void InTienVe(int);
 QLLC::QLLC()
 {
     ifstream FileIn("Database/LichChieu/lichchieu.txt", ios_base::in);
@@ -114,12 +116,12 @@ void QLLC::XemLichChieuTheoPhim(int &idp)
     }
     cout << "\t\t\t+=================+===========================================================================================+" << endl;
 }
-void QLLC::DaMuaVe(const Ca &ca, int maphong, int soluong)
+int QLLC::DatMuaVe(const Ca &ca, int maphong, int soluong)
 {
     int check = 1, index;
     for (int i = 0; i < _Quantity; i++)
     {
-        int index = FindIndexPhong(maphong, i);
+        index = FindIndexPhong(maphong, i);
         if (index != -1)
         {
             if ((this->_QLLC + index)->ThoiGian() == ca)
@@ -137,14 +139,41 @@ void QLLC::DaMuaVe(const Ca &ca, int maphong, int soluong)
     {
         cout << "Ban da nhap sai thong tin! Hay thu lai.";
     }
-    else
+    else if (check == 0)
     {
         int gheconlaibd = (this->_QLLC + index)->GheConLai();
         (this->_QLLC + index)->GheConLai(gheconlaibd - soluong);
         cout << "Ban da mua ve thanh cong!" << endl;
-        cout << "So tien ban phai tra la: " << soluong * (this->_QLLC + index)->GiaVe() << endl;
-        cout << "Bill da duoc luu vao lich su mua hang cua ban! Chan thanh cam on!";
+        int Bill = soluong * (this->_QLLC + index)->GiaVe();
+        cout << "So tien ban phai tra la: ";
+        cout << setw(10) << right;
+        InTienVe(Bill);
+        cout << " VND" << endl
+             << "Bill da duoc luu vao lich su mua hang cua ban! Chan thanh cam on!" << endl;
+        return Bill;
     }
+    return -1;
+}
+void QLLC::TongDoanhThu_Toanbo()
+{
+    int tongsovedaban = 0, tongsotienthuduoc = 0, giave, sove;
+    for (int i = 0; i < _Quantity; i++)
+    {
+        sove = (this->_QLLC + i)->SLGhe() - (this->_QLLC + i)->GheConLai();
+        tongsovedaban += sove;
+        giave = (this->_QLLC + i)->GiaVe();
+        tongsotienthuduoc += giave * sove;
+    }
+    cout << "\t\t\t\t\t\t+===========================================+" << endl;
+    cout << "\t\t\t\t\t\t|              ** DOANH THU **              |" << endl;
+    cout << "\t\t\t\t\t\t+=======================+===================+" << endl;
+    cout << "\t\t\t\t\t\t| Tong so ve da ban :   | " << setw(11) << right << tongsovedaban << " (ve)  |" << endl;
+    cout << "\t\t\t\t\t\t+=======================+===================+" << endl;
+    cout << "\t\t\t\t\t\t| Tong so tien thu ve : | ";
+    cout << setw(11) << right;
+    InTienVe(tongsotienthuduoc);
+    cout << " (VND) |" << endl;
+    cout << "\t\t\t\t\t\t+=======================+===================+" << endl;
 }
 void QLLC::XemlaidanhsachPhim()
 {

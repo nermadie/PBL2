@@ -16,10 +16,11 @@ public:
     QLLC(const QLLC &);
     ~QLLC();
     void Show();
-    void XemtenPhim_ungvoiID(int);
     void XemLichChieuTheoNgay(Date &);  // Khach
     void XemLichChieuTheoPhim(int &);   // Khach
-    void DaMuaVe(const Ca &, int, int); // Khach
+    int DatMuaVe(const Ca &, int, int); // Khach
+    void TongDoanhThu_Toanbo();         // Quan ly
+    void ThongKePhimAnKhach();          // Quan ly
     void XemlaidanhsachPhim();          // Quan ly
     void XemlaidanhsachPhongChieu();    // Quan ly
     void AddtotheEnd(LichChieu &);

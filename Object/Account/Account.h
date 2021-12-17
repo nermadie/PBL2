@@ -1,4 +1,3 @@
-#pragma once
 #include <iostream>
 using namespace std;
 class Account
@@ -12,8 +11,10 @@ public:
     Account(int, string);
     Account(const Account &);
     ~Account();
+    int IDNguoiDung();
+    string Password();
     void IDNguoiDung(int);
     void Password(string);
-    void NewAccount(Account &);
+    friend istream &operator>>(istream &, Account &);
     void InsertObjecttoFile(ofstream &);
 };

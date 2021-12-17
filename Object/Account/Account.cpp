@@ -1,4 +1,6 @@
+#pragma once
 #include "Account.h"
+#include <fstream>
 Account::Account() {}
 Account::Account(int id, string p) : _IDNguoiDung(id), _Password(p) {}
 Account::Account(const Account &d)
@@ -7,6 +9,14 @@ Account::Account(const Account &d)
     this->_Password = d._Password;
 }
 Account::~Account() {}
+int Account::IDNguoiDung()
+{
+    return this->_IDNguoiDung;
+}
+string Account::Password()
+{
+    return this->_Password;
+}
 void Account::IDNguoiDung(int value)
 {
     this->_IDNguoiDung = value;
@@ -15,14 +25,14 @@ void Account::Password(string value)
 {
     this->_Password = value;
 }
-void NewAccount(Account &acc)
+istream &operator>>(istream &in, Account &acc)
 {
     string a, b;
     while (1)
     {
-        cin >> a;
+        in >> a;
         cout << "Xac nhan password ban vua nhap: ";
-        cin >> b;
+        in >> b;
         if (a == b)
         {
             cout << "Mat khau da duoc xac nhan!";
@@ -31,7 +41,8 @@ void NewAccount(Account &acc)
         else
             cout << "Mat khau khong trung khop!!Moi ban nhap lai mat khau: ";
     }
-    acc.Password(a);
+    acc._Password = a;
+    return in;
 }
 void Account::InsertObjecttoFile(ofstream &FileOut)
 {

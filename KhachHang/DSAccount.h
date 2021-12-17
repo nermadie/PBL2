@@ -1,6 +1,4 @@
 #include "../Object/Account/Account.cpp"
-bool GD(int a, int b);
-bool TD(int a, int b);
 class DSAccount
 {
 protected:
@@ -14,5 +12,7 @@ public:
     ~DSAccount();
     int Quantity();
     void AddtotheEnd(Account &);
+    int FindUsername(int);
+    string GivePass(int);
     void Update(const int &);
 };

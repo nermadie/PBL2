@@ -19,6 +19,7 @@ public:
     int IDPhong();
     Ca ThoiGian();
     int GheConLai();
+    int SLGhe();
     int GiaVe();
     void IDPhim(int);
     void IDPhong(int);

@@ -41,6 +41,10 @@ int LichChieu::GheConLai()
 {
     return this->_GheConLai;
 }
+int LichChieu::SLGhe()
+{
+    return this->_SLGhe;
+}
 int LichChieu::GiaVe()
 {
     return this->_GiaVe;
