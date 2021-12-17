@@ -34,3 +34,17 @@ public:
     static void XoaLichChieu();
     static void SuaThongTinLichChieu();
 };
+class QuanLyPhongChieu
+{
+public:
+    static void DanhSachPhongChieu();
+    static void ThemPhongChieu();
+    static void XoaPhongChieu();
+    static void SuaThongTinPhongChieu();
+};
+class QuanLyKhachHang
+{
+public:
+    static void DanhSachKhachHang();
+    static void TimKiemKhachTheoIDKhachHang();
+};

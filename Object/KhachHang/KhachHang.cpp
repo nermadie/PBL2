@@ -23,7 +23,7 @@ KhachHang::KhachHang(const KhachHang &nv)
 KhachHang::~KhachHang() {}
 void KhachHang::ShowKhachHang()
 {
-    cout << "\t|" << setw(5) << right << _ID << " |";
+    cout << "\t\t\t|" << setw(5) << right << _ID << " |";
     cout << " " << setw(28) << left << _Name << " |";
     cout << " ";
     _Birthday.ShowDate();

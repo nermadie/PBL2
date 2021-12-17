@@ -338,3 +338,113 @@ void QuanLyLichChieu::SuaThongTinLichChieu()
     cout << "\t\t\t\t\t\tDa cap nhat thanh cong 1 lich chieu!" << endl;
 }
 //============================================================================================
+void QuanLyPhongChieu::DanhSachPhongChieu()
+{
+    QLPC temp;
+    temp.Sort();
+    temp.Show();
+}
+void QuanLyPhongChieu::ThemPhongChieu()
+{
+    DanhSachPhongChieu();
+    QLPC tempQLPC;
+    PhongChieu tempPhongChieu;
+    int ID;
+    do
+    {
+        int check = 1;
+        cout << "\t\t\t\t\t\tNhap ID phong chieu ban muon them: ";
+        while (check)
+        {
+            cin >> ID;
+            if (-1 != tempQLPC.IndexOf(ID))
+            {
+                cout << "\t\t\t\t\t\tDa co phong chieu co ID nay!! Xin moi ban nhap lai: ";
+            }
+            else
+            {
+                tempPhongChieu.IDPhongChieu(ID);
+                check = 0;
+                cin >> tempPhongChieu;
+            }
+        }
+        if (tempQLPC.AddtotheEnd(tempPhongChieu))
+        {
+            cout << "\t\t\t\t\t\tDa them thanh cong 1 phong chieu moi!" << endl;
+            break;
+        }
+        else
+        {
+            cout << "\t\t\t\t\t\tBan da nhap sai thong tin nao do! Xin hay kiem tra lai!" << endl;
+        }
+    } while (1);
+}
+void QuanLyPhongChieu::XoaPhongChieu()
+{
+    DanhSachPhongChieu();
+    QLPC tempQLPC;
+    int ID;
+    cout << "\t\t\t\t\t\tMoi ban nhap ID phong chieu minh muon xoa: ";
+    while (1)
+    {
+        cin >> ID;
+        int tempID = tempQLPC.IndexOf(ID);
+        if (-1 != tempID)
+        {
+            tempQLPC.DeleteatPosition(tempID);
+            cout << "\t\t\t\t\t\tDa xoa phong chieu co ID: " << ID << " ra khoi Database!" << endl;
+            break;
+        }
+        else
+        {
+            cout << "\t\t\t\t\t\tKhong tim thay phong chieu co ID nay! Moi ban nhap lai: ";
+        }
+    }
+}
+void QuanLyPhongChieu::SuaThongTinPhongChieu()
+{
+    DanhSachPhongChieu();
+    QLPC tempQLPC;
+    int ID;
+    cout << "\t\t\t\t\t\tMoi ban nhap ID phong chieu minh muon thay doi: ";
+    while (1)
+    {
+        cin >> ID;
+        if (-1 != tempQLPC.IndexOf(ID))
+        {
+            tempQLPC.Update(ID);
+            cout << "\t\t\t\t\t\tDa cap nhat thong tin cho phong chieu!  " << endl;
+            break;
+        }
+        else
+        {
+            cout << "\t\t\t\t\t\tMoi ban nhap lai: ";
+        }
+    }
+}
+//===========================================================================================================================================================
+void QuanLyKhachHang::DanhSachKhachHang()
+{
+    QLKH temp;
+    temp.Sort();
+    temp.Show();
+}
+void QuanLyKhachHang::TimKiemKhachTheoIDKhachHang()
+{
+    QLKH tempQLKH;
+    int ID;
+    cout << "\t\t\t\t\t\tMoi ban nhap ID nhan vien ban muon xem: ";
+    while (1)
+    {
+        cin >> ID;
+        if (-1 != tempQLKH.IndexOf(ID))
+        {
+            tempQLKH.Show1KH(ID);
+            break;
+        }
+        else
+        {
+            cout << "\t\t\t\t\t\tKhong tim thay nhan vien co ID nay! Moi ban nhap lai: ";
+        }
+    }
+}

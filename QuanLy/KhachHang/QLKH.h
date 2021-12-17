@@ -14,6 +14,7 @@ public:
     ~QLKH();
     int Quantity();
     void Show();
+    void Show1KH(int);
     void AddtotheEnd(KhachHang &);
     void AddtotheEnd(KhachHang &, ifstream &);
     void AddtoTop(KhachHang &);
