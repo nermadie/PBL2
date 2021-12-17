@@ -59,6 +59,10 @@ QLP::~QLP()
     FileOut.close();
     delete[] this->_QLP;
 }
+int QLP::TongSoLuongPhim()
+{
+    return this->_Quantity;
+}
 void QLP::Show()
 {
     cout << "\t+==========================================================================================================================+" << endl;

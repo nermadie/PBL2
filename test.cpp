@@ -20,9 +20,10 @@ int main()
         //     MenuKhachHang(id);
         // else
         //     MenuQuanLy();
-        MuaVe::MuaVeXemPhim(1);
-        MuaVe::XemLichSuMuaVe(1);
-        DoanhThu::TongDoanhThu_Toanbo();
+        // MuaVe::MuaVeXemPhim(1);
+        // MuaVe::XemLichSuMuaVe(1);
+        // DoanhThu::TongDoanhThu_Toanbo();
+        DoanhThu::ThongKeKhungGio();
     }
     catch (const char *msg)
     {

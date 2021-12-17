@@ -21,6 +21,7 @@ public:
     int DatMuaVe(const Ca &, int, int); // Khach
     void TongDoanhThu_Toanbo();         // Quan ly
     void ThongKePhimAnKhach();          // Quan ly
+    void ThongKeKhungGio();             // Quan ly
     void XemlaidanhsachPhim();          // Quan ly
     void XemlaidanhsachPhongChieu();    // Quan ly
     void AddtotheEnd(LichChieu &);

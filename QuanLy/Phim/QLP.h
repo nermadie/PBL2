@@ -12,6 +12,7 @@ public:
     QLP(Film *, int);
     QLP(const QLP &);
     ~QLP();
+    int TongSoLuongPhim(); // thong ke phim an khach
     void Show();
     void ShowTenPhim(int); // Cho class QLLC
     void AddtotheEnd(Film &);
