@@ -277,7 +277,7 @@ void QLKH::AddtoPosition(KhachHang &nv, int position, ifstream &FileIn)
         }
     }
 }
-// Cap nhat thong tin(Theo thuoc tinh MS Nhan vien(ID))-------------
+// Cap nhat thong tin(Theo thuoc tinh MS Khach Hang(ID))-------------
 // Cap nhat : Thay doi ca ID, Name, AdmissionDate, Gender, Wage
 void QLKH::Update(const int &id)
 {
@@ -285,14 +285,15 @@ void QLKH::Update(const int &id)
     if (index >= 0)
     {
         int check = 1;
-        cout << "Nhap ID nhan vien: ";
+        cout << "Nhap ID khach hang: ";
         while (check)
         {
             int ID;
             cin >> ID;
-            if (-1 != IndexOf(ID))
+            int indextrave = IndexOf(ID);
+            if (-1 != indextrave && indextrave != index)
             {
-                cout << "Da co nhan vien co ID nay!! Xin moi ban nhap lai: ";
+                cout << "Da co khach hang co ID nay!! Xin moi ban nhap lai: ";
             }
             else
             {
@@ -303,7 +304,7 @@ void QLKH::Update(const int &id)
         }
     }
     else
-        cout << "Khong co nhan vien co MSNV: " << id << endl;
+        cout << "Khong co khach hang co MSKH: " << id << endl;
 }
 // Xoa doi tuong---------------------------------------------------------
 //  + Xoa doi tuong dau tien

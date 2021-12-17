@@ -279,7 +279,8 @@ void QLPC::Update(const int &id)
         {
             int ID;
             cin >> ID;
-            if (-1 != IndexOf(ID))
+            int indextrave = IndexOf(ID);
+            if (-1 != indextrave && indextrave != index)
             {
                 cout << "Da co phong chieu co ID nay!! Xin moi ban nhap lai: ";
             }

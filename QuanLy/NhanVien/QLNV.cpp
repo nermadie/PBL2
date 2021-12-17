@@ -84,7 +84,10 @@ void QLNV::Show1NV(int id)
     cout << "\t+======+=============================+============+===============+=============+=========================+==============+=============+" << endl;
     for (int i = 0; i < this->_Quantity; i++)
         if ((this->_QLNV + i)->ID() == id)
+        {
             cout << _QLNV[i];
+            break;
+        }
     cout << "\t+======+=============================+============+===============+=============+=========================+==============+=============+" << endl;
 }
 // Them doi tuong-------------------------------------------------
@@ -299,7 +302,8 @@ void QLNV::Update(const int &id)
         {
             int ID;
             cin >> ID;
-            if (-1 != IndexOf(ID))
+            int indextrave = IndexOf(ID);
+            if (-1 != indextrave && indextrave != index)
             {
                 cout << "\t\t\t\t\t\tDa co nhan vien co ID nay!! Xin moi ban nhap lai: ";
             }

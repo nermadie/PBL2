@@ -54,7 +54,7 @@ string Film::FilmName()
 // }
 void Film::ShowPhim()
 {
-    cout << "\t| " << setw(7) << right << this->_IDFilm << " ";
+    cout << "\t\t| " << setw(7) << right << this->_IDFilm << " ";
     cout << "| " << setw(40) << left << this->_FilmName;
     cout << "| " << setw(38) << left << this->_MainActor << " ";
     cout << "| " << setw(15) << left << this->_Category;
@@ -64,19 +64,20 @@ void Film::ShowPhim()
 istream &operator>>(istream &in, Film &p)
 {
     int check;
-    cout << "Nhap ten phim: ";
+    cout << "\t\t\t\t\t\tNhap ten phim: ";
     char str[100];
+    fflush(stdin);
     in.getline(str, sizeof(str)); // Trường hợp đặc biệt
     p._FilmName = str;
-    cout << "Nhap dien vien chinh: ";
-    fgets(str, 100, stdin);
+    cout << "\t\t\t\t\t\tNhap dien vien chinh: ";
+    fflush(stdin);
     in.getline(str, sizeof(str));
     p._MainActor = str;
-    cout << "Nhap the loai phim: ";
-    fgets(str, 100, stdin);
+    cout << "\t\t\t\t\t\tNhap the loai phim: ";
+    fflush(stdin);
     in.getline(str, sizeof(str));
     p._Category = str;
-    cout << "Nhap thoi luong phim: ";
+    cout << "\t\t\t\t\t\tNhap thoi luong phim: ";
     in >> p._MovieDuration;
     return in;
 }

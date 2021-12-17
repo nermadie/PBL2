@@ -17,3 +17,12 @@ public:
     static void SuaThongTinNhanVien();
     static void TimKiemNhanVienTheoID();
 };
+class QuanLyPhim
+{
+public:
+    static void DanhSachPhim();
+    static void ThemPhim();
+    static void XoaPhim();
+    static void SuaThongTinPhim();
+    static void TimKiemPhimTheoIDPhim();
+};

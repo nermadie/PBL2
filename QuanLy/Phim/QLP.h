@@ -14,8 +14,9 @@ public:
     ~QLP();
     int TongSoLuongPhim(); // thong ke phim an khach
     void Show();
+    void Show1Film(int);
     void ShowTenPhim(int); // Cho class QLLC
-    void AddtotheEnd(Film &);
+    int AddtotheEnd(Film &);
     void AddtotheEnd(Film &, ifstream &);
     void AddtoTop(Film &);
     void AddtoTop(Film &, ifstream &);

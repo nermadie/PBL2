@@ -2,3 +2,4 @@
 3|The heirs|Vin Diesel, Paul Walker|Hanh dong|90
 4|ABCXYZ|Vin Diesel, Paul Walker|Hanh dong|90
 5|Co dau 800 tuoi|Vin Diesel, Paul Walker|Hanh dong|90
+6|No Time To Die|Daniel Craig|Hanh Dong|90

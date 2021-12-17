@@ -10,6 +10,11 @@ int main()
         // QuanLyNhanVien::TimKiemNhanVienTheoID();
         // QuanLyNhanVien::XoaNhanVien();
         // QuanLyNhanVien::ThemNhanVien();
+        // QuanLyPhim::DanhSachPhim();
+        // QuanLyPhim::ThemPhim();
+        // QuanLyPhim::XoaPhim();
+        // QuanLyPhim::SuaThongTinPhim();
+        QuanLyPhim::TimKiemPhimTheoIDPhim();
     }
     catch (const char *msg)
     {

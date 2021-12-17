@@ -26,7 +26,7 @@ void DoanhThu::ThongKeKhungGio()
     tempLich.ThongKeKhungGio();
     cout << "\t\t\t+============+==============+===============+===============+======================+======================+" << endl;
 }
-
+//===============================================================================================================================================
 void QuanLyNhanVien::DanhSachNhanVien()
 {
     QLNV temp;
@@ -35,6 +35,7 @@ void QuanLyNhanVien::DanhSachNhanVien()
 }
 void QuanLyNhanVien::ThemNhanVien()
 {
+    DanhSachNhanVien();
     QLNV tempQLNV;
     NhanVien tempNV;
     int ID;
@@ -58,6 +59,7 @@ void QuanLyNhanVien::ThemNhanVien()
         }
         if (tempQLNV.AddtotheEnd(tempNV))
         {
+            cout << "\t\t\t\t\t\tDa them thanh cong 1 nhan vien moi!" << endl;
             break;
         }
         else
@@ -68,6 +70,7 @@ void QuanLyNhanVien::ThemNhanVien()
 }
 void QuanLyNhanVien::XoaNhanVien()
 {
+    DanhSachNhanVien();
     QLNV tempQLNV;
     int ID;
     cout << "\t\t\t\t\t\tMoi ban nhap ID nhan vien minh muon xoa: ";
@@ -89,6 +92,7 @@ void QuanLyNhanVien::XoaNhanVien()
 }
 void QuanLyNhanVien::SuaThongTinNhanVien()
 {
+    DanhSachNhanVien();
     QLNV tempQLNV;
     int ID;
     cout << "\t\t\t\t\t\tMoi ban nhap ID nhan vien minh muon thay doi: ";
@@ -111,7 +115,7 @@ void QuanLyNhanVien::TimKiemNhanVienTheoID()
 {
     QLNV tempQLNV;
     int ID;
-    cout << "\t\t\t\t\t\tMoi ban nhap ID nhan vien minh muon xem: ";
+    cout << "\t\t\t\t\t\tMoi ban nhap ID nhan vien ban muon xem: ";
     while (1)
     {
         cin >> ID;
@@ -126,3 +130,108 @@ void QuanLyNhanVien::TimKiemNhanVienTheoID()
         }
     }
 }
+//========================================================================================================================================
+void QuanLyPhim::DanhSachPhim()
+{
+    QLP temp;
+    temp.Sort();
+    temp.Show();
+}
+void QuanLyPhim::ThemPhim()
+{
+    DanhSachPhim();
+    QLP tempQLP;
+    Film tempPhim;
+    int ID;
+    do
+    {
+        int check = 1;
+        cout << "\t\t\t\t\t\tNhap ID phim: ";
+        while (check)
+        {
+            cin >> ID;
+            if (-1 != tempQLP.IndexOf(ID))
+            {
+                cout << "\t\t\t\t\t\tDa co phim co ID nay!! Xin moi ban nhap lai: ";
+            }
+            else
+            {
+                tempPhim.IDFilm(ID);
+                check = 0;
+                cin >> tempPhim;
+            }
+        }
+        if (tempQLP.AddtotheEnd(tempPhim))
+        {
+            cout << "\t\t\t\t\t\tDa them thanh cong 1 phim moi!" << endl;
+            break;
+        }
+        else
+        {
+            cout << "\t\t\t\t\t\tBan da nhap sai thong tin nao do! Xin hay kiem tra lai!" << endl;
+        }
+    } while (1);
+}
+void QuanLyPhim::XoaPhim()
+{
+    DanhSachPhim();
+    QLP tempQLP;
+    int ID;
+    cout << "\t\t\t\t\t\tMoi ban nhap ID phim minh muon xoa: ";
+    while (1)
+    {
+        cin >> ID;
+        int tempID = tempQLP.IndexOf(ID);
+        if (-1 != tempID)
+        {
+            tempQLP.DeleteatPosition(tempID);
+            cout << "\t\t\t\t\t\tDa xoa phim co ID: " << ID << " ra khoi Database!" << endl;
+            break;
+        }
+        else
+        {
+            cout << "\t\t\t\t\t\tKhong tim thay phim co ID nay! Moi ban nhap lai: ";
+        }
+    }
+}
+void QuanLyPhim::SuaThongTinPhim()
+{
+    DanhSachPhim();
+    QLP tempQLP;
+    int ID;
+    cout << "\t\t\t\t\t\tMoi ban nhap ID phim minh muon thay doi: ";
+    while (1)
+    {
+        cin >> ID;
+        if (-1 != tempQLP.IndexOf(ID))
+        {
+            tempQLP.Update(ID);
+            cout << "\t\t\t\t\t\tDa cap nhat thong tin cho phim!  " << endl;
+            break;
+        }
+        else
+        {
+            cout << "\t\t\t\t\t\tMoi ban nhap lai: ";
+        }
+    }
+}
+void QuanLyPhim::TimKiemPhimTheoIDPhim()
+{
+    QLP tempQLP;
+    int ID;
+    cout << "\t\t\t\t\t\tMoi ban nhap ID phim ban muon xem: ";
+    while (1)
+    {
+        cin >> ID;
+        if (-1 != tempQLP.IndexOf(ID))
+        {
+            tempQLP.Show1Film(ID);
+            break;
+        }
+        else
+        {
+            cout << "\t\t\t\t\t\tKhong tim thay phim co ID nay! Moi ban nhap lai: ";
+        }
+    }
+}
+//=====================================================================================================================
