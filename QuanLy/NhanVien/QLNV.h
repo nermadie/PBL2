@@ -13,7 +13,8 @@ public:
     QLNV(const QLNV &);
     ~QLNV();
     void Show();
-    void AddtotheEnd(NhanVien &);
+    void Show1NV(int);
+    int AddtotheEnd(NhanVien &);
     void AddtotheEnd(NhanVien &, ifstream &);
     void AddtoTop(NhanVien &);
     void AddtoTop(NhanVien &, ifstream &);

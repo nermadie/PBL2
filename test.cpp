@@ -1,29 +1,15 @@
-#include "./KhachHang/MuaVe.h"
-// #include "./KhachHang/Register.cpp"
-// #include "QuanLy/AccountQL/DSAccount.cpp"
-// #include "./DangNhap_DanggKy/SignIn.cpp"
-#include "QuanLy/Doanhthu/DoanhThu.h"
+#include "./Application/QuanLyAll.cpp"
 #include "./Utilis/Utilis.cpp"
 int main()
 {
     try
     {
         TextColor(15);
-        // SignIn a;
-        // Register::NhapThongTinKhachHang();
-        // DSAccount temp;
-        // Account a(-2, "quanly");
-        // temp.AddtotheEnd(a);
-
-        // int id = SignIn::DangNhap();
-        // if (id > 0)
-        //     MenuKhachHang(id);
-        // else
-        //     MenuQuanLy();
-        // MuaVe::MuaVeXemPhim(1);
-        // MuaVe::XemLichSuMuaVe(1);
-        // DoanhThu::TongDoanhThu_Toanbo();
-        DoanhThu::ThongKeKhungGio();
+        // QuanLyNhanVien::DanhSachNhanVien();
+        // QuanLyNhanVien::SuaThongTinNhanVien();
+        // QuanLyNhanVien::TimKiemNhanVienTheoID();
+        // QuanLyNhanVien::XoaNhanVien();
+        // QuanLyNhanVien::ThemNhanVien();
     }
     catch (const char *msg)
     {

@@ -1,8 +1,9 @@
 #include "NhanVien.h"
 #include <fstream>
 #include <iomanip>
+void InTienVe(int);
 NhanVien::NhanVien() {}
-NhanVien::NhanVien(int id, string name, Date bi, Date ad, string pn, string address, bool g, double w)
+NhanVien::NhanVien(int id, string name, Date bi, Date ad, string pn, string address, bool g, int w)
 {
     this->_ID = id;
     this->_Name = name;
@@ -74,7 +75,7 @@ void NhanVien::Gender(bool value)
 {
     this->_Gender = value;
 }
-void NhanVien::Wage(double value)
+void NhanVien::Wage(int value)
 {
     this->_Wage = value;
 }
@@ -95,33 +96,36 @@ ostream &operator<<(ostream &o, const NhanVien &nv) // Tương tự hàm ShowNV
         o << setw(9) << left << " Nu";
     else
         o << setw(9) << left << " Nam";
-    o << "| " << setw(11) << right << nv._Wage << " |" << endl;
+    o << "| " << setw(11) << right;
+    InTienVe(nv._Wage);
+    cout << " |" << endl;
     return o;
 }
 
 istream &operator>>(istream &in, NhanVien &nv)
 {
     int check;
-    cout << "Nhap ten nhan vien: ";
+    cout << "\t\t\t\t\t\tNhap ten nhan vien: ";
     char str[100];
+    fgets(str, 100, stdin);
     in.getline(str, sizeof(str)); // Trường hợp đặc biệt
     nv._Name = str;
-    cout << "Nhap ngay sinh: ";
+    cout << "\t\t\t\t\t\tNhap ngay sinh: ";
     in >> nv._Birthday;
-    cout << "Nhap ngay nhan vao: ";
+    cout << "\t\t\t\t\t\tNhap ngay nhan vao: ";
     in >> nv._AdmissionDate;
-    cout << "Nhap so dien thoai: ";
+    cout << "\t\t\t\t\t\tNhap so dien thoai: ";
     in >> nv._PhoneNumber;
-    cout << "Nhap dia chi: "; // Trường hợp đặc biệt
+    cout << "\t\t\t\t\t\tNhap dia chi: "; // Trường hợp đặc biệt
     fgets(str, 100, stdin);
     in.getline(str, sizeof(str));
     nv._Address = str;
-    cout << "Nhap gioi tinh: ";
+    cout << "\t\t\t\t\t\tNhap gioi tinh: ";
     string gender;
     do
     {
         if (check == 1)
-            cout << "Sai cu phap gioi tinh, moi ban nhap lai :";
+            cout << "\t\t\t\t\t\tSai cu phap gioi tinh, moi ban nhap lai :";
         check = 1;
         in >> gender;
         if (gender == "nam" || gender == "Nam" || gender == "0")
@@ -135,7 +139,7 @@ istream &operator>>(istream &in, NhanVien &nv)
             check = 0;
         }
     } while (check);
-    cout << "Nhap luong: ";
+    cout << "\t\t\t\t\t\tNhap luong: ";
     in >> nv._Wage;
     return in;
 }

@@ -75,17 +75,26 @@ void QLNV::Show()
         cout << _QLNV[i];
     cout << "\t+======+=============================+============+===============+=============+=========================+==============+=============+" << endl;
 }
+void QLNV::Show1NV(int id)
+{
+    cout << "\t+======================================================================================================================================+" << endl;
+    cout << "\t|                                                    ** DANH SACH NHAN VIEN **                                                         |" << endl;
+    cout << "\t+======+=============================+============+===============+=============+=========================+==============+=============+" << endl;
+    cout << "\t|  ID  |        Ten nhan vien        | Ngay sinh  | Ngay gia nhap |     SDT     |         Dia chi         |  Gioi tinh   |    Luong    |" << endl;
+    cout << "\t+======+=============================+============+===============+=============+=========================+==============+=============+" << endl;
+    for (int i = 0; i < this->_Quantity; i++)
+        if ((this->_QLNV + i)->ID() == id)
+            cout << _QLNV[i];
+    cout << "\t+======+=============================+============+===============+=============+=========================+==============+=============+" << endl;
+}
 // Them doi tuong-------------------------------------------------
 //  + Them vao cuoi danh sach
 //  + Them vao dau danh sach
-void QLNV::AddtotheEnd(NhanVien &nv)
+int QLNV::AddtotheEnd(NhanVien &nv)
 {
     if (-1 != IndexOf(nv.ID()))
     {
-        string a = "ID ";
-        string id = to_string(nv.ID());
-        string bug = a + id + " da bi trung trong Database! Hay xem lai Database hoac du lieu dau vao";
-        throw bug;
+        return 0;
     }
     if (this->_Quantity == 0)
     {
@@ -105,6 +114,7 @@ void QLNV::AddtotheEnd(NhanVien &nv)
         *(this->_QLNV + this->_Quantity) = nv;
     }
     this->_Quantity++;
+    return 1;
 }
 void QLNV::AddtotheEnd(NhanVien &nv, ifstream &FileIn)
 {
@@ -284,14 +294,14 @@ void QLNV::Update(const int &id)
     if (index >= 0)
     {
         int check = 1;
-        cout << "Nhap ID nhan vien: ";
+        cout << "\t\t\t\t\t\tNhap ID moi cho nhan vien: ";
         while (check)
         {
             int ID;
             cin >> ID;
             if (-1 != IndexOf(ID))
             {
-                cout << "Da co nhan vien co ID nay!! Xin moi ban nhap lai: ";
+                cout << "\t\t\t\t\t\tDa co nhan vien co ID nay!! Xin moi ban nhap lai: ";
             }
             else
             {
@@ -302,7 +312,7 @@ void QLNV::Update(const int &id)
         }
     }
     else
-        cout << "Khong co nhan vien co MSNV: " << id << endl;
+        cout << "\t\t\t\t\t\tKhong co nhan vien co MSNV: " << id << endl;
 }
 // Xoa doi tuong---------------------------------------------------------
 //  + Xoa doi tuong dau tien
