@@ -98,7 +98,7 @@ string DSAccountQL::GivePass(int index)
 }
 void DSAccountQL::Update(const int &id)
 {
-    int index = -(id - 1);
+    int index = FindUsername(id);
     if (index >= 0)
     {
         cout << "Moi ban nhap password moi: ";

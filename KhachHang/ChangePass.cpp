@@ -8,8 +8,8 @@ void ChangePass::DoiMatKhau(int username)
     while (1)
     {
         cin >> password;
-        rightpassword = temp.GivePass(username);
-        if (password == rightpassword)
+        rightpassword = temp.GivePass(temp.FindUsername(username));
+        if (password != rightpassword)
         {
             cout << "\t\t\t\t\t\tBan da nhap sai password hien tai cua minh! Xin ban hay nhap lai password hien tai: ";
         }
