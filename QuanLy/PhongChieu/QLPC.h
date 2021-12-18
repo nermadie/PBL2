@@ -17,7 +17,7 @@ public:
     QLPC(const QLPC &);
     ~QLPC();
     void Show();
-    int AddtotheEnd(PhongChieu &);
+    void AddtotheEnd(PhongChieu &);
     void AddtotheEnd(PhongChieu &, ifstream &);
     void AddtoTop(PhongChieu &);
     void AddtoTop(PhongChieu &, ifstream &);

@@ -68,11 +68,14 @@ void QLPC::Show()
 // Them doi tuong-------------------------------------------------
 //  + Them vao cuoi danh sach
 //  + Them vao dau danh sach
-int QLPC::AddtotheEnd(PhongChieu &pc)
+void QLPC::AddtotheEnd(PhongChieu &pc)
 {
     if (-1 != IndexOf(pc.IDPhongChieu()))
     {
-        return 0;
+        string a = "ID ";
+        string id = to_string(pc.IDPhongChieu());
+        string bug = a + id + " da bi trung trong Database! Hay xem lai Database hoac du lieu dau vao";
+        throw bug;
     }
     if (this->_Quantity == 0)
     {
@@ -92,7 +95,6 @@ int QLPC::AddtotheEnd(PhongChieu &pc)
         *(this->_QLPC + this->_Quantity) = pc;
     }
     this->_Quantity++;
-    return 1;
 }
 void QLPC::AddtotheEnd(PhongChieu &pc, ifstream &FileIn)
 {
@@ -272,7 +274,7 @@ void QLPC::Update(const int &id)
     if (index >= 0)
     {
         int check = 1;
-        cout << "\t\t\t\t\t\tNhap ID moi cho phong chieu: ";
+        cout << "Nhap ID phong chieu: ";
         while (check)
         {
             int ID;

@@ -24,10 +24,14 @@ KhachHang::~KhachHang() {}
 void KhachHang::ShowKhachHang()
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     cout << "\t\t\t|" << setw(5) << right << _ID << " |";
 =======
     cout << "\t|" << setw(5) << right << _ID << " |";
 >>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
+=======
+    cout << "\t|" << setw(5) << right << _ID << " |";
+>>>>>>> parent of 465bfc4 (ql)
     cout << " " << setw(28) << left << _Name << " |";
     cout << " ";
     _Birthday.ShowDate();

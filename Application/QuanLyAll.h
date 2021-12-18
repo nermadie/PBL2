@@ -51,6 +51,7 @@ public:
     static void ThemLichChieu();
     static void XoaLichChieu();
     static void SuaThongTinLichChieu();
+<<<<<<< HEAD
 };
 <<<<<<< HEAD
 =======
@@ -85,3 +86,6 @@ class QuanLyTaiKhoanMatKhau
     static void NhapThongTinKhachHang();
 };
 >>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
+=======
+};
+>>>>>>> parent of 465bfc4 (ql)
