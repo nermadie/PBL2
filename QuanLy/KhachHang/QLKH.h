@@ -1,3 +1,4 @@
+#pragma once
 #include "../../Object/KhachHang/KhachHang.cpp"
 bool GD(int a, int b);
 bool TD(int a, int b);
@@ -14,6 +15,7 @@ public:
     ~QLKH();
     int Quantity();
     void Show();
+    void Show1KH(int);
     void AddtotheEnd(KhachHang &);
     void AddtotheEnd(KhachHang &, ifstream &);
     void AddtoTop(KhachHang &);

@@ -13,6 +13,7 @@ QLNV::QLNV()
             if (key == 27 || key == 'n' || key == 'N')
             {
                 throw "Hay xem xet lai Database va khoi dong lai chuong trinh";
+                system("pause");
             }
             else if (key == 'Y' || key == 'y')
             {
@@ -75,17 +76,26 @@ void QLNV::Show()
         cout << _QLNV[i];
     cout << "\t+======+=============================+============+===============+=============+=========================+==============+=============+" << endl;
 }
+void QLNV::Show1NV(int id)
+{
+    cout << "\t+======================================================================================================================================+" << endl;
+    cout << "\t|                                                    ** DANH SACH NHAN VIEN **                                                         |" << endl;
+    cout << "\t+======+=============================+============+===============+=============+=========================+==============+=============+" << endl;
+    cout << "\t|  ID  |        Ten nhan vien        | Ngay sinh  | Ngay gia nhap |     SDT     |         Dia chi         |  Gioi tinh   |    Luong    |" << endl;
+    cout << "\t+======+=============================+============+===============+=============+=========================+==============+=============+" << endl;
+    for (int i = 0; i < this->_Quantity; i++)
+        if ((this->_QLNV + i)->ID() == id)
+            cout << _QLNV[i];
+    cout << "\t+======+=============================+============+===============+=============+=========================+==============+=============+" << endl;
+}
 // Them doi tuong-------------------------------------------------
 //  + Them vao cuoi danh sach
 //  + Them vao dau danh sach
-void QLNV::AddtotheEnd(NhanVien &nv)
+int QLNV::AddtotheEnd(NhanVien &nv)
 {
     if (-1 != IndexOf(nv.ID()))
     {
-        string a = "ID ";
-        string id = to_string(nv.ID());
-        string bug = a + id + " da bi trung trong Database! Hay xem lai Database hoac du lieu dau vao";
-        throw bug;
+        return 0;
     }
     if (this->_Quantity == 0)
     {
@@ -105,6 +115,7 @@ void QLNV::AddtotheEnd(NhanVien &nv)
         *(this->_QLNV + this->_Quantity) = nv;
     }
     this->_Quantity++;
+    return 1;
 }
 void QLNV::AddtotheEnd(NhanVien &nv, ifstream &FileIn)
 {
@@ -135,6 +146,8 @@ void QLNV::AddtotheEnd(NhanVien &nv, ifstream &FileIn)
     }
     this->_Quantity++;
 }
+
+
 void QLNV::AddtoTop(NhanVien &nv)
 {
     if (-1 != IndexOf(nv.ID()))
@@ -284,14 +297,14 @@ void QLNV::Update(const int &id)
     if (index >= 0)
     {
         int check = 1;
-        cout << "Nhap ID nhan vien: ";
+        cout << "\t\t\t\t\t\tNhap ID moi cho nhan vien: ";
         while (check)
         {
             int ID;
             cin >> ID;
             if (-1 != IndexOf(ID))
             {
-                cout << "Da co nhan vien co ID nay!! Xin moi ban nhap lai: ";
+                cout << "\t\t\t\t\t\tDa co nhan vien co ID nay!! Xin moi ban nhap lai: ";
             }
             else
             {
@@ -302,8 +315,9 @@ void QLNV::Update(const int &id)
         }
     }
     else
-        cout << "Khong co nhan vien co MSNV: " << id << endl;
+        cout << "\t\t\t\t\t\tKhong co nhan vien co MSNV: " << id << endl;
 }
+
 // Xoa doi tuong---------------------------------------------------------
 //  + Xoa doi tuong dau tien
 void QLNV::DeleteTop()
@@ -363,6 +377,7 @@ void QLNV::DeleteEnd()
     }
     this->_Quantity--;
 }
+
 //  + Xoa tai vi tri k bat ky
 void QLNV::DeleteatPosition(const int &position)
 {
@@ -394,6 +409,7 @@ void QLNV::DeleteatPosition(const int &position)
 }
 // Tim kiem(BinarySearch)-----------------------------------
 //  + Tim Index tuong ung voi ID
+
 int QLNV::BinarySearch(int l, int r, int id) // Vi ID chua sort nen xet ca 2 phia
 {
     if (r >= l)
@@ -412,12 +428,14 @@ int QLNV::BinarySearch(int l, int r, int id) // Vi ID chua sort nen xet ca 2 phi
     }
     return -1;
 }
+
 int QLNV::IndexOf(int id)
 {
     return BinarySearch(0, _Quantity - 1, id);
 }
 // Sap xep(QuickSort) voi thuoc tinh _ID----------------
 // Ham TD và GD được định nghĩa ở duoi
+
 int QLNV::Partition(int *arr, int low, int high, bool (*CTH)(int a, int b))
 {
     int pivot = (this->_QLNV + arr[high])->ID(); // pivot
@@ -438,6 +456,7 @@ int QLNV::Partition(int *arr, int low, int high, bool (*CTH)(int a, int b))
     swap(arr[left], arr[high]);
     return left;
 }
+
 void QLNV::QuickSort(int *arr, int low, int high, bool (*CTH)(int a, int b))
 {
     if (low < high)
@@ -447,6 +466,7 @@ void QLNV::QuickSort(int *arr, int low, int high, bool (*CTH)(int a, int b))
         QuickSort(arr, pi + 1, high, CTH);
     }
 }
+
 void QLNV::Sort(bool (*CTH)(int a, int b))
 {
     int *arr = new int[_Quantity];
@@ -463,6 +483,7 @@ void QLNV::Sort(bool (*CTH)(int a, int b))
     delete[] temp;
     delete[] arr;
 }
+
 // Nhập dữ liệu từ file vào trong danh sách
 void QLNV::ImportFromFile()
 {

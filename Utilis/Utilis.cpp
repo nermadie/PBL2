@@ -11,16 +11,6 @@ bool TD(int a, int b)
 {
     return a > b;
 }
-void TextColor(int x)
-{
-    HANDLE color = GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleTextAttribute(color, x);
-}
-void InLine(int n)
-{
-    for (int i = 0; i < n; i++)
-        cout << "=";
-}
 //
 int SoChuSo(int x)
 {

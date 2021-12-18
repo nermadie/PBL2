@@ -1,3 +1,4 @@
+#pragma once
 #include "../../Object/Film_PhongChieu/PhongChieu.cpp"
 bool GD(int a, int b);
 bool TD(int a, int b);
@@ -13,7 +14,7 @@ public:
     QLPC(const QLPC &);
     ~QLPC();
     void Show();
-    void AddtotheEnd(PhongChieu &);
+    int AddtotheEnd(PhongChieu &);
     void AddtotheEnd(PhongChieu &, ifstream &);
     void AddtoTop(PhongChieu &);
     void AddtoTop(PhongChieu &, ifstream &);

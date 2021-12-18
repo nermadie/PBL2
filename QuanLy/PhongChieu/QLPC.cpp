@@ -68,14 +68,11 @@ void QLPC::Show()
 // Them doi tuong-------------------------------------------------
 //  + Them vao cuoi danh sach
 //  + Them vao dau danh sach
-void QLPC::AddtotheEnd(PhongChieu &pc)
+int QLPC::AddtotheEnd(PhongChieu &pc)
 {
     if (-1 != IndexOf(pc.IDPhongChieu()))
     {
-        string a = "ID ";
-        string id = to_string(pc.IDPhongChieu());
-        string bug = a + id + " da bi trung trong Database! Hay xem lai Database hoac du lieu dau vao";
-        throw bug;
+        return 0;
     }
     if (this->_Quantity == 0)
     {
@@ -95,6 +92,7 @@ void QLPC::AddtotheEnd(PhongChieu &pc)
         *(this->_QLPC + this->_Quantity) = pc;
     }
     this->_Quantity++;
+    return 1;
 }
 void QLPC::AddtotheEnd(PhongChieu &pc, ifstream &FileIn)
 {
@@ -274,12 +272,13 @@ void QLPC::Update(const int &id)
     if (index >= 0)
     {
         int check = 1;
-        cout << "Nhap ID phong chieu: ";
+        cout << "\t\t\t\t\t\tNhap ID moi cho phong chieu: ";
         while (check)
         {
             int ID;
             cin >> ID;
-            if (-1 != IndexOf(ID))
+            int indextrave = IndexOf(ID);
+            if (-1 != indextrave && indextrave != index)
             {
                 cout << "Da co phong chieu co ID nay!! Xin moi ban nhap lai: ";
             }
@@ -407,7 +406,7 @@ int QLPC::IndexOf(int id)
     return BinarySearch(0, _Quantity - 1, id);
 }
 // Sap xep(QuickSort) voi thuoc tinh _ID----------------
-// Ham TD và GD được định nghĩa ở duoi
+// Ham TD vÃ  GD Ä‘Æ°á»£c Ä‘á»‹nh nghÄ©a á»Ÿ duoi
 int QLPC::Partition(int *arr, int low, int high, bool (*CTH)(int a, int b))
 {
     int pivot = (this->_QLPC + arr[high])->IDPhongChieu(); // pivot
@@ -453,7 +452,7 @@ void QLPC::Sort(bool (*CTH)(int a, int b))
     delete[] temp;
     delete[] arr;
 }
-// Nhập dữ liệu từ file vào trong danh sách
+// Nháº­p dá»¯ liá»‡u tá»« file vÃ o trong danh sÃ¡ch
 void QLPC::ImportFromFile()
 {
     ifstream FileIn("Database/PhongChieu/phongchieu.txt", ios_base::in);

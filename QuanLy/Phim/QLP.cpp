@@ -59,16 +59,37 @@ QLP::~QLP()
     FileOut.close();
     delete[] this->_QLP;
 }
+int QLP::TongSoLuongPhim()
+{
+    return this->_Quantity;
+}
 void QLP::Show()
 {
-    cout << "\t+==========================================================================================================================+" << endl;
-    cout << "\t|                                                 ** DANH SACH PHIM **                                                     |" << endl;
-    cout << "\t+=========+=========================================+========================================+================+============+" << endl;
-    cout << "\t| Ma phim |                Ten phim                 |             Dien vien chinh            |    The loai    | Thoi luong |" << endl;
-    cout << "\t+=========+=========================================+========================================+================+============+" << endl;
+    cout << "\t\t+==========================================================================================================================+" << endl;
+    cout << "\t\t|                                                 ** DANH SACH PHIM **                                                     |" << endl;
+    cout << "\t\t+=========+=========================================+========================================+================+============+" << endl;
+    cout << "\t\t| Ma phim |                Ten phim                 |             Dien vien chinh            |    The loai    | Thoi luong |" << endl;
+    cout << "\t\t+=========+=========================================+========================================+================+============+" << endl;
     for (int i = 0; i < this->_Quantity; i++)
         _QLP[i].ShowPhim();
-    cout << "\t+=========+=========================================+========================================+================+============+" << endl;
+    cout << "\t\t+=========+=========================================+========================================+================+============+" << endl;
+}
+void QLP::Show1Film(int id)
+{
+    cout << "\t\t+==========================================================================================================================+" << endl;
+    cout << "\t\t|                                                 ** DANH SACH PHIM **                                                     |" << endl;
+    cout << "\t\t+=========+=========================================+========================================+================+============+" << endl;
+    cout << "\t\t| Ma phim |                Ten phim                 |             Dien vien chinh            |    The loai    | Thoi luong |" << endl;
+    cout << "\t\t+=========+=========================================+========================================+================+============+" << endl;
+    for (int i = 0; i < this->_Quantity; i++)
+    {
+        if ((this->_QLP + i)->IDFilm() == id)
+        {
+            _QLP[i].ShowPhim();
+            break;
+        }
+    }
+    cout << "\t\t+=========+=========================================+========================================+================+============+" << endl;
 }
 void QLP::ShowTenPhim(int id)
 {
@@ -86,14 +107,11 @@ void QLP::ShowTenPhim(int id)
 // Them doi tuong-------------------------------------------------
 //  + Them vao cuoi danh sach
 //  + Them vao dau danh sach
-void QLP::AddtotheEnd(Film &p)
+int QLP::AddtotheEnd(Film &p)
 {
     if (-1 != IndexOf(p.IDFilm()))
     {
-        string a = "ID ";
-        string id = to_string(p.IDFilm());
-        string bug = a + id + " da bi trung trong Database! Hay xem lai Database hoac du lieu dau vao";
-        throw bug;
+        return 0;
     }
     if (this->_Quantity == 0)
     {
@@ -113,6 +131,7 @@ void QLP::AddtotheEnd(Film &p)
         *(this->_QLP + this->_Quantity) = p;
     }
     this->_Quantity++;
+    return 1;
 }
 void QLP::AddtotheEnd(Film &p, ifstream &FileIn)
 {
@@ -292,14 +311,15 @@ void QLP::Update(const int &id)
     if (index >= 0)
     {
         int check = 1;
-        cout << "Nhap ID phim: ";
+        cout << "\t\t\t\t\t\tNhap ID moi cho phim: ";
         while (check)
         {
             int ID;
             cin >> ID;
-            if (-1 != IndexOf(ID))
+            int indextrave = IndexOf(ID);
+            if (-1 != indextrave && indextrave != index)
             {
-                cout << "Da co phim co ID nay!! Xin moi ban nhap lai: ";
+                cout << "\t\t\t\t\t\tDa co phim co ID nay!! Xin moi ban nhap lai: ";
             }
             else
             {
@@ -310,7 +330,7 @@ void QLP::Update(const int &id)
         }
     }
     else
-        cout << "Khong co phim co ID: " << id << endl;
+        cout << "\t\t\t\t\t\tKhong co phim co ID: " << id << endl;
 }
 // Xoa doi tuong---------------------------------------------------------
 //  + Xoa doi tuong dau tien
@@ -425,7 +445,7 @@ int QLP::IndexOf(int id)
     return BinarySearch(0, _Quantity - 1, id);
 }
 // Sap xep(QuickSort) voi thuoc tinh _ID----------------
-// Ham TD và GD được định nghĩa ở duoi
+// Ham TD vÃ  GD Ä‘Æ°á»£c Ä‘á»‹nh nghÄ©a á»Ÿ duoi
 int QLP::Partition(int *arr, int low, int high, bool (*CTH)(int a, int b))
 {
     int pivot = (this->_QLP + arr[high])->IDFilm(); // pivot
@@ -471,7 +491,7 @@ void QLP::Sort(bool (*CTH)(int a, int b))
     delete[] temp;
     delete[] arr;
 }
-// Nhập dữ liệu từ file vào trong danh sách
+// Nháº­p dá»¯ liá»‡u tá»« file vÃ o trong danh sÃ¡ch
 void QLP::ImportFromFile()
 {
     ifstream FileIn("Database/Phim/import.txt", ios_base::in);

@@ -1,5 +1,7 @@
 #pragma once
 #include "QLLC.h"
+#include <iostream>
+using namespace std;
 void InTienVe(int);
 QLLC::QLLC()
 {
@@ -62,59 +64,59 @@ QLLC::~QLLC()
 void QLLC::Show()
 {
     QLP temp;
-    cout << "\t\t\t+=============================================================================================================+" << endl;
-    cout << "\t\t\t|                                           ** DANH SACH LICH CHIEU **                                        |" << endl;
-    cout << "\t\t\t+================+============================================================================================+" << endl;
-    cout << "\t\t\t|               Ten phim                | Ma phong | Ngay chieu | Thoi gian | So luong ghe con trong | Gia ve |" << endl;
-    cout << "\t\t\t+================+============================================================================================+" << endl;
+    cout << "\t\t+=============================================================================================================+" << endl;
+    cout << "\t\t|                                           ** DANH SACH LICH CHIEU **                                        |" << endl;
+    cout << "\t\t+================+============================================================================================+" << endl;
+    cout << "\t\t|               Ten phim                | Ma phong | Ngay chieu | Thoi gian | So luong ghe con trong | Gia ve |" << endl;
+    cout << "\t\t+================+============================================================================================+" << endl;
     for (int i = 0; i < this->_Quantity; i++)
     {
-        cout << "\t\t\t| ";
+        cout << "\t\t| ";
         temp.ShowTenPhim(_QLLC[i].IDPhim());
         _QLLC[i].ShowLichChieu();
         cout << endl;
     }
-    cout << "\t\t\t+=================+===========================================================================================+" << endl;
+    cout << "\t\t+=================+===========================================================================================+" << endl;
 }
 void QLLC::XemLichChieuTheoNgay(Date &d)
 {
     QLP temp;
-    cout << "\t\t\t+=============================================================================================================+" << endl;
-    cout << "\t\t\t|                                           ** DANH SACH LICH CHIEU **                                        |" << endl;
-    cout << "\t\t\t+================+============================================================================================+" << endl;
-    cout << "\t\t\t|               Ten phim                | Ma phong | Ngay chieu | Thoi gian | So luong ghe con trong | Gia ve |" << endl;
-    cout << "\t\t\t+================+============================================================================================+" << endl;
+    cout << "\t\t+=============================================================================================================+" << endl;
+    cout << "\t\t|                                           ** DANH SACH LICH CHIEU **                                        |" << endl;
+    cout << "\t\t+================+============================================================================================+" << endl;
+    cout << "\t\t|               Ten phim                | Ma phong | Ngay chieu | Thoi gian | So luong ghe con trong | Gia ve |" << endl;
+    cout << "\t\t+================+============================================================================================+" << endl;
     for (int i = 0; i < this->_Quantity; i++)
     {
         if (_QLLC[i].DateCompare(d))
         {
-            cout << "\t\t\t| ";
+            cout << "\t\t| ";
             temp.ShowTenPhim(_QLLC[i].IDPhim());
             _QLLC[i].ShowLichChieu();
             cout << endl;
         }
     }
-    cout << "\t\t\t+=================+===========================================================================================+" << endl;
+    cout << "\t\t+=================+===========================================================================================+" << endl;
 }
 void QLLC::XemLichChieuTheoPhim(int &idp)
 {
     QLP temp;
-    cout << "\t\t\t+=============================================================================================================+" << endl;
-    cout << "\t\t\t|                                           ** DANH SACH LICH CHIEU **                                        |" << endl;
-    cout << "\t\t\t+================+============================================================================================+" << endl;
-    cout << "\t\t\t|               Ten phim                | Ma phong | Ngay chieu | Thoi gian | So luong ghe con trong | Gia ve |" << endl;
-    cout << "\t\t\t+================+============================================================================================+" << endl;
+    cout << "\t\t+=============================================================================================================+" << endl;
+    cout << "\t\t|                                           ** DANH SACH LICH CHIEU **                                        |" << endl;
+    cout << "\t\t+================+============================================================================================+" << endl;
+    cout << "\t\t|               Ten phim                | Ma phong | Ngay chieu | Thoi gian | So luong ghe con trong | Gia ve |" << endl;
+    cout << "\t\t+================+============================================================================================+" << endl;
     for (int i = 0; i < this->_Quantity; i++)
     {
         if (_QLLC[i].IDPhimCompare(idp))
         {
-            cout << "\t\t\t| ";
+            cout << "\t\t| ";
             temp.ShowTenPhim(_QLLC[i].IDPhim());
             _QLLC[i].ShowLichChieu();
             cout << endl;
         }
     }
-    cout << "\t\t\t+=================+===========================================================================================+" << endl;
+    cout << "\t\t+=================+===========================================================================================+" << endl;
 }
 int QLLC::DatMuaVe(const Ca &ca, int maphong, int soluong)
 {
@@ -137,7 +139,7 @@ int QLLC::DatMuaVe(const Ca &ca, int maphong, int soluong)
     }
     if (check == 1)
     {
-        cout << "Ban da nhap sai thong tin! Hay thu lai.";
+        cout << "Ban da nhap sai thong tin! Hay thu lai." << endl;
     }
     else if (check == 0)
     {
@@ -175,6 +177,148 @@ void QLLC::TongDoanhThu_Toanbo()
     cout << " (VND) |" << endl;
     cout << "\t\t\t\t\t\t+=======================+===================+" << endl;
 }
+void QLLC::ThongKePhimAnKhach()
+{
+    // sort theo ten phim
+    int *arr = new int[_Quantity];
+    for (int i = 0; i < _Quantity; i++)
+        *(arr + i) = i;
+    for (int i = 0; i < _Quantity - 1; i++)
+    {
+        for (int j = 0; j < _Quantity - i - 1; j++)
+        {
+            if ((this->_QLLC + arr[j])->IDPhim() > (this->_QLLC + arr[j + 1])->IDPhim())
+                swap(arr[j], arr[j + 1]);
+        }
+    }
+    LichChieu *temp = new LichChieu[this->_Quantity];
+    for (int i = 0; i < this->_Quantity; i++)
+        *(temp + i) = *(this->_QLLC + i);
+    delete[] this->_QLLC;
+    this->_QLLC = new LichChieu[this->_Quantity];
+    for (int i = 0; i < this->_Quantity; i++)
+        *(this->_QLLC + i) = *(temp + *(arr + i));
+    delete[] temp;
+    delete[] arr;
+    // bat dau thong ke
+    int sove = 0, doanhthu = 0, z = 0;
+    QLP tempQLP;
+    int n = tempQLP.TongSoLuongPhim();
+    int **array = new int *[n];
+    for (int i = 0; i < n; i++)
+    {
+        *(array + i) = new int[3];
+    }
+    for (int i = 0; i < _Quantity; i++)
+    {
+        int a = (this->_QLLC + i)->SLGhe() - (this->_QLLC + i)->GheConLai();
+        sove += a;
+        doanhthu += a * (this->_QLLC + i)->GiaVe();
+        if (i == _Quantity - 1)
+        {
+            array[z][0] = (this->_QLLC + i)->IDPhim();
+            array[z][1] = sove;
+            array[z][2] = doanhthu;
+            sove = 0, doanhthu = 0;
+            z++;
+        }
+        else if ((this->_QLLC + i)->IDPhim() != (this->_QLLC + i + 1)->IDPhim())
+        {
+            array[z][0] = (this->_QLLC + i)->IDPhim();
+            array[z][1] = sove;
+            array[z][2] = doanhthu;
+            sove = 0, doanhthu = 0;
+            z++;
+        }
+    }
+    arr = new int[n];
+    for (int i = 0; i < n; i++)
+        *(arr + i) = i;
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = 0; j < n - i - 1; j++)
+        {
+            if (array[arr[j]][2] < array[arr[j + 1]][2])
+                swap(arr[j], arr[j + 1]);
+        }
+    }
+    for (int i = 0; i < n; i++)
+    {
+        cout << "\t\t\t\t\t| ";
+        tempQLP.ShowTenPhim(array[arr[i]][0]);
+        cout << "|      " << setw(4) << left << array[arr[i]][1] << "    | ";
+        cout << setw(13) << right;
+        InTienVe(array[arr[i]][2]);
+        cout << " |" << endl;
+    }
+    delete[] arr;
+    for (int i = 0; i < n; i++)
+    {
+        delete[] * (array + i);
+    }
+    delete[] array;
+}
+void QLLC::ThongKeKhungGio()
+{
+    // sort theo ten phim
+    int *arr = new int[_Quantity];
+    for (int i = 0; i < _Quantity; i++)
+        *(arr + i) = i;
+    for (int i = 0; i < _Quantity - 1; i++)
+    {
+        for (int j = 0; j < _Quantity - i - 1; j++)
+        {
+            if ((this->_QLLC + arr[j])->ThoiGian().Hour() > (this->_QLLC + arr[j + 1])->ThoiGian().Hour())
+                swap(arr[j], arr[j + 1]);
+        }
+    }
+    LichChieu *temp = new LichChieu[this->_Quantity];
+    for (int i = 0; i < this->_Quantity; i++)
+        *(temp + i) = *(this->_QLLC + i);
+    delete[] this->_QLLC;
+    this->_QLLC = new LichChieu[this->_Quantity];
+    for (int i = 0; i < this->_Quantity; i++)
+        *(this->_QLLC + i) = *(temp + *(arr + i));
+    delete[] temp;
+    delete[] arr;
+    // Sau khi da sap xep xong
+    int sove = 0, doanhthu = 0, soluong = 0;
+    for (int i = 0; i < _Quantity; i++)
+    {
+        soluong++;
+        int a = (this->_QLLC + i)->SLGhe() - (this->_QLLC + i)->GheConLai();
+        sove += a;
+        doanhthu += a * (this->_QLLC + i)->GiaVe();
+        if (i == _Quantity - 1)
+        {
+            cout << "\t\t\t|    ";
+            ((this->_QLLC + i)->ThoiGian()).ShowCa();
+            cout << "   |      " << setw(3) << left << sove << "     | ";
+            cout << setw(14) << left;
+            InTienVe(doanhthu);
+            cout << "|       " << setw(4) << left << soluong;
+            cout << "    |         " << setw(10) << left << double(sove) / double(soluong) << "   | ";
+            cout << setw(14) << left;
+            InTienVe(doanhthu / soluong);
+            cout << "       |" << endl;
+            sove = 0, doanhthu = 0, soluong = 0;
+        }
+        else if (!((this->_QLLC + i)->ThoiGian().Hour() == (this->_QLLC + i + 1)->ThoiGian().Hour()))
+        {
+            cout << "\t\t\t|    ";
+            ((this->_QLLC + i)->ThoiGian()).ShowCa();
+            cout << "   |      " << setw(3) << left << sove << "     | ";
+            cout << setw(14) << left;
+            InTienVe(doanhthu);
+            cout << "|       " << setw(4) << left << soluong;
+            cout << "    |         " << setw(10) << left << double(sove) / double(soluong) << "   | ";
+            cout << setw(14) << left;
+            InTienVe(doanhthu / soluong);
+            cout << "       |" << endl;
+            sove = 0, doanhthu = 0, soluong = 0;
+        }
+    }
+}
 void QLLC::XemlaidanhsachPhim()
 {
     QLP temp;
@@ -185,7 +329,7 @@ void QLLC::XemlaidanhsachPhongChieu()
     QLPC temp;
     temp.Show();
 }
-void QLLC::AddtotheEnd(LichChieu &lc)
+int QLLC::AddtotheEnd(LichChieu &lc)
 {
     int check = 1;
     for (int i = 0; i < _Quantity; i++)
@@ -206,15 +350,7 @@ void QLLC::AddtotheEnd(LichChieu &lc)
     }
     if (check == 0)
     {
-        string a = "IDPhong ";
-        string id = to_string(lc.IDPhong());
-        string b = " va suat chieu ";
-        string day = to_string(lc.ThoiGian().Day());
-        string month = to_string(lc.ThoiGian().Month());
-        string year = to_string(lc.ThoiGian().Year());
-        string hour = to_string(lc.ThoiGian().Hour());
-        string bug = a + id + b + day + "/" + month + "/" + year + ":" + hour + "h da bi trung trong Database! Hay xem lai Database hoac du lieu dau vao";
-        throw bug;
+        return 0;
     }
     if (this->_Quantity == 0)
     {
@@ -234,6 +370,7 @@ void QLLC::AddtotheEnd(LichChieu &lc)
         *(this->_QLLC + this->_Quantity) = lc;
     }
     this->_Quantity++;
+    return 1;
 }
 void QLLC::AddtotheEnd(LichChieu &lc, ifstream &FileIn)
 {
@@ -522,75 +659,61 @@ void QLLC::AddtoPosition(LichChieu &lc, int position, ifstream &FileIn)
 }
 // Cap nhat thong tin(Theo thuoc tinh MS Nhan vien(ID))-------------
 // Cap nhat : Thay doi ca ID, Name, AdmissionDate, Gender, Wage
-void QLLC::Update(const int &idphong, const int &day, const int &month, const int &year, const int &hour)
+void QLLC::Update(int index)
 {
-    int index = -1;
-    Ca tempca(day, month, year, hour);
-    for (int i = 0; i < _Quantity; i++)
+    int idphong;
+    QLPC tempQLPC;
+    Ca tempCa;
+    while (1)
     {
-        int IndexPhongChieu = FindIndexPhong(idphong, i);
-        if (IndexPhongChieu != -1)
+        cout << "\t\t\t\t\t\tNhap ID phong chieu moi: ";
+        while (1)
         {
-            if ((this->_QLLC + IndexPhongChieu)->ThoiGian() == tempca)
+            cin >> idphong;
+            if (-1 != tempQLPC.IndexOf(idphong))
             {
-                index = i;
                 break;
             }
+            else
+                cout << "\t\t\t\t\t\tID phong khong ton tai trong danh sach phong! Moi ban nhap lai: ";
         }
-    }
-    if (index >= 0)
-    {
-        int check = 1;
-        int IDPhim;
-        cout << "Nhap ID phim: ";
-        QLP tempQLP;
-        while (check)
+        cin >> tempCa;
+        int indextemp = FindIndex(idphong, tempCa);
+        if (-1 == indextemp)
         {
-            cin >> IDPhim;
-            if (tempQLP.IndexOf(IDPhim) == -1)
-            {
-                cout << "Hien chua co phim co ID nay! Moi ban nhap lai: ";
-                continue;
-            }
-            check = 0;
+            break;
         }
-        check = 1;
-        int IDPhong;
-        cout << "Nhap ID phong: ";
-        QLPC tempQLPC;
-        while (check)
+        else if (index == indextemp)
         {
-            cin >> IDPhong;
-            if (tempQLPC.IndexOf(IDPhong) == -1)
-            {
-                cout << "Hien chua co phong chieu co ID nay! Moi ban nhap lai: ";
-                continue;
-            }
-            check = 0;
+            break;
         }
-        Ca tempca2;
-        cin >> tempca2;
-        int slghe;
-        cout << "Nhap so luong ghe co trong phong: ";
-        cin >> slghe;
-        cout << "Nhap gia ve: ";
-        int giave;
-        cin >> giave;
-        (this->_QLLC + index)->IDPhim(IDPhim);
-        (this->_QLLC + index)->IDPhong(IDPhong);
-        (this->_QLLC + index)->ThoiGian(tempca2);
-        (this->_QLLC + index)->GheConLai(slghe);
-        (this->_QLLC + index)->SLGhe(slghe);
-        (this->_QLLC + index)->GiaVe(giave);
+        else
+            cout << "\t\t\t\t\t\tID phong va ca da ton tai trong Database! Xin hay nhap lai." << endl;
     }
-    else
+    cout << "\t\t\t\t\t\tNhap ID phim cho lich chieu nay: ";
+    QLP tempQLP;
+    int idphim;
+    while (1)
     {
-        cout << "Khong co lich chieu co IDPhong: " << idphong << " vao ngay ";
-        tempca.ShowDate();
-        cout << " ca ";
-        tempca.ShowCa();
-        cout << endl;
+        cin >> idphim;
+        if (-1 == tempQLP.IndexOf(idphim))
+        {
+            cout << "\t\t\t\t\t\tID phim khong ton tai trong danh sach phim! Moi ban nhap lai: ";
+        }
+        else
+            break;
     }
+    int slghe, giave;
+    cout << "\t\t\t\t\t\tNhap so luong ghe: ";
+    cin >> slghe;
+    cout << "\t\t\t\t\t\tNhap gia ve cho lich chieu phim nay: ";
+    cin >> giave;
+    (this->_QLLC + index)->IDPhim(idphim);
+    (this->_QLLC + index)->IDPhong(idphong);
+    (this->_QLLC + index)->ThoiGian(tempCa);
+    (this->_QLLC + index)->GheConLai(slghe);
+    (this->_QLLC + index)->SLGhe(slghe);
+    (this->_QLLC + index)->GiaVe(giave);
 }
 // Xoa doi tuong---------------------------------------------------------
 //  + Xoa doi tuong dau tien
@@ -686,6 +809,19 @@ int QLLC::FindIndexPhong(int id, int cur)
     for (int i = cur; i < _Quantity; i++)
     {
         if ((this->_QLLC + i)->IDPhong() == id)
+        {
+            index = i;
+            break;
+        }
+    }
+    return index;
+}
+int QLLC::FindIndex(int id, const Ca &ca)
+{
+    int index = -1;
+    for (int i = 0; i < _Quantity; i++)
+    {
+        if ((this->_QLLC + i)->IDPhong() == id && (this->_QLLC + i)->ThoiGian() == ca)
         {
             index = i;
             break;

@@ -5,14 +5,12 @@ void SignIn::DangNhapQuaSoLanQuyDinh()
 }
 int SignIn::DangNhap()
 {
-    TextColor(4);
     cout << "\t\t\t\t      *********************************************" << endl;
     cout << "\t\t\t\t                       DANG NHAP                       " << endl;
     cout << "\t\t\t\t      *********************************************" << endl;
     int username;
     char pass;
     string rightpassword;
-    TextColor(11);
     cout << "\n\t\t\t\t\tEnter User: ";
     int count = 0;
     while (true)
@@ -73,8 +71,13 @@ int SignIn::DangNhap()
             cout << endl
                  << "Ban da dang nhap thanh cong!";
             delete[] x;
-            break;
-        }
+            if(username > 0)
+            {
+                 MenuChinh1();
+            }
+            else MenuChinh2();
+                break;
+            }
         else
         {
             if (count == 5)
@@ -91,3 +94,4 @@ int SignIn::DangNhap()
     }
     return username;
 }
+

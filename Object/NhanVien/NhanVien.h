@@ -9,11 +9,11 @@ private:
     string _PhoneNumber;
     string _Address;
     bool _Gender;
-    double _Wage;
+    int _Wage;
 
 public:
     NhanVien();
-    NhanVien(int, string, Date, Date, string, string, bool, double);
+    NhanVien(int, string, Date, Date, string, string, bool, int);
     NhanVien(const NhanVien &);
     ~NhanVien();
     void ShowNV();
@@ -25,7 +25,7 @@ public:
     void PhoneNumber(string);
     void Address(string);
     void Gender(bool);
-    void Wage(double);
+    void Wage(int);
     friend ostream &operator<<(ostream &, const NhanVien &);
     friend istream &operator>>(istream &, NhanVien &);
     void InsertObjecttoFile(ofstream &);

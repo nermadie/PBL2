@@ -1,3 +1,4 @@
+#pragma once
 #include "Date.h"
 Date::Date() {}
 Date::Date(int d, int m, int y) : _Day(d), _Month(m), _Year(y) {}

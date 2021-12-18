@@ -2,9 +2,10 @@
 #include "../../Object/LichChieu/LichChieu.cpp"
 #include "../Phim/QLP.cpp"
 #include "../PhongChieu/QLPC.cpp"
+#include "../../Utilis/Utilis.cpp"
 bool GD(int a, int b);
 bool TD(int a, int b);
-class QLLC // Bao gồm 2 khoá chính là _ThoiGian và _Phong
+class QLLC // Bao gá»“m 2 khoÃ¡ chÃ­nh lÃ  _ThoiGian vÃ  _Phong
 {
 private:
     LichChieu *_QLLC;
@@ -21,19 +22,21 @@ public:
     int DatMuaVe(const Ca &, int, int); // Khach
     void TongDoanhThu_Toanbo();         // Quan ly
     void ThongKePhimAnKhach();          // Quan ly
+    void ThongKeKhungGio();             // Quan ly
     void XemlaidanhsachPhim();          // Quan ly
     void XemlaidanhsachPhongChieu();    // Quan ly
-    void AddtotheEnd(LichChieu &);
+    int AddtotheEnd(LichChieu &);
     void AddtotheEnd(LichChieu &, ifstream &);
     void AddtoTop(LichChieu &);
     void AddtoTop(LichChieu &, ifstream &);
     void AddtoPosition(LichChieu &, int);
     void AddtoPosition(LichChieu &, int, ifstream &);
-    void Update(const int &, const int &, const int &, const int &, const int &);
+    void Update(int);
     void DeleteTop();
     void DeleteEnd();
     void DeleteatPosition(const int &);
     int FindIndexPhong(int, int);
+    int FindIndex(int, const Ca &);
     // Bubble Sort
     void Sort();
     void ImportFromFile();

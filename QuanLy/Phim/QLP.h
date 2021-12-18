@@ -1,4 +1,6 @@
+#pragma once
 #include "../../Object/Film_PhongChieu/Film.cpp"
+#include "../../Utilis/Utilis.cpp"
 bool GD(int a, int b);
 bool TD(int a, int b);
 class QLP
@@ -12,9 +14,11 @@ public:
     QLP(Film *, int);
     QLP(const QLP &);
     ~QLP();
+    int TongSoLuongPhim(); // thong ke phim an khach
     void Show();
+    void Show1Film(int);
     void ShowTenPhim(int); // Cho class QLLC
-    void AddtotheEnd(Film &);
+    int AddtotheEnd(Film &);
     void AddtotheEnd(Film &, ifstream &);
     void AddtoTop(Film &);
     void AddtoTop(Film &, ifstream &);

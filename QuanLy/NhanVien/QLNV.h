@@ -1,4 +1,5 @@
 #include "../../Object/NhanVien/NhanVien.cpp"
+#include "../../Utilis/Utilis.cpp"
 bool GD(int a, int b);
 bool TD(int a, int b);
 class QLNV
@@ -13,7 +14,8 @@ public:
     QLNV(const QLNV &);
     ~QLNV();
     void Show();
-    void AddtotheEnd(NhanVien &);
+    void Show1NV(int);
+    int AddtotheEnd(NhanVien &);
     void AddtotheEnd(NhanVien &, ifstream &);
     void AddtoTop(NhanVien &);
     void AddtoTop(NhanVien &, ifstream &);

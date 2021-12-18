@@ -1,7 +1,9 @@
+#pragma once
 #include <iostream>
 using namespace std;
 #include <windows.h>
-
+#include "../Application/QuanLyAll.cpp"
+#include "../KhachHang/MuaVe.cpp"
 void TextColor(int x){
     HANDLE color = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute( color , x );
@@ -11,25 +13,6 @@ void InLine(int n){
         cout<<"=";
 }
 
-void DangNhap_DangKy()
-{
-    system("cls");
-    TextColor(4);
-                cout << "\t\t\t\t      *********************************************" << endl;
-                cout << "\t\t\t\t                  DANG NHAP HOAC DANG KY                       " << endl;
-                cout << "\t\t\t\t      *********************************************" << endl;
-    TextColor(12);
-                cout<<"\n\n\t\t\t\t\t         -DANG NHAP HOAC DANG KY-"; TextColor(14);
-                cout<<"\n\t\t\t _______________________________________________________________________";
-                cout<<"\n\t\t\t|"<<"                                                          \t\t|";
-                cout<<"\n\t\t\t|"<<"                           1.Dang nhap                    \t\t|";
-                cout<<"\n\t\t\t|"<<"                                                          \t\t|";
-                cout<<"\n\t\t\t|"<<"                           2.Dang ki                      \t\t|";
-                cout<<"\n\t\t\t|"<<"                                                          \t\t|";
-                cout<<"\n\t\t\t|"<<"                           3.Thoat                        \t\t|";
-                cout<<"\n\t\t\t|_______________________________________________________________________|";
-
-}
 
 void MenuKhachHang()
 {
@@ -212,6 +195,25 @@ void MenuQuanLyDoanhThu()
                 cout<<"\n\t\t\t|_______________________________________________________________________|";
 }
 
+void PhanMoDau()
+{
+    system("cls");
+    TextColor (12);
+	cout << ("\t\t\t\t\t          DO AN CO SO LAP TRINH ");                                       cout << endl; TextColor (14);
+	cout << ("\t\t               ==========================================================");    cout << endl;
+	cout <<("\t\t               De tai: QUAN LY RAP CHIEU PHIM");                              cout << endl;
+	cout << ("\t\t               Giao vien huong dan: Phan Thanh Tao");                               cout << endl;
+	cout << ("\t\t               Ho ten sinh vien 1: Nguyen Duc Manh"  "    Lop: 20TCLC_Nhat1"); cout << endl;
+	cout << ("\t\t               Ho ten sinh vien 2: Tran Nhat Minh"  "    Lop: 20TCLC_Nhat1"); cout << endl;
+	cout << ("\t\t               Nhom: 9");                                                   cout << endl; TextColor (14);
+	cout << ("\t\t               ==========================================================");    cout << endl; TextColor (3);
+	cout << endl;
+    cout << "\t\t\t\t      *********************************************"            << endl;
+    cout << "\t\t\t                  CHUONG TRINH QUAN LY RAP CHIEU PHIM          "<< endl;
+    cout << "\t\t\t\t      *********************************************"            << endl;
+    system ("pause");
+}
+
 void MenuChinh1()
 {
     MenuKhachHang:
@@ -244,36 +246,53 @@ void MenuChinh1()
             case 1:
                 system ("cls");
                 cout << "Danh sach lich chieu hien co: ";
+                cout << endl;
+                MuaVe::XemDanhSachLichChieuHienCo();
+                cout << endl;
                 system("pause");
                 goto Muave;
                 break;
             case 2:
                 system ("cls");
                 cout << "Danh sach lich chieu theo ngay: ";
+                cout << endl;
+                MuaVe::XemDanhSachLichChieuTheoNgay();
+                cout << endl;
                 system("pause");
                 goto Muave;
                 break;
             case 3:
                 system ("cls");
                 cout << "Danh sach phim hien co: ";
+                cout << endl;
+                MuaVe::XemDanhSachPhimHienCo();
+                cout << endl;
                 system("pause");
                 goto Muave;
                 break;
             case 4:
                 system ("cls");
                 cout << "Danh sach lich chieu theo phim: ";
+                cout << endl;
+                MuaVe::XemDanhSachLichChieutheoPhim();
+                cout << endl;
                 system("pause");
                 goto Muave;
                 break;
             case 5:
                 system ("cls");
                 cout << "Mua ve xem phim: ";
-                system("pause");
+                cout << endl;
+                MuaVe::MuaVeXemPhim();
                 goto Muave;
+                system("pause");
                 break;
             case 6:
                 system ("cls");
                 cout << "Xem lich su mua ve: ";
+                cout << endl;
+                MuaVe::XemLichSuMuaVe();
+                cout << endl;
                 system("pause");
                 goto Muave;
                 break;
@@ -331,12 +350,16 @@ void MenuChinh2()
                 system("cls");
                 cout << "Danh sach nhan vien";
                 cout << endl;
+                QuanLyNhanVien::DanhSachNhanVien();
+                cout << endl;
                 system("pause");
                 goto MenuQuanLyNhanVien;
                 break;
             case 2:
                 system("cls");
                 cout << "Them nhan vien";
+                cout << endl;
+                QuanLyNhanVien::ThemNhanVien();
                 cout << endl;
                 system("pause");
                 goto MenuQuanLyNhanVien;
@@ -345,6 +368,8 @@ void MenuChinh2()
                 system("cls");
                 cout << "Xoa nhan vien";
                 cout << endl;
+                QuanLyNhanVien::XoaNhanVien();
+                cout << endl;
                 system("pause");
                 goto MenuQuanLyNhanVien;
                 break;
@@ -352,12 +377,16 @@ void MenuChinh2()
                 system("cls");
                 cout << "Sua thong tin nhan vien";
                 cout << endl;
+                QuanLyNhanVien::SuaThongTinNhanVien();
+                cout << endl;
                 system("pause");
                 goto MenuQuanLyNhanVien;
                 break;
             case 5:
                 system("cls");
                 cout << "Tim kiem nhan vien";
+                cout << endl;
+                QuanLyNhanVien::TimKiemNhanVienTheoID();
                 cout << endl;
                 system("pause");
                 goto MenuQuanLyNhanVien;
@@ -389,12 +418,16 @@ void MenuChinh2()
                 system("cls");
                 cout << "Danh sach phim";
                 cout << endl;
+                QuanLyPhim::DanhSachPhim();
+                cout << endl;
                 system("pause");
                 goto MenuQuanLyPhim;
                 break;
             case 2:
                 system("cls");
                 cout << "Them phim";
+                cout << endl;
+                QuanLyPhim::ThemPhim();
                 cout << endl;
                 system("pause");
                 goto MenuQuanLyPhim;
@@ -403,6 +436,7 @@ void MenuChinh2()
                 system("cls");
                 cout << "Xoa phim";
                 cout << endl;
+                QuanLyPhim::XoaPhim();
                 system("pause");
                 goto MenuQuanLyPhim;
                 break;
@@ -410,12 +444,16 @@ void MenuChinh2()
                 system("cls");
                 cout << "Sua thong tin phim";
                 cout << endl;
+                QuanLyPhim::SuaThongTinPhim();
+                cout << endl;
                 system("pause");
                 goto MenuQuanLyPhim;
                 break;
             case 5:
                 system("cls");
                 cout << "Tim kiem phim";
+                cout << endl;
+                QuanLyPhim::SuaThongTinPhim();
                 cout << endl;
                 system("pause");
                 goto MenuQuanLyPhim;
@@ -447,12 +485,16 @@ void MenuChinh2()
                 system("cls");
                 cout << "Danh sach khach hang";
                 cout << endl;
+                QuanLyKhachHang::DanhSachKhachHang();
+                cout << endl;
                 system("pause");
                 goto MenuQuanLyKhachHang;
                 break;
             case 2:
                 system("cls");
                 cout << "Tim kiem khach hang";
+                cout << endl;
+                QuanLyKhachHang::TimKiemKhachTheoIDKhachHang();
                 cout << endl;
                 system("pause");
                 goto MenuQuanLyKhachHang;
@@ -484,12 +526,16 @@ void MenuChinh2()
             system("cls");
             cout << "Danh sach lich chieu";
             cout << endl;
+            QuanLyLichChieu::DanhSachLichChieu();
+            cout << endl;
             system("pause");
             goto MenuQuanLyLichChieu;
             break;
         case 2:
             system("cls");
             cout << "Them lich chieu";
+            cout << endl;
+            QuanLyLichChieu::ThemLichChieu();
             cout << endl;
             system("pause");
             goto MenuQuanLyLichChieu;
@@ -498,12 +544,16 @@ void MenuChinh2()
             system("cls");
             cout << "Xoa lich chieu";
             cout << endl;
+            QuanLyLichChieu::XoaLichChieu();
+            cout << endl;
             system("pause");
             goto MenuQuanLyLichChieu;
             break;
         case 4:
             system("cls");
             cout << "Sua lich chieu";
+            cout << endl;
+            QuanLyLichChieu::SuaThongTinLichChieu();
             cout << endl;
             system("pause");
             goto MenuQuanLyLichChieu;
@@ -535,6 +585,8 @@ void MenuChinh2()
             system("cls");
             cout << "Danh sach phong chieu";
             cout << endl;
+            QuanLyPhongChieu::DanhSachPhongChieu();
+            cout << endl;
             system("pause");
             goto MenuQuanLyPhongChieu;
             break;
@@ -542,6 +594,7 @@ void MenuChinh2()
             system("cls");
             cout << "Them phong chieu";
             cout << endl;
+            QuanLyPhongChieu::ThemPhongChieu();
             system("pause");
             goto MenuQuanLyPhongChieu;
             break;
@@ -549,12 +602,16 @@ void MenuChinh2()
             system("cls");
             cout << "Xoa phong chieu";
             cout << endl;
+            QuanLyPhongChieu::XoaPhongChieu();
+            cout << endl;
             system("pause");
             goto MenuQuanLyPhongChieu;
             break;
         case 4:
             system("cls");
             cout << "Sua phong chieu";
+            QuanLyPhongChieu::SuaThongTinPhongChieu();
+            cout << endl;
             cout << endl;
             system("pause");
             goto MenuQuanLyPhongChieu;
@@ -586,12 +643,16 @@ void MenuChinh2()
             system("cls");
             cout << "Tong doanh thu";
             cout << endl;
+            DoanhThu::TongDoanhThu_Toanbo();
+            cout << endl;
             system("pause");
             goto MenuQuanLyDoanhThu;
             break;
         case 2:
             system("cls");
             cout << "Thong ke phim an khach";
+            cout << endl;
+            DoanhThu::ThongKePhimAnKhach();
             cout << endl;
             system("pause");
             goto MenuQuanLyDoanhThu;
@@ -600,6 +661,7 @@ void MenuChinh2()
             system("cls");
             cout << "Thong ke khung gio an khach";
             cout << endl;
+            DoanhThu::ThongKeKhungGio();
             system("pause");
             goto MenuQuanLyDoanhThu;
             break;
@@ -620,10 +682,4 @@ void MenuChinh2()
         exit(0);
         break;
     }
-}
-
-int main()
-{
-
-    DangNhap_DangKy();
 }

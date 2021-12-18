@@ -18,3 +18,4 @@ void Register::NhapThongTinKhachHang()
     cout << endl
          << "Tu bay gio ban co the dang nhap voi username(ID): " << newID << " va password ban vua tao!";
 }
+
