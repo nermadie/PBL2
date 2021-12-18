@@ -46,3 +46,7 @@ void InTienVe(int x)
     num = string(str);
     cout << num;
 }
+bool Isempty(ifstream &pFile)
+{
+    return pFile.peek() == std::ifstream::traits_type::eof();
+}
