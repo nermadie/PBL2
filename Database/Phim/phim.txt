@@ -1,5 +1,5 @@
 1|Fast and Furious|Vin Diesel, Paul Walker|Hanh dong|150
 2|ShangChi va huyen thoai thap luan|Luu Tu Mo, Awkwafina|Hanh dong|132
-3|Ma Bup Be Chucky|Peter A. Chevako, Erik Beck|Vien tuong|900
+3|Ma Bup Be Chucky|Peter A. Chevako, Erik Beck|Vien tuong|120
 4|Tho san quai vat|Henry Cavill, Anya Chalotra|Hanh dong|200
 5|Venom|Tom Hardy, Paul Walker|Hanh dong|129

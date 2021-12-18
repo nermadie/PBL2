@@ -107,7 +107,7 @@ istream &operator>>(istream &in, NhanVien &nv)
     int check;
     cout << "\t\t\t\t\t\tNhap ten nhan vien: ";
     char str[100];
-    fgets(str, 100, stdin);
+    fflush(stdin);
     in.getline(str, sizeof(str)); // Trường hợp đặc biệt
     nv._Name = str;
     cout << "\t\t\t\t\t\tNhap ngay sinh: ";
@@ -117,7 +117,7 @@ istream &operator>>(istream &in, NhanVien &nv)
     cout << "\t\t\t\t\t\tNhap so dien thoai: ";
     in >> nv._PhoneNumber;
     cout << "\t\t\t\t\t\tNhap dia chi: "; // Trường hợp đặc biệt
-    fgets(str, 100, stdin);
+    fflush(stdin);
     in.getline(str, sizeof(str));
     nv._Address = str;
     cout << "\t\t\t\t\t\tNhap gioi tinh: ";

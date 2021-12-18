@@ -19,6 +19,7 @@ void DangNhap_DangKy()
                 cout<<"\n\t\t\t|"<<"                                                          \t\t|";
                 cout<<"\n\t\t\t|"<<"                           3.Thoat                        \t\t|";
                 cout<<"\n\t\t\t|_______________________________________________________________________|";
+                
         int chon;
         cout << "\n\n\t\t\t\t\t\tNhap lua chon :";
         cin >> chon;

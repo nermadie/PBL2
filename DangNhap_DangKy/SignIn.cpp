@@ -73,7 +73,7 @@ int SignIn::DangNhap()
             delete[] x;
             if(username > 0)
             {
-                 MenuChinh1();
+                MenuChinh1(username);
             }
             else MenuChinh2();
                 break;

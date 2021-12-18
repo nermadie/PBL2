@@ -6,4 +6,5 @@
 6|Nguyen Hong Minh|02/12/2001|0905123123|22 Bau Mac 6|0
 7|Tran Van Thien|22/08/2002|0905123145|21 Nguyen Thi Hong Gam|0
 8|Tran Hai Nam|25/08/2002|0906083910|40 Bau Nang 16|1
-9||22/12/1998|0905897581|272 Phan Dang Luu|1
+9|Nguyen Hong Duc|22/12/1998|0905897581|272 Phan Dang Luu|1
+10|Nguyen Duc Manh|25/08/2002|0905897381|40 Bau Mac 6|0

@@ -4,6 +4,7 @@ using namespace std;
 #include <windows.h>
 #include "../Application/QuanLyAll.cpp"
 #include "../KhachHang/MuaVe.cpp"
+
 void TextColor(int x){
     HANDLE color = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute( color , x );
@@ -210,7 +211,7 @@ void PhanMoDau()
     system ("pause");
 }
 
-void MenuChinh1()
+void MenuChinh1(int username)
 {
     MenuKhachHang:
     MenuKhachHang();
@@ -279,15 +280,15 @@ void MenuChinh1()
                 system ("cls");
                 cout << "Mua ve xem phim: ";
                 cout << endl;
-                MuaVe::MuaVeXemPhim();
-                goto Muave;
+                MuaVe::MuaVeXemPhim(username);
+                
                 system("pause");
                 break;
             case 6:
                 system ("cls");
                 cout << "Xem lich su mua ve: ";
                 cout << endl;
-                MuaVe::XemLichSuMuaVe();
+                MuaVe::XemLichSuMuaVe(username);
                 cout << endl;
                 system("pause");
                 goto Muave;

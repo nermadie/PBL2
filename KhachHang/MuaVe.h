@@ -10,6 +10,6 @@ public:
     static void XemDanhSachLichChieuTheoNgay();
     static void XemDanhSachPhimHienCo();
     static void XemDanhSachLichChieutheoPhim();
-    static void MuaVeXemPhim();
-    static void XemLichSuMuaVe();
+    static void MuaVeXemPhim(int);
+    static void XemLichSuMuaVe(int);
 };
