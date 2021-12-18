@@ -1,7 +1,6 @@
+// #include "./DangNhap_DangKy/Register.cpp"
 
-#include "./DangNhap_DangKy/Register.cpp"
-
-int main()
-{
-    Register::NhapThongTinKhachHang();
-}
+// int main()
+// {
+//     Register::NhapThongTinKhachHang();
+// }

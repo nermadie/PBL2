@@ -1,3 +1,4 @@
+#pragma once
 #include "../Object/Account/Account.cpp"
 class DSAccount
 {

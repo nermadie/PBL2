@@ -54,7 +54,7 @@ string Film::FilmName()
 // }
 void Film::ShowPhim()
 {
-    cout << "\t| " << setw(7) << right << this->_IDFilm << " ";
+    cout << "\t\t| " << setw(7) << right << this->_IDFilm << " ";
     cout << "| " << setw(40) << left << this->_FilmName;
     cout << "| " << setw(38) << left << this->_MainActor << " ";
     cout << "| " << setw(15) << left << this->_Category;

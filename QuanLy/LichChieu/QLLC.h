@@ -2,10 +2,10 @@
 #include "../../Object/LichChieu/LichChieu.cpp"
 #include "../Phim/QLP.cpp"
 #include "../PhongChieu/QLPC.cpp"
-#include "../../Utilis/Utilis.cpp"
+
 bool GD(int a, int b);
 bool TD(int a, int b);
-class QLLC // Bao gá»“m 2 khoÃ¡ chÃ­nh lÃ  _ThoiGian vÃ  _Phong
+class QLLC 
 {
 private:
     LichChieu *_QLLC;

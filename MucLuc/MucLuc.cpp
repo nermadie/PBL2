@@ -22,9 +22,7 @@ void MenuKhachHang()
                 cout<<"\n\t\t\t|"<<"                                                       \t\t|";
                 cout<<"\n\t\t\t|"<<"                1.Mua ve                               \t\t|";
                 cout<<"\n\t\t\t|"<<"                                                       \t\t|";
-                cout<<"\n\t\t\t|"<<"                2.Doi mat khau                         \t\t|";
-                cout<<"\n\t\t\t|"<<"                                                       \t\t|";
-                cout<<"\n\t\t\t|"<<"                3.Thoat                                \t\t|";
+                cout<<"\n\t\t\t|"<<"                2.Thoat                                \t\t|";
                 cout<<"\n\t\t\t|_______________________________________________________________________|";
 }
 
@@ -70,9 +68,7 @@ void MenuQuanLy()
                 cout<<"\n\t\t\t|"<<"                                                       \t\t|";
                 cout<<"\n\t\t\t|"<<"                6.Quan ly doanh thu                    \t\t|";
                 cout<<"\n\t\t\t|"<<"                                                       \t\t|";
-                cout<<"\n\t\t\t|"<<"                7.Doi mat khau                         \t\t|";
-                cout<<"\n\t\t\t|"<<"                                                       \t\t|";
-                cout<<"\n\t\t\t|"<<"                8.Thoat                                \t\t|";
+                cout<<"\n\t\t\t|"<<"                7.Thoat                                \t\t|";
                 cout<<"\n\t\t\t|_______________________________________________________________________|";
 }
 
@@ -221,7 +217,7 @@ void MenuChinh1()
     int chon;
     cout << "\n\n\t\t\t\t\t\tNhap lua chon :";
     cin >> chon;
-    while(chon < 0 || chon > 3)
+    while(chon < 0 || chon > 2)
     {
         cout << "\n\n\t\t\t\t\t\tNhap lua chon :";
         cin >> chon;
@@ -306,12 +302,6 @@ void MenuChinh1()
             }
         }
     case 2:
-        system ("cls");
-        cout << "Doi mat khau";
-        system("pause");
-        goto MenuKhachHang;
-        break;
-    case 3:
         exit(0);
         break;
     }
@@ -324,7 +314,7 @@ void MenuChinh2()
     int chon;
     cout << "\n\n\t\t\t\t\t\tNhap lua chon :";
     cin >> chon;
-    while(chon < 0 || chon > 8)
+    while(chon < 0 || chon > 7)
     {
         cout << "\n\n\t\t\t\t\t\tNhap lua chon :";
         cin >> chon;
@@ -674,11 +664,6 @@ void MenuChinh2()
         }
     }
     case 7:
-        system("cls");
-        cout << "Doi mat khau";
-        system("pause");
-        goto MenuQuanLy;
-    case 8:
         exit(0);
         break;
     }
