@@ -1,22 +1,7 @@
-#include "./DangNhap_DangKy/SignIn.cpp"
+// #include "./KhachHang/ChangePass.cpp"
 
-
-int main()
-{
-    try
-    {
-        TextColor(15);
-        SignIn::DangNhap();
-    }
-    catch (const char *msg)
-    {
-        cout << endl
-             << msg;
-    }
-    catch (string msg)
-    {
-        cout << endl
-             << msg;
-    }
-    return 0;
-}
+// int main()
+// {
+//     int username = 1;
+//     ChangePass::DoiMatKhau(username);
+// }

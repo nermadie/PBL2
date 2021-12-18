@@ -4,7 +4,7 @@ using namespace std;
 #include <windows.h>
 #include "../Application/QuanLyAll.cpp"
 #include "../KhachHang/MuaVe.cpp"
-
+#include "../KhachHang/ChangePass.cpp"
 void TextColor(int x){
     HANDLE color = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute( color , x );
@@ -23,7 +23,9 @@ void MenuKhachHang()
                 cout<<"\n\t\t\t|"<<"                                                       \t\t|";
                 cout<<"\n\t\t\t|"<<"                1.Mua ve                               \t\t|";
                 cout<<"\n\t\t\t|"<<"                                                       \t\t|";
-                cout<<"\n\t\t\t|"<<"                2.Thoat                                \t\t|";
+                cout<<"\n\t\t\t|"<<"                2.Doi mat khau                         \t\t|";
+                cout<<"\n\t\t\t|"<<"                                                       \t\t|";
+                cout<<"\n\t\t\t|"<<"                3.Thoat                                \t\t|";
                 cout<<"\n\t\t\t|_______________________________________________________________________|";
 }
 
@@ -218,7 +220,7 @@ void MenuChinh1(int username)
     int chon;
     cout << "\n\n\t\t\t\t\t\tNhap lua chon :";
     cin >> chon;
-    while(chon < 0 || chon > 2)
+    while(chon < 0 || chon > 3)
     {
         cout << "\n\n\t\t\t\t\t\tNhap lua chon :";
         cin >> chon;
@@ -246,7 +248,7 @@ void MenuChinh1(int username)
                 cout << endl;
                 MuaVe::XemDanhSachLichChieuHienCo();
                 cout << endl;
-                system("pause");
+                system("pause") ; cout.flush();
                 goto Muave;
                 break;
             case 2:
@@ -255,7 +257,7 @@ void MenuChinh1(int username)
                 cout << endl;
                 MuaVe::XemDanhSachLichChieuTheoNgay();
                 cout << endl;
-                system("pause");
+                system("pause") ; cout.flush();
                 goto Muave;
                 break;
             case 3:
@@ -264,7 +266,7 @@ void MenuChinh1(int username)
                 cout << endl;
                 MuaVe::XemDanhSachPhimHienCo();
                 cout << endl;
-                system("pause");
+                system("pause") ; cout.flush();
                 goto Muave;
                 break;
             case 4:
@@ -273,7 +275,7 @@ void MenuChinh1(int username)
                 cout << endl;
                 MuaVe::XemDanhSachLichChieutheoPhim();
                 cout << endl;
-                system("pause");
+                system("pause") ; cout.flush();
                 goto Muave;
                 break;
             case 5:
@@ -282,7 +284,7 @@ void MenuChinh1(int username)
                 cout << endl;
                 MuaVe::MuaVeXemPhim(username);
                 
-                system("pause");
+                system("pause") ; cout.flush();
                 break;
             case 6:
                 system ("cls");
@@ -290,7 +292,7 @@ void MenuChinh1(int username)
                 cout << endl;
                 MuaVe::XemLichSuMuaVe(username);
                 cout << endl;
-                system("pause");
+                system("pause") ; cout.flush();
                 goto Muave;
                 break;
             case 7:
@@ -303,6 +305,14 @@ void MenuChinh1(int username)
             }
         }
     case 2:
+        system("cls");
+        cout << "Doi pass";
+        cout << endl;
+        ChangePass::DoiMatKhau(username);
+        system("pause") ; cout.flush();
+        goto MenuKhachHang;
+        break;
+    case 3:
         exit(0);
         break;
     }
@@ -343,7 +353,7 @@ void MenuChinh2()
                 cout << endl;
                 QuanLyNhanVien::DanhSachNhanVien();
                 cout << endl;
-                system("pause");
+                system("pause") ; cout.flush();
                 goto MenuQuanLyNhanVien;
                 break;
             case 2:
@@ -352,7 +362,7 @@ void MenuChinh2()
                 cout << endl;
                 QuanLyNhanVien::ThemNhanVien();
                 cout << endl;
-                system("pause");
+                system("pause") ; cout.flush();
                 goto MenuQuanLyNhanVien;
                 break;
             case 3:
@@ -361,7 +371,7 @@ void MenuChinh2()
                 cout << endl;
                 QuanLyNhanVien::XoaNhanVien();
                 cout << endl;
-                system("pause");
+                system("pause") ; cout.flush();
                 goto MenuQuanLyNhanVien;
                 break;
             case 4:
@@ -370,7 +380,7 @@ void MenuChinh2()
                 cout << endl;
                 QuanLyNhanVien::SuaThongTinNhanVien();
                 cout << endl;
-                system("pause");
+                system("pause") ; cout.flush();
                 goto MenuQuanLyNhanVien;
                 break;
             case 5:
@@ -379,7 +389,7 @@ void MenuChinh2()
                 cout << endl;
                 QuanLyNhanVien::TimKiemNhanVienTheoID();
                 cout << endl;
-                system("pause");
+                system("pause") ; cout.flush();
                 goto MenuQuanLyNhanVien;
                 break;
             case 6:
@@ -411,7 +421,7 @@ void MenuChinh2()
                 cout << endl;
                 QuanLyPhim::DanhSachPhim();
                 cout << endl;
-                system("pause");
+                system("pause") ; cout.flush();
                 goto MenuQuanLyPhim;
                 break;
             case 2:
@@ -420,7 +430,7 @@ void MenuChinh2()
                 cout << endl;
                 QuanLyPhim::ThemPhim();
                 cout << endl;
-                system("pause");
+                system("pause") ; cout.flush();
                 goto MenuQuanLyPhim;
                 break;
             case 3:
@@ -428,7 +438,7 @@ void MenuChinh2()
                 cout << "Xoa phim";
                 cout << endl;
                 QuanLyPhim::XoaPhim();
-                system("pause");
+                system("pause") ; cout.flush();
                 goto MenuQuanLyPhim;
                 break;
             case 4:
@@ -437,7 +447,7 @@ void MenuChinh2()
                 cout << endl;
                 QuanLyPhim::SuaThongTinPhim();
                 cout << endl;
-                system("pause");
+                system("pause") ; cout.flush();
                 goto MenuQuanLyPhim;
                 break;
             case 5:
@@ -446,7 +456,7 @@ void MenuChinh2()
                 cout << endl;
                 QuanLyPhim::SuaThongTinPhim();
                 cout << endl;
-                system("pause");
+                system("pause") ; cout.flush();
                 goto MenuQuanLyPhim;
                 break;
             case 6:
@@ -478,7 +488,7 @@ void MenuChinh2()
                 cout << endl;
                 QuanLyKhachHang::DanhSachKhachHang();
                 cout << endl;
-                system("pause");
+                system("pause") ; cout.flush();
                 goto MenuQuanLyKhachHang;
                 break;
             case 2:
@@ -487,7 +497,7 @@ void MenuChinh2()
                 cout << endl;
                 QuanLyKhachHang::TimKiemKhachTheoIDKhachHang();
                 cout << endl;
-                system("pause");
+                system("pause") ; cout.flush();
                 goto MenuQuanLyKhachHang;
                 break;
             case 3:
@@ -519,7 +529,7 @@ void MenuChinh2()
             cout << endl;
             QuanLyLichChieu::DanhSachLichChieu();
             cout << endl;
-            system("pause");
+            system("pause") ; cout.flush();
             goto MenuQuanLyLichChieu;
             break;
         case 2:
@@ -528,7 +538,7 @@ void MenuChinh2()
             cout << endl;
             QuanLyLichChieu::ThemLichChieu();
             cout << endl;
-            system("pause");
+            system("pause") ; cout.flush();
             goto MenuQuanLyLichChieu;
             break;
         case 3:
@@ -537,7 +547,7 @@ void MenuChinh2()
             cout << endl;
             QuanLyLichChieu::XoaLichChieu();
             cout << endl;
-            system("pause");
+            system("pause") ; cout.flush();
             goto MenuQuanLyLichChieu;
             break;
         case 4:
@@ -546,7 +556,7 @@ void MenuChinh2()
             cout << endl;
             QuanLyLichChieu::SuaThongTinLichChieu();
             cout << endl;
-            system("pause");
+            system("pause") ; cout.flush();
             goto MenuQuanLyLichChieu;
             break;
         case 5:
@@ -578,7 +588,7 @@ void MenuChinh2()
             cout << endl;
             QuanLyPhongChieu::DanhSachPhongChieu();
             cout << endl;
-            system("pause");
+            system("pause") ; cout.flush();
             goto MenuQuanLyPhongChieu;
             break;
         case 2:
@@ -586,7 +596,7 @@ void MenuChinh2()
             cout << "Them phong chieu";
             cout << endl;
             QuanLyPhongChieu::ThemPhongChieu();
-            system("pause");
+            system("pause") ; cout.flush();
             goto MenuQuanLyPhongChieu;
             break;
         case 3:
@@ -595,7 +605,7 @@ void MenuChinh2()
             cout << endl;
             QuanLyPhongChieu::XoaPhongChieu();
             cout << endl;
-            system("pause");
+            system("pause") ; cout.flush();
             goto MenuQuanLyPhongChieu;
             break;
         case 4:
@@ -604,7 +614,7 @@ void MenuChinh2()
             QuanLyPhongChieu::SuaThongTinPhongChieu();
             cout << endl;
             cout << endl;
-            system("pause");
+            system("pause") ; cout.flush();
             goto MenuQuanLyPhongChieu;
             break;
         case 5:
@@ -636,7 +646,7 @@ void MenuChinh2()
             cout << endl;
             DoanhThu::TongDoanhThu_Toanbo();
             cout << endl;
-            system("pause");
+            system("pause") ; cout.flush();
             goto MenuQuanLyDoanhThu;
             break;
         case 2:
@@ -645,7 +655,7 @@ void MenuChinh2()
             cout << endl;
             DoanhThu::ThongKePhimAnKhach();
             cout << endl;
-            system("pause");
+            system("pause") ; cout.flush();
             goto MenuQuanLyDoanhThu;
             break;
         case 3:
@@ -653,7 +663,7 @@ void MenuChinh2()
             cout << "Thong ke khung gio an khach";
             cout << endl;
             DoanhThu::ThongKeKhungGio();
-            system("pause");
+            system("pause") ; cout.flush();
             goto MenuQuanLyDoanhThu;
             break;
         case 4:

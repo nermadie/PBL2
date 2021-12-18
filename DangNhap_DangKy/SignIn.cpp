@@ -4,13 +4,14 @@ void SignIn::DangNhapQuaSoLanQuyDinh()
 {
     throw "Ban da dang nhap sai qua so lan quy dinh!!";
 }
+
 int SignIn::DangNhap()
 {
     cout << "\t\t\t\t      *********************************************" << endl;
     cout << "\t\t\t\t                       DANG NHAP                       " << endl;
     cout << "\t\t\t\t      *********************************************" << endl;
     int username;
-    int pass;
+    char pass;
     string rightpassword;
     cout << "\n\t\t\t\t\tEnter User: ";
     int count = 0;
@@ -44,64 +45,52 @@ int SignIn::DangNhap()
         cout << "Khong co username: " << username << "! Xin hay nhap lai username: ";
         count++;
     }
-
-    // Password
     count = 0;
     cout << "\n\t\t\t\t\tEnter Password: ";
-    char p[30];
+    char c = 0;
+    char *x = new char[30];
     int i = 0;
     while (1)
     {
-        do
+        while (1)
         {
-            pass = getch();
-            if (pass != 13 && pass != 8)
-                cout << "*";
-            if (pass == 8 && count > 0)
+            c = getch();
+            if (c == 13 || c == 8)
             {
-                cout << "\b"
-                     << " "
-                     << "\b";
-                count--;
+                x[i] = '\0';
+                break;
             }
-            else if (pass == 8 && count == 0)
-                count = 0;
             else
             {
-                p[count] = pass;
-                count++;
+                x[i++] = c;
+                cout << "*";
             }
-            cout.flush();
-        } while (pass != 13);
-        p[i] = '\0';
-        for (i = 0; i < count - 1; i++)
-            cout << "\b";
-        for (i = 0; i < count; i++)
-            cout << "\b";
-        count = 0;
-        cout.flush();
-        string a(p);
-        cout << pass << endl;
+        }
+        x[i] = '\0';
+        string a(x);
         if (a == rightpassword)
         {
             cout << endl
                  << "Ban da dang nhap thanh cong!";
+            delete[] x;
             if (username > 0)
             {
                 MenuChinh1(username);
             }
             else
                 MenuChinh2();
+            break;
         }
         else
         {
-            cout << count << endl;
             if (count == 5)
             {
                 DangNhapQuaSoLanQuyDinh();
             }
             cout << endl
                  << "Ban nhap sai password! Xin hay nhap lai password: ";
+            delete[] x;
+            x = new char[30];
             i = 0;
             count++;
         }

@@ -1,3 +1,4 @@
+#pragma once
 #include "DSAccount.h"
 #include <fstream>
 #include <conio.h>
@@ -92,18 +93,20 @@ int DSAccount::FindUsername(int id)
     }
     return index;
 }
+
 string DSAccount::GivePass(int index)
 {
     return (_DSAccount + index)->Password();
 }
+
 void DSAccount::Update(const int &id)
 {
     int index = id - 1;
     if (index >= 0)
     {
-        cout << "Moi ban nhap password moi: ";
+        cout << "\t\t\t\t\t\tMoi ban nhap password moi: ";
         cin >> (*(this->_DSAccount + index));
     }
     else
-        cout << "Khong co khach hang co ID: " << id << endl;
+        cout << "\t\t\t\t\t\tKhong co khach hang co ID: " << id << endl;
 }
