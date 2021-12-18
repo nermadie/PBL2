@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 #include "../../Object/Film_PhongChieu/Film.cpp"
+=======
+#pragma once
+#include "../../Object/Film_PhongChieu/Film.cpp"
+#include "../../Utilis/Utilis.cpp"
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
 bool GD(int a, int b);
 bool TD(int a, int b);
 class QLP
@@ -34,4 +40,8 @@ public:
     void QuickSort(int *, int, int, bool (*CTH)(int a, int b));
     void Sort(bool (*CTH)(int a, int b) = TD);
     void ImportFromFile();
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd

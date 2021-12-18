@@ -23,7 +23,11 @@ KhachHang::KhachHang(const KhachHang &nv)
 KhachHang::~KhachHang() {}
 void KhachHang::ShowKhachHang()
 {
+<<<<<<< HEAD
     cout << "\t\t\t|" << setw(5) << right << _ID << " |";
+=======
+    cout << "\t|" << setw(5) << right << _ID << " |";
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
     cout << " " << setw(28) << left << _Name << " |";
     cout << " ";
     _Birthday.ShowDate();
@@ -69,7 +73,10 @@ istream &operator>>(istream &in, KhachHang &nv)
     int check;
     cout << "Nhap ten khach hang: ";
     char str[100];
+<<<<<<< HEAD
     fflush(stdin);
+=======
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
     in.getline(str, sizeof(str)); // Trường hợp đặc biệt
     nv._Name = str;
     cout << "Nhap ngay sinh: ";
@@ -77,7 +84,11 @@ istream &operator>>(istream &in, KhachHang &nv)
     cout << "Nhap so dien thoai: ";
     in >> nv._PhoneNumber;
     cout << "Nhap dia chi: "; // Trường hợp đặc biệt
+<<<<<<< HEAD
     fflush(stdin);
+=======
+    fgets(str, 100, stdin);
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
     in.getline(str, sizeof(str));
     nv._Address = str;
     cout << "Nhap gioi tinh: ";

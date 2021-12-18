@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 1|Nguyen Van A|22/12/2002|090513099|38 Do Anh Han|0
 2|Nguyen Van B|22/12/2002|090513099|38 Do Anh Han|0
 3|Nguyen Van C|22/12/2002|090513099|38 Do Anh Han|0
@@ -5,3 +6,14 @@
 5|Tran Nhat Minh|22/08/2002|0775513097|38 Do Anh Han|0
 6|asdhfjk|02/12/1233|123123|38 do anh han|0
 7|trannhatminh|22/08/2002|012379|38 Do Anh Han|0
+=======
+1|Nguyen Van A|22/12/2002|090513099|30 Do Anh Han|1
+2|Nguyen Van B|12/01/2002|090513099|38 Dinh Tien Hoang|0
+3|Nguyen Van C|16/02/2002|090513099|212 Nguyen Tat Thanh|0
+4|Nguyen Van D|23/12/2002|012391023|39 Hoang Thi Loan|1
+5|Tran Nhat Minh|22/08/2002|0775513097|40 Bau Mac 5|0
+6|Nguyen Hong Minh|02/12/2001|0905123123|22 Bau Mac 6|0
+7|Tran Van Thien|22/08/2002|0905123145|21 Nguyen Thi Hong Gam|0
+8|Tran Hai Nam|25/08/2002|0906083910|40 Bau Nang 16|1
+9||22/12/1998|0905897581|272 Phan Dang Luu|1
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd

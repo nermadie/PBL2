@@ -54,7 +54,11 @@ ostream &operator<<(ostream &o, const Ca &c)
 istream &operator>>(istream &in, Ca &c)
 {
     int check = 0, hour;
+<<<<<<< HEAD
     cout << "\t\t\t\t\t\tNhap ca (Co cac ca: 8h, 11h, 14h, 17h, 20h, 23h): ";
+=======
+    cout << "Nhap ca (Co cac ca: 8h, 11h, 14h, 17h, 20h, 23h): ";
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
     while (!check)
     {
         in >> hour;
@@ -65,18 +69,31 @@ istream &operator>>(istream &in, Ca &c)
         }
         else
         {
+<<<<<<< HEAD
             cout << "\t\t\t\t\t\tChi phuc vu cac ca: 8h, 11h, 14h, 17h, 20h, 23h!" << endl;
             cout << "\t\t\t\t\t\tMoi ban nhap lai: ";
+=======
+            cout << "Chi phuc vu cac ca: 8h, 11h, 14h, 17h, 20h, 23h!" << endl;
+            cout << "Moi ban nhap lai: ";
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
         }
     }
     char separator;
     int dd, mm, yyyy;
     check = 0;
+<<<<<<< HEAD
     cout << "\t\t\t\t\t\tNhap ngay/thang/nam: ";
     do
     {
         if (check == 1)
             cout << "\t\t\t\t\t\tNgay khong hop le, xin moi ban nhap lai :";
+=======
+    cout << "Nhap ngay/thang/nam: ";
+    do
+    {
+        if (check == 1)
+            cout << "Ngay khong hop le, xin moi ban nhap lai :";
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
         check = 0;
         in >> dd >> separator >> mm >> separator >> yyyy;
         if (yyyy < 0)

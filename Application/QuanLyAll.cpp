@@ -344,6 +344,10 @@ void QuanLyPhongChieu::DanhSachPhongChieu()
     temp.Sort();
     temp.Show();
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
 void QuanLyPhongChieu::ThemPhongChieu()
 {
     DanhSachPhongChieu();
@@ -379,6 +383,10 @@ void QuanLyPhongChieu::ThemPhongChieu()
         }
     } while (1);
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
 void QuanLyPhongChieu::XoaPhongChieu()
 {
     DanhSachPhongChieu();
@@ -447,4 +455,9 @@ void QuanLyKhachHang::TimKiemKhachTheoIDKhachHang()
             cout << "\t\t\t\t\t\tKhong tim thay nhan vien co ID nay! Moi ban nhap lai: ";
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+//=====================================================================================================================
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd

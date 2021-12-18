@@ -1,5 +1,5 @@
-#include "../QuanLy/KhachHang/QLKH.cpp"
-#include "../KhachHang/DSAccount.cpp "
+#pragma once
+#include "SignIn.h"
 class Register
 {
 public:

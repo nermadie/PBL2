@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+#pragma once
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
 #include "../Object/Account/Account.cpp"
 class DSAccount
 {

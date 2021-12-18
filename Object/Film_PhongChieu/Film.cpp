@@ -64,6 +64,7 @@ void Film::ShowPhim()
 istream &operator>>(istream &in, Film &p)
 {
     int check;
+<<<<<<< HEAD
     cout << "\t\t\t\t\t\tNhap ten phim: ";
     char str[100];
     fflush(stdin);
@@ -78,6 +79,21 @@ istream &operator>>(istream &in, Film &p)
     in.getline(str, sizeof(str));
     p._Category = str;
     cout << "\t\t\t\t\t\tNhap thoi luong phim: ";
+=======
+    cout << "Nhap ten phim: ";
+    char str[100];
+    in.getline(str, sizeof(str)); // Trường hợp đặc biệt
+    p._FilmName = str;
+    cout << "Nhap dien vien chinh: ";
+    fgets(str, 100, stdin);
+    in.getline(str, sizeof(str));
+    p._MainActor = str;
+    cout << "Nhap the loai phim: ";
+    fgets(str, 100, stdin);
+    in.getline(str, sizeof(str));
+    p._Category = str;
+    cout << "Nhap thoi luong phim: ";
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
     in >> p._MovieDuration;
     return in;
 }

@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+#pragma once
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
 #include "../QuanLy/LichChieu/QLLC.cpp"
 #include "../QuanLy/NhanVien/QLNV.cpp"
 #include "../QuanLy/KhachHang/QLKH.cpp"
@@ -8,6 +12,10 @@ public:
     static void ThongKePhimAnKhach();
     static void ThongKeKhungGio();
 };
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
 class QuanLyNhanVien
 {
 public:
@@ -17,6 +25,10 @@ public:
     static void SuaThongTinNhanVien();
     static void TimKiemNhanVienTheoID();
 };
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
 class QuanLyPhim
 {
 public:
@@ -25,7 +37,13 @@ public:
     static void XoaPhim();
     static void SuaThongTinPhim();
     static void TimKiemPhimTheoIDPhim();
+<<<<<<< HEAD
 };
+=======
+
+};
+
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
 class QuanLyLichChieu
 {
 public:
@@ -34,6 +52,10 @@ public:
     static void XoaLichChieu();
     static void SuaThongTinLichChieu();
 };
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
 class QuanLyPhongChieu
 {
 public:
@@ -42,9 +64,24 @@ public:
     static void XoaPhongChieu();
     static void SuaThongTinPhongChieu();
 };
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
 class QuanLyKhachHang
 {
 public:
     static void DanhSachKhachHang();
     static void TimKiemKhachTheoIDKhachHang();
+<<<<<<< HEAD
 };
+=======
+};
+
+class QuanLyTaiKhoanMatKhau
+{
+    static int DangNhap();
+    static void DangNhapQuaSoLanQuyDinh(); 
+    static void NhapThongTinKhachHang();
+};
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd

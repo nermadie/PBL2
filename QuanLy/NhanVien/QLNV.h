@@ -1,4 +1,8 @@
 #include "../../Object/NhanVien/NhanVien.cpp"
+<<<<<<< HEAD:QuanLy/NhanVien/QLNV.h
+=======
+#include "../../Utilis/Utilis.cpp"
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd:QLNV.h
 bool GD(int a, int b);
 bool TD(int a, int b);
 class QLNV

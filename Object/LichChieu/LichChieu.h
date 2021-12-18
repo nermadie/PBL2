@@ -31,5 +31,10 @@ public:
     void ShowLichChieu();
     bool DateCompare(Date &);
     bool IDPhimCompare(int &);
+<<<<<<< HEAD
+=======
+    friend ostream &operator<<(ostream &, const LichChieu &);
+    friend istream &operator>>(istream &, LichChieu &);
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
     void InsertObjecttoFile(ofstream &);
 };

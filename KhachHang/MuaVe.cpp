@@ -87,9 +87,9 @@ void MuaVe::XemLichSuMuaVe(int idkhachmua)
         int dd, mm, yyyy, hh;
         FileIn >> dd >> separator >> mm >> separator >> yyyy >> separator >> hh >> separator;
         Ca tempCa(dd, mm, yyyy, hh);
-        cout << " | ";
+        cout << "\t\t| ";
         tempCa.ShowDate();
-        cout << " |   ";
+        cout << "\t\t| ";
         tempCa.ShowCa();
         int maphong;
         FileIn >> maphong >> separator;
@@ -114,5 +114,7 @@ void MuaVe::XemLichSuMuaVe(int idkhachmua)
     cout << "  | " << endl;
     cout
         << "\t\t+======================================================================================================+============+" << endl;
+    system("pause");
     FileIn.close();
+    system("pause");
 }

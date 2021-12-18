@@ -110,7 +110,11 @@ void QLLC::XemLichChieuTheoPhim(int &idp)
     {
         if (_QLLC[i].IDPhimCompare(idp))
         {
+<<<<<<< HEAD
             cout << "\t\t\t| ";
+=======
+            cout << "\t\t| ";
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
             temp.ShowTenPhim(_QLLC[i].IDPhim());
             _QLLC[i].ShowLichChieu();
             cout << endl;
@@ -139,7 +143,11 @@ int QLLC::DatMuaVe(const Ca &ca, int maphong, int soluong)
     }
     if (check == 1)
     {
+<<<<<<< HEAD
         cout << "Ban da nhap sai thong tin! Hay thu lai.";
+=======
+        cout << "Ban da nhap sai thong tin! Hay thu lai." << endl;
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
     }
     else if (check == 0)
     {

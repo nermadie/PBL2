@@ -13,6 +13,7 @@ QLNV::QLNV()
             if (key == 27 || key == 'n' || key == 'N')
             {
                 throw "Hay xem xet lai Database va khoi dong lai chuong trinh";
+                system("pause");
             }
             else if (key == 'Y' || key == 'y')
             {
@@ -84,10 +85,14 @@ void QLNV::Show1NV(int id)
     cout << "\t+======+=============================+============+===============+=============+=========================+==============+=============+" << endl;
     for (int i = 0; i < this->_Quantity; i++)
         if ((this->_QLNV + i)->ID() == id)
+<<<<<<< HEAD:QuanLy/NhanVien/QLNV.cpp
         {
             cout << _QLNV[i];
             break;
         }
+=======
+            cout << _QLNV[i];
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd:QLNV.cpp
     cout << "\t+======+=============================+============+===============+=============+=========================+==============+=============+" << endl;
 }
 // Them doi tuong-------------------------------------------------
@@ -148,6 +153,8 @@ void QLNV::AddtotheEnd(NhanVien &nv, ifstream &FileIn)
     }
     this->_Quantity++;
 }
+
+
 void QLNV::AddtoTop(NhanVien &nv)
 {
     if (-1 != IndexOf(nv.ID()))
@@ -318,6 +325,7 @@ void QLNV::Update(const int &id)
     else
         cout << "\t\t\t\t\t\tKhong co nhan vien co MSNV: " << id << endl;
 }
+
 // Xoa doi tuong---------------------------------------------------------
 //  + Xoa doi tuong dau tien
 void QLNV::DeleteTop()
@@ -377,6 +385,7 @@ void QLNV::DeleteEnd()
     }
     this->_Quantity--;
 }
+
 //  + Xoa tai vi tri k bat ky
 void QLNV::DeleteatPosition(const int &position)
 {
@@ -408,6 +417,7 @@ void QLNV::DeleteatPosition(const int &position)
 }
 // Tim kiem(BinarySearch)-----------------------------------
 //  + Tim Index tuong ung voi ID
+
 int QLNV::BinarySearch(int l, int r, int id) // Vi ID chua sort nen xet ca 2 phia
 {
     if (r >= l)
@@ -426,12 +436,17 @@ int QLNV::BinarySearch(int l, int r, int id) // Vi ID chua sort nen xet ca 2 phi
     }
     return -1;
 }
+
 int QLNV::IndexOf(int id)
 {
     return BinarySearch(0, _Quantity - 1, id);
 }
 // Sap xep(QuickSort) voi thuoc tinh _ID----------------
 // Ham TD và GD được định nghĩa ở duoi
+<<<<<<< HEAD:QuanLy/NhanVien/QLNV.cpp
+=======
+
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd:QLNV.cpp
 int QLNV::Partition(int *arr, int low, int high, bool (*CTH)(int a, int b))
 {
     int pivot = (this->_QLNV + arr[high])->ID(); // pivot
@@ -452,6 +467,10 @@ int QLNV::Partition(int *arr, int low, int high, bool (*CTH)(int a, int b))
     swap(arr[left], arr[high]);
     return left;
 }
+<<<<<<< HEAD:QuanLy/NhanVien/QLNV.cpp
+=======
+
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd:QLNV.cpp
 void QLNV::QuickSort(int *arr, int low, int high, bool (*CTH)(int a, int b))
 {
     if (low < high)
@@ -461,6 +480,10 @@ void QLNV::QuickSort(int *arr, int low, int high, bool (*CTH)(int a, int b))
         QuickSort(arr, pi + 1, high, CTH);
     }
 }
+<<<<<<< HEAD:QuanLy/NhanVien/QLNV.cpp
+=======
+
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd:QLNV.cpp
 void QLNV::Sort(bool (*CTH)(int a, int b))
 {
     int *arr = new int[_Quantity];
@@ -477,6 +500,10 @@ void QLNV::Sort(bool (*CTH)(int a, int b))
     delete[] temp;
     delete[] arr;
 }
+<<<<<<< HEAD:QuanLy/NhanVien/QLNV.cpp
+=======
+
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd:QLNV.cpp
 // Nhập dữ liệu từ file vào trong danh sách
 void QLNV::ImportFromFile()
 {

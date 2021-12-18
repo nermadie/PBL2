@@ -406,7 +406,11 @@ int QLPC::IndexOf(int id)
     return BinarySearch(0, _Quantity - 1, id);
 }
 // Sap xep(QuickSort) voi thuoc tinh _ID----------------
+<<<<<<< HEAD
 // Ham TD và GD được định nghĩa ở duoi
+=======
+// Ham TD vÃ  GD Ä‘Æ°á»£c Ä‘á»‹nh nghÄ©a á»Ÿ duoi
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
 int QLPC::Partition(int *arr, int low, int high, bool (*CTH)(int a, int b))
 {
     int pivot = (this->_QLPC + arr[high])->IDPhongChieu(); // pivot
@@ -452,7 +456,11 @@ void QLPC::Sort(bool (*CTH)(int a, int b))
     delete[] temp;
     delete[] arr;
 }
+<<<<<<< HEAD
 // Nhập dữ liệu từ file vào trong danh sách
+=======
+// Nháº­p dá»¯ liá»‡u tá»« file vÃ o trong danh sÃ¡ch
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
 void QLPC::ImportFromFile()
 {
     ifstream FileIn("Database/PhongChieu/phongchieu.txt", ios_base::in);

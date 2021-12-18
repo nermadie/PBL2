@@ -34,17 +34,29 @@ void PhongChieu::ShowPhongChieu()
 istream &operator>>(istream &in, PhongChieu &pc)
 {
     int check = 1;
+<<<<<<< HEAD
     cout << "\t\t\t\t\t\tNhap so luong ghe: ";
+=======
+    cout << "Nhap so luong ghe: ";
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
     while (check)
     {
         in >> pc._SLGhe;
         if (pc._SLGhe > pc._MaxGhe)
         {
+<<<<<<< HEAD
             cout << "\t\t\t\t\t\t1 phong chi chua toi da " << pc._MaxGhe << " ghe! Moi ban nhap lai: ";
         }
         else if (pc._SLGhe < pc._MinGhe)
         {
             cout << "\t\t\t\t\t\t1 phong phai co toi thieu " << pc._MinGhe << " ghe! Moi ban nhap lai: ";
+=======
+            cout << "1 phong chi chua toi da " << pc._MaxGhe << " ghe! Moi ban nhap lai: ";
+        }
+        else if (pc._SLGhe < pc._MinGhe)
+        {
+            cout << "1 phong phai co toi thieu " << pc._MinGhe << " ghe! Moi ban nhap lai: ";
+>>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
         }
         else
             check = 0;
