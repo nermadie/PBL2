@@ -85,14 +85,7 @@ void QLNV::Show1NV(int id)
     cout << "\t+======+=============================+============+===============+=============+=========================+==============+=============+" << endl;
     for (int i = 0; i < this->_Quantity; i++)
         if ((this->_QLNV + i)->ID() == id)
-<<<<<<< HEAD:QuanLy/NhanVien/QLNV.cpp
-        {
             cout << _QLNV[i];
-            break;
-        }
-=======
-            cout << _QLNV[i];
->>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd:QLNV.cpp
     cout << "\t+======+=============================+============+===============+=============+=========================+==============+=============+" << endl;
 }
 // Them doi tuong-------------------------------------------------
@@ -309,8 +302,7 @@ void QLNV::Update(const int &id)
         {
             int ID;
             cin >> ID;
-            int indextrave = IndexOf(ID);
-            if (-1 != indextrave && indextrave != index)
+            if (-1 != IndexOf(ID))
             {
                 cout << "\t\t\t\t\t\tDa co nhan vien co ID nay!! Xin moi ban nhap lai: ";
             }
@@ -443,10 +435,7 @@ int QLNV::IndexOf(int id)
 }
 // Sap xep(QuickSort) voi thuoc tinh _ID----------------
 // Ham TD và GD được định nghĩa ở duoi
-<<<<<<< HEAD:QuanLy/NhanVien/QLNV.cpp
-=======
 
->>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd:QLNV.cpp
 int QLNV::Partition(int *arr, int low, int high, bool (*CTH)(int a, int b))
 {
     int pivot = (this->_QLNV + arr[high])->ID(); // pivot
@@ -467,10 +456,7 @@ int QLNV::Partition(int *arr, int low, int high, bool (*CTH)(int a, int b))
     swap(arr[left], arr[high]);
     return left;
 }
-<<<<<<< HEAD:QuanLy/NhanVien/QLNV.cpp
-=======
 
->>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd:QLNV.cpp
 void QLNV::QuickSort(int *arr, int low, int high, bool (*CTH)(int a, int b))
 {
     if (low < high)
@@ -480,10 +466,7 @@ void QLNV::QuickSort(int *arr, int low, int high, bool (*CTH)(int a, int b))
         QuickSort(arr, pi + 1, high, CTH);
     }
 }
-<<<<<<< HEAD:QuanLy/NhanVien/QLNV.cpp
-=======
 
->>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd:QLNV.cpp
 void QLNV::Sort(bool (*CTH)(int a, int b))
 {
     int *arr = new int[_Quantity];
@@ -500,10 +483,7 @@ void QLNV::Sort(bool (*CTH)(int a, int b))
     delete[] temp;
     delete[] arr;
 }
-<<<<<<< HEAD:QuanLy/NhanVien/QLNV.cpp
-=======
 
->>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd:QLNV.cpp
 // Nhập dữ liệu từ file vào trong danh sách
 void QLNV::ImportFromFile()
 {

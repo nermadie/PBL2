@@ -2,16 +2,10 @@
 #include "../../Object/LichChieu/LichChieu.cpp"
 #include "../Phim/QLP.cpp"
 #include "../PhongChieu/QLPC.cpp"
-<<<<<<< HEAD
-bool GD(int a, int b);
-bool TD(int a, int b);
-class QLLC // Bao gồm 2 khoá chính là _ThoiGian và _Phong
-=======
 
 bool GD(int a, int b);
 bool TD(int a, int b);
-class QLLC 
->>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
+class QLLC
 {
 private:
     LichChieu *_QLLC;
@@ -41,13 +35,10 @@ public:
     void DeleteTop();
     void DeleteEnd();
     void DeleteatPosition(const int &);
+    int FindIndexPhim(int);
     int FindIndexPhong(int, int);
     int FindIndex(int, const Ca &);
     // Bubble Sort
     void Sort();
     void ImportFromFile();
-<<<<<<< HEAD
 };
-=======
-};
->>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd

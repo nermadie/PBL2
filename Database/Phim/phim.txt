@@ -1,13 +1,5 @@
-<<<<<<< HEAD
-2|Fast and Furious|Vin Diesel, Paul Walker|Hanh dong|90
-3|The heirs|Vin Diesel, Paul Walker|Hanh dong|90
-4|ABCXYZ|Vin Diesel, Paul Walker|Hanh dong|90
-5|Co dau 800 tuoi|Vin Diesel, Paul Walker|Hanh dong|90
-6|No Time To Die|Daniel Craig|Hanh Dong|90
-=======
 1|Fast and Furious|Vin Diesel, Paul Walker|Hanh dong|150
 2|ShangChi va huyen thoai thap luan|Luu Tu Mo, Awkwafina|Hanh dong|132
-3|Ma Bup Be Chucky|Peter A. Chevako, Erik Beck|Vien tuong|900
+3|Ma Bup Be Chucky|Peter A. Chevako, Erik Beck|Vien tuong|120
 4|Tho san quai vat|Henry Cavill, Anya Chalotra|Hanh dong|200
 5|Venom|Tom Hardy, Paul Walker|Hanh dong|129
->>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd

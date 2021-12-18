@@ -1,14 +1,15 @@
 #include "./DangNhap_DangKy/SignIn.cpp"
 #include "./DangNhap_DangKy/Register.cpp"
+
 void DangNhap_DangKy()
 {
     PhanMoDau();
 Menu:
     system("cls");
-    TextColor(4);
-    cout << "\t\t\t\t      *********************************************" << endl;
+    TextColor(15);
+    cout << "\t\t\t\t       *********************************************" << endl;
     cout << "\t\t\t\t                  DANG NHAP HOAC DANG KY                       " << endl;
-    cout << "\t\t\t\t      *********************************************" << endl;
+    cout << "\t\t\t\t       *********************************************" << endl;
     TextColor(12);
     cout << "\n\n\t\t\t\t\t         -DANG NHAP HOAC DANG KY-";
     TextColor(14);
@@ -26,6 +27,7 @@ Menu:
     cout << "\n\t\t\t|"
          << "                           3.Thoat                        \t\t|";
     cout << "\n\t\t\t|_______________________________________________________________________|";
+
     int chon;
     cout << "\n\n\t\t\t\t\t\tNhap lua chon :";
     cin >> chon;
@@ -41,12 +43,14 @@ Menu:
         SignIn::DangNhap();
         cout << endl;
         system("pause");
+        cout.flush();
         break;
     case 2:
         system("cls");
         Register::NhapThongTinKhachHang();
         cout << endl;
         system("pause");
+        cout.flush();
         goto Menu;
         break;
     case 3:
@@ -57,5 +61,19 @@ Menu:
 
 int main()
 {
-    DangNhap_DangKy();
+    try
+    {
+        fflush(stdin);
+        DangNhap_DangKy();
+    }
+    catch (const char *msg)
+    {
+        cout << endl
+             << "\t\t\t\t\t" << msg;
+    }
+    catch (string msg)
+    {
+        cout << endl
+             << "\t\t\t\t\t" << msg;
+    }
 }

@@ -77,11 +77,27 @@ void QuanLyNhanVien::XoaNhanVien()
     while (1)
     {
         cin >> ID;
-        int tempID = tempQLNV.IndexOf(ID);
-        if (-1 != tempID)
+        int index = tempQLNV.IndexOf(ID);
+        if (-1 != index)
         {
-            tempQLNV.DeleteatPosition(tempID);
-            cout << "\t\t\t\t\t\tDa xoa nhan vien co ID: " << ID << " ra khoi Database!" << endl;
+            TextColor(12);
+            cout << "\t\t\t\t\t\tBan co chac la muon xoa nhan vien nay?(y/n)";
+            TextColor(14);
+            while (1)
+            {
+                char condition = getch();
+                cout << endl;
+                if (condition == 'y' || condition == 'Y')
+                {
+                    tempQLNV.DeleteatPosition(index);
+                    cout << "\t\t\t\t\t\tDa xoa nhan vien co ID: " << ID << " ra khoi Database!" << endl;
+                    break;
+                }
+                else if (condition == 'n' || condition == 'N')
+                {
+                    break;
+                }
+            }
             break;
         }
         else
@@ -101,8 +117,24 @@ void QuanLyNhanVien::SuaThongTinNhanVien()
         cin >> ID;
         if (-1 != tempQLNV.IndexOf(ID))
         {
-            tempQLNV.Update(ID);
-            cout << "\t\t\t\t\t\tDa cap nhat thong tin cho nhan vien!  " << endl;
+            TextColor(12);
+            cout << "\t\t\t\t\t\tBan co chac la muon sua thong tin nhan vien nay?(y/n)";
+            TextColor(14);
+            while (1)
+            {
+                char condition = getch();
+                cout << endl;
+                if (condition == 'y' || condition == 'Y')
+                {
+                    tempQLNV.Update(ID);
+                    cout << "\t\t\t\t\t\tDa cap nhat thong tin cho nhan vien!  " << endl;
+                    break;
+                }
+                else if (condition == 'n' || condition == 'N')
+                {
+                    break;
+                }
+            }
             break;
         }
         else
@@ -176,17 +208,41 @@ void QuanLyPhim::XoaPhim()
 {
     DanhSachPhim();
     QLP tempQLP;
+    QLLC tempQLLC;
     int ID;
     cout << "\t\t\t\t\t\tMoi ban nhap ID phim minh muon xoa: ";
     while (1)
     {
         cin >> ID;
-        int tempID = tempQLP.IndexOf(ID);
-        if (-1 != tempID)
+        int index = tempQLP.IndexOf(ID);
+        if (-1 != index)
         {
-            tempQLP.DeleteatPosition(tempID);
-            cout << "\t\t\t\t\t\tDa xoa phim co ID: " << ID << " ra khoi Database!" << endl;
-            break;
+            int indexPhiminQLLC = tempQLLC.FindIndexPhim(ID);
+            if (-1 != indexPhiminQLLC)
+            {
+                TextColor(12);
+                cout << "\t\t\t\t\t\tHien van con lich chieu cho phim nay! Hay xoa lich chieu co phim nay truoc!" << endl;
+                TextColor(14);
+                break;
+            }
+            TextColor(12);
+            cout << "\t\t\t\t\t\tBan co chac la muon xoa phim nay?(y/n)";
+            TextColor(14);
+            while (1)
+            {
+                char condition = getch();
+                cout << endl;
+                if (condition == 'y' || condition == 'Y')
+                {
+                    tempQLP.DeleteatPosition(index);
+                    cout << "\t\t\t\t\t\tDa xoa phim co ID: " << ID << " ra khoi Database!" << endl;
+                    break;
+                }
+                else if (condition == 'n' || condition == 'N')
+                {
+                    break;
+                }
+            }
         }
         else
         {
@@ -198,20 +254,68 @@ void QuanLyPhim::SuaThongTinPhim()
 {
     DanhSachPhim();
     QLP tempQLP;
+    QLLC tempQLLC;
     int ID;
     cout << "\t\t\t\t\t\tMoi ban nhap ID phim minh muon thay doi: ";
     while (1)
     {
         cin >> ID;
-        if (-1 != tempQLP.IndexOf(ID))
+        int index = tempQLP.IndexOf(ID);
+        if (-1 != index)
         {
-            tempQLP.Update(ID);
-            cout << "\t\t\t\t\t\tDa cap nhat thong tin cho phim!  " << endl;
+            int indexPhiminQLLC = tempQLLC.FindIndexPhim(ID);
+            if (-1 != indexPhiminQLLC)
+            {
+                TextColor(12);
+                cout << "\t\t\t\t\t\tHien van con lich chieu cho phim nay! Ban se khong the doi duoc ID phim!" << endl;
+                TextColor(14);
+            }
+            else
+            {
+                TextColor(12);
+                cout << "\t\t\t\t\t\tBan co chac la muon cap nhat thong tin phim nay?(y/n)";
+                TextColor(14);
+                while (1)
+                {
+                    char condition = getch();
+                    cout << endl;
+                    if (condition == 'y' || condition == 'Y')
+                    {
+                        tempQLP.Update(ID);
+                        cout << "\t\t\t\t\t\tDa cap nhat thong tin cho phim co ID: " << ID << "!" << endl;
+                        break;
+                    }
+                    else if (condition == 'n' || condition == 'N')
+                    {
+                        break;
+                    }
+                }
+                cout << "\t\t\t\t\t\tDa cap nhat thong tin cho phim co ID: " << ID << "!" << endl;
+                break;
+            }
+            TextColor(12);
+            cout << "\t\t\t\t\t\tBan co chac la muon cap nhat thong tin phim nay?(y/n)";
+            TextColor(14);
+            while (1)
+            {
+                char condition = getch();
+                cout << endl;
+                if (condition == 'y' || condition == 'Y')
+                {
+                    tempQLP.UpdatenotID(index);
+                    cout << "\t\t\t\t\t\tDa cap nhat thong tin cho phim co ID: " << ID << "!" << endl;
+                    break;
+                }
+                else if (condition == 'n' || condition == 'N')
+                {
+                    break;
+                }
+            }
             break;
         }
         else
         {
-            cout << "\t\t\t\t\t\tMoi ban nhap lai: ";
+            cout << "\t\t\t\t\t\tKhong tim thay ID phim nay trong Database! Moi ban nhap lai: ";
         }
     }
 }
@@ -307,7 +411,23 @@ void QuanLyLichChieu::XoaLichChieu()
         }
         else
         {
-            tempQLLC.DeleteatPosition(index);
+            TextColor(12);
+            cout << "\t\t\t\t\t\tBan co chac la muon xoa lich chieu nay?(y/n)";
+            TextColor(14);
+            while (1)
+            {
+                char condition = getch();
+                cout << endl;
+                if (condition == 'y' || condition == 'Y')
+                {
+                    tempQLLC.DeleteatPosition(index);
+                    break;
+                }
+                else if (condition == 'n' || condition == 'N')
+                {
+                    break;
+                }
+            }
             break;
         }
     }
@@ -331,14 +451,28 @@ void QuanLyLichChieu::SuaThongTinLichChieu()
         }
         else
         {
-            tempQLLC.Update(index);
+            TextColor(12);
+            cout << "\t\t\t\t\t\tBan co chac la muon sua thong tin lich chieu nay?(y/n)";
+            TextColor(14);
+            while (1)
+            {
+                char condition = getch();
+                cout << endl;
+                if (condition == 'y' || condition == 'Y')
+                {
+                    tempQLLC.Update(index);
+                    break;
+                }
+                else if (condition == 'n' || condition == 'N')
+                {
+                    break;
+                }
+            }
             break;
         }
     }
     cout << "\t\t\t\t\t\tDa cap nhat thanh cong 1 lich chieu!" << endl;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
 //============================================================================================
 void QuanLyPhongChieu::DanhSachPhongChieu()
 {
@@ -346,10 +480,7 @@ void QuanLyPhongChieu::DanhSachPhongChieu()
     temp.Sort();
     temp.Show();
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
 void QuanLyPhongChieu::ThemPhongChieu()
 {
     DanhSachPhongChieu();
@@ -385,24 +516,46 @@ void QuanLyPhongChieu::ThemPhongChieu()
         }
     } while (1);
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
 void QuanLyPhongChieu::XoaPhongChieu()
 {
     DanhSachPhongChieu();
     QLPC tempQLPC;
+    QLLC tempQLLC;
     int ID;
     cout << "\t\t\t\t\t\tMoi ban nhap ID phong chieu minh muon xoa: ";
     while (1)
     {
         cin >> ID;
-        int tempID = tempQLPC.IndexOf(ID);
-        if (-1 != tempID)
+        int index = tempQLPC.IndexOf(ID);
+        if (-1 != index)
         {
-            tempQLPC.DeleteatPosition(tempID);
-            cout << "\t\t\t\t\t\tDa xoa phong chieu co ID: " << ID << " ra khoi Database!" << endl;
+            int indexPhonginQLLC = tempQLLC.FindIndexPhong(ID, 0);
+            if (-1 != indexPhonginQLLC)
+            {
+                TextColor(12);
+                cout << "\t\t\t\t\t\tHien van con lich chieu su dung phong chieu nay! Hay xoa lich chieu co phong chieu nay truoc!" << endl;
+                TextColor(14);
+                break;
+            }
+            TextColor(12);
+            cout << "\t\t\t\t\t\tBan co chac la muon xoa phong chieu nay?(y/n)";
+            TextColor(14);
+            while (1)
+            {
+                char condition = getch();
+                cout << endl;
+                if (condition == 'y' || condition == 'Y')
+                {
+                    tempQLPC.DeleteatPosition(index);
+                    cout << "\t\t\t\t\t\tDa xoa phong chieu co ID: " << ID << " ra khoi Database!" << endl;
+                    break;
+                }
+                else if (condition == 'n' || condition == 'N')
+                {
+                    break;
+                }
+            }
             break;
         }
         else
@@ -415,20 +568,67 @@ void QuanLyPhongChieu::SuaThongTinPhongChieu()
 {
     DanhSachPhongChieu();
     QLPC tempQLPC;
+    QLLC tempQLLC;
     int ID;
     cout << "\t\t\t\t\t\tMoi ban nhap ID phong chieu minh muon thay doi: ";
     while (1)
     {
         cin >> ID;
-        if (-1 != tempQLPC.IndexOf(ID))
+        int index = tempQLPC.IndexOf(ID);
+        if (-1 != index)
         {
-            tempQLPC.Update(ID);
-            cout << "\t\t\t\t\t\tDa cap nhat thong tin cho phong chieu!  " << endl;
+            int indexPhonginQLLC = tempQLLC.FindIndexPhong(ID, 0);
+            if (-1 != indexPhonginQLLC)
+            {
+                TextColor(12);
+                cout << "\t\t\t\t\t\tHien van con lich chieu su dung phong chieu nay! Ban se khong the doi duoc ID phong chieu!" << endl;
+                TextColor(14);
+            }
+            else
+            {
+                TextColor(12);
+                cout << "\t\t\t\t\t\tBan co chac la muon cap nhat thong tin phong chieu nay?(y/n)";
+                TextColor(14);
+                while (1)
+                {
+                    char condition = getch();
+                    cout << endl;
+                    if (condition == 'y' || condition == 'Y')
+                    {
+                        tempQLPC.Update(ID);
+                        cout << "\t\t\t\t\t\tDa cap nhat thong tin cho phong chieu co ID: " << ID << "!" << endl;
+                        break;
+                    }
+                    else if (condition == 'n' || condition == 'N')
+                    {
+                        break;
+                    }
+                }
+                break;
+            }
+            TextColor(12);
+            cout << "\t\t\t\t\t\tBan co chac la muon cap nhat thong tin phong chieu nay?(y/n)";
+            TextColor(14);
+            while (1)
+            {
+                char condition = getch();
+                cout << endl;
+                if (condition == 'y' || condition == 'Y')
+                {
+                    tempQLPC.UpdatenotID(index);
+                    cout << "\t\t\t\t\t\tDa cap nhat thong tin cho phong chieu co ID: " << ID << "!" << endl;
+                    break;
+                }
+                else if (condition == 'n' || condition == 'N')
+                {
+                    break;
+                }
+            }
             break;
         }
         else
         {
-            cout << "\t\t\t\t\t\tMoi ban nhap lai: ";
+            cout << "\t\t\t\t\t\tKhong tim thay ID phong chieu nay trong Database! Moi ban nhap lai: ";
         }
     }
 }
@@ -457,15 +657,5 @@ void QuanLyKhachHang::TimKiemKhachTheoIDKhachHang()
             cout << "\t\t\t\t\t\tKhong tim thay nhan vien co ID nay! Moi ban nhap lai: ";
         }
     }
-<<<<<<< HEAD
-}
-=======
 }
 //=====================================================================================================================
->>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
-=======
-//============================================================================================
->>>>>>> parent of 465bfc4 (ql)
-=======
-//============================================================================================
->>>>>>> parent of 465bfc4 (ql)

@@ -95,9 +95,6 @@ bool LichChieu::IDPhimCompare(int &idp)
         return 1;
     return 0;
 }
-<<<<<<< HEAD
-
-=======
 ostream &operator<<(ostream &o, const LichChieu &nv) // Tương tự hàm ShowNV
 {
     return o;
@@ -107,7 +104,6 @@ istream &operator>>(istream &in, LichChieu &nv)
 {
     return in;
 }
->>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
 void LichChieu::InsertObjecttoFile(ofstream &FileOut)
 {
     FileOut << _IDPhim << '|';

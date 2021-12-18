@@ -1,5 +1,6 @@
 #include "Register.h"
 #include <fstream>
+
 void Register::NhapThongTinKhachHang()
 {
     KhachHang tempKH;
@@ -18,3 +19,4 @@ void Register::NhapThongTinKhachHang()
     cout << endl
          << "Tu bay gio ban co the dang nhap voi username(ID): " << newID << " va password ban vua tao!";
 }
+

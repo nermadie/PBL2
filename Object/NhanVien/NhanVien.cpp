@@ -107,11 +107,7 @@ istream &operator>>(istream &in, NhanVien &nv)
     int check;
     cout << "\t\t\t\t\t\tNhap ten nhan vien: ";
     char str[100];
-<<<<<<< HEAD:Object/NhanVien/NhanVien.cpp
     fflush(stdin);
-=======
-    fgets(str, 100, stdin);
->>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd:NhanVien.cpp
     in.getline(str, sizeof(str)); // Trường hợp đặc biệt
     nv._Name = str;
     cout << "\t\t\t\t\t\tNhap ngay sinh: ";
@@ -121,11 +117,7 @@ istream &operator>>(istream &in, NhanVien &nv)
     cout << "\t\t\t\t\t\tNhap so dien thoai: ";
     in >> nv._PhoneNumber;
     cout << "\t\t\t\t\t\tNhap dia chi: "; // Trường hợp đặc biệt
-<<<<<<< HEAD:Object/NhanVien/NhanVien.cpp
     fflush(stdin);
-=======
-    fgets(str, 100, stdin);
->>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd:NhanVien.cpp
     in.getline(str, sizeof(str));
     nv._Address = str;
     cout << "\t\t\t\t\t\tNhap gioi tinh: ";

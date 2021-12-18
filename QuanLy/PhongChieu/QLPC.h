@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 #pragma once
->>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd
 #include "../../Object/Film_PhongChieu/PhongChieu.cpp"
 bool GD(int a, int b);
 bool TD(int a, int b);
@@ -17,13 +14,14 @@ public:
     QLPC(const QLPC &);
     ~QLPC();
     void Show();
-    void AddtotheEnd(PhongChieu &);
+    int AddtotheEnd(PhongChieu &);
     void AddtotheEnd(PhongChieu &, ifstream &);
     void AddtoTop(PhongChieu &);
     void AddtoTop(PhongChieu &, ifstream &);
     void AddtoPosition(PhongChieu &, int);
     void AddtoPosition(PhongChieu &, int, ifstream &);
     void Update(const int &);
+    void UpdatenotID(const int &);
     void DeleteTop();
     void DeleteEnd();
     void DeleteatPosition(const int &);
@@ -35,8 +33,4 @@ public:
     void QuickSort(int *, int, int, bool (*CTH)(int a, int b));
     void Sort(bool (*CTH)(int a, int b) = TD);
     void ImportFromFile();
-<<<<<<< HEAD
 };
-=======
-};
->>>>>>> 3aca29cbe5d1390240f0f1b1c128aeeb03e8aadd

@@ -31,15 +31,15 @@ istream &operator>>(istream &in, Account &acc)
     while (1)
     {
         in >> a;
-        cout << "Xac nhan password ban vua nhap: ";
+        cout << "\t\t\t\t\t\tXac nhan password ban vua nhap: ";
         in >> b;
         if (a == b)
         {
-            cout << "Mat khau da duoc xac nhan!";
+            cout << "\t\t\t\t\t\tMat khau da duoc xac nhan!";
             break;
         }
         else
-            cout << "Mat khau khong trung khop!!Moi ban nhap lai mat khau: ";
+            cout << "\t\t\t\t\t\tMat khau khong trung khop!!Moi ban nhap lai mat khau: ";
     }
     acc._Password = a;
     return in;

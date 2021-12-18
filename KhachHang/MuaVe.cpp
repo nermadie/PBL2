@@ -1,4 +1,5 @@
 #include "MuaVe.h"
+
 void MuaVe::XemDanhSachLichChieuHienCo()
 {
     QLLC temp;
@@ -58,13 +59,14 @@ void MuaVe::MuaVeXemPhim(int idkhachmua)
         {
             string Path = "Database/MuaVe/KH" + to_string(idkhachmua) + ".txt";
             ofstream FileOut(Path, ios_base::app);
-            FileOut << maphim << "|";
+            FileOut << '\n' << maphim << "|";
             tempCa.InsertObjecttoFile(FileOut);
-            FileOut << maphong << "|" << soluong << "|" << check << '\n';
+            FileOut << maphong << "|" << soluong << "|" << check;
             FileOut.close();
             break;
         }
-    }
+        }
+        system("pause");
 }
 void MuaVe::XemLichSuMuaVe(int idkhachmua)
 {
@@ -87,9 +89,9 @@ void MuaVe::XemLichSuMuaVe(int idkhachmua)
         int dd, mm, yyyy, hh;
         FileIn >> dd >> separator >> mm >> separator >> yyyy >> separator >> hh >> separator;
         Ca tempCa(dd, mm, yyyy, hh);
-        cout << "\t\t| ";
+        cout << " | ";
         tempCa.ShowDate();
-        cout << "\t\t| ";
+        cout << " |   ";
         tempCa.ShowCa();
         int maphong;
         FileIn >> maphong >> separator;
@@ -114,7 +116,5 @@ void MuaVe::XemLichSuMuaVe(int idkhachmua)
     cout << "  | " << endl;
     cout
         << "\t\t+======================================================================================================+============+" << endl;
-    system("pause");
     FileIn.close();
-    system("pause");
 }
