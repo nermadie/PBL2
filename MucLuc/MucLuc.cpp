@@ -5,6 +5,7 @@ using namespace std;
 #include "../QuanLy/Application/QuanLyAll.cpp"
 #include "../KhachHang/MuaVe.cpp"
 #include "../KhachHang/ChangePass.cpp"
+#include "../QuanLy/AccountQL/ChangePassQL.cpp"
 void TextColor(int x)
 {
      HANDLE color = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -114,7 +115,11 @@ void MenuQuanLy()
      cout << "\n\t\t\t|"
           << "                                                       \t\t|";
      cout << "\n\t\t\t|"
-          << "                7.Thoat                                \t\t|";
+          << "                7.Doi mat khau                         \t\t|";
+     cout << "\n\t\t\t|"
+          << "                                                       \t\t|";
+     cout << "\n\t\t\t|"
+          << "                8.Thoat                                \t\t|";
      cout << "\n\t\t\t|_______________________________________________________________________|";
 }
 
@@ -321,6 +326,17 @@ void MenuQuanLyDoanhThu()
 void PhanMoDau()
 {
      system("cls");
+     TextColor(15);
+     ifstream FileIn("Database/Intro/intro.txt", ios_base::in);
+     string intro;
+     while (!FileIn.eof())
+     {
+          fflush(stdin);
+          getline(FileIn, intro);
+          cout << intro << endl;
+     }
+     FileIn.close();
+     cout << "\n\n";
      TextColor(12);
      cout << ("\t\t\t\t\t          DO AN CO SO LAP TRINH ");
      cout << endl;
@@ -334,7 +350,7 @@ void PhanMoDau()
      cout << ("\t\t               Ho ten sinh vien 1: Nguyen Duc Manh"
               "    Lop: 20TCLC_Nhat1");
      cout << endl;
-     cout << ("\t\t               Ho ten sinh vien 2: Tran Nhat Minh"
+     cout << ("\t\t               Ho ten sinh vien 2: Tran Nhat Minh "
               "    Lop: 20TCLC_Nhat1");
      cout << endl;
      cout << ("\t\t               Nhom: 9");
@@ -461,14 +477,14 @@ MenuKhachHang:
      }
 }
 
-void MenuChinh2()
+void MenuChinh2(int username)
 {
 MenuQuanLy:
      MenuQuanLy();
      int chon;
      cout << "\n\n\t\t\t\t\t\tNhap lua chon :";
      cin >> chon;
-     while (chon < 0 || chon > 7)
+     while (chon < 0 || chon > 8)
      {
           cout << "\n\n\t\t\t\t\t\tNhap lua chon :";
           cin >> chon;
@@ -841,6 +857,15 @@ MenuQuanLy:
           }
      }
      case 7:
+          system("cls");
+          cout << "Doi pass";
+          cout << endl;
+          ChangePassQL::DoiMatKhauQL(username);
+          system("pause");
+          fflush(stdin);
+          goto MenuQuanLy;
+          break;
+     case 8:
           exit(0);
           break;
      }

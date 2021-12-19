@@ -17,7 +17,10 @@ PhongChieu::PhongChieu(const PhongChieu &pc)
 PhongChieu::~PhongChieu()
 {
 }
-
+int PhongChieu::SLGhe()
+{
+    return this->_SLGhe;
+}
 int PhongChieu::IDPhongChieu()
 {
     return _IDPhongChieu;

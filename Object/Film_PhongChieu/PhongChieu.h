@@ -15,6 +15,7 @@ public:
     ~PhongChieu();
     void ShowPhongChieu();
     int IDPhongChieu();
+    int SLGhe();
     void IDPhongChieu(int);
     friend istream &operator>>(istream &, PhongChieu &);
     const PhongChieu &operator=(const PhongChieu &);

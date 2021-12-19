@@ -674,14 +674,17 @@ void QLLC::Update(int index)
 {
     int idphong;
     QLPC tempQLPC;
+    tempQLPC.Show();
     Ca tempCa;
+    int indexphongchieu;
     while (1)
     {
         cout << "\t\t\t\t\t\tNhap ID phong chieu moi: ";
         while (1)
         {
             cin >> idphong;
-            if (-1 != tempQLPC.IndexOf(idphong))
+            indexphongchieu = tempQLPC.IndexOf(idphong);
+            if (-1 != indexphongchieu)
             {
                 break;
             }
@@ -701,9 +704,10 @@ void QLLC::Update(int index)
         else
             cout << "\t\t\t\t\t\tID phong va ca da ton tai trong Database! Xin hay nhap lai." << endl;
     }
-    cout << "\t\t\t\t\t\tNhap ID phim cho lich chieu nay: ";
     QLP tempQLP;
+    tempQLP.Show();
     int idphim;
+    cout << "\t\t\t\t\t\tNhap ID phim cho lich chieu nay: ";
     while (1)
     {
         cin >> idphim;
@@ -715,8 +719,16 @@ void QLLC::Update(int index)
             break;
     }
     int slghe, giave;
-    cout << "\t\t\t\t\t\tNhap so luong ghe: ";
-    cin >> slghe;
+    cout << "\t\t\t\t\t\tNhap so luong ghe(ve) cho lich chieu nay: ";
+    while (1)
+    {
+        cin >> slghe;
+        int soluongghecuaphong = tempQLPC.TraVeSoLuongGhe(indexphongchieu);
+        if (slghe > soluongghecuaphong)
+            cout << "\t\t\t\t\t\tSo luong ghe(ve) nhieu hon so luong ghe(" << soluongghecuaphong << ") cua phong nay! Moi ban nhap lai: ";
+        else
+            break;
+    }
     cout << "\t\t\t\t\t\tNhap gia ve cho lich chieu phim nay: ";
     cin >> giave;
     (this->_QLLC + index)->IDPhim(idphim);
@@ -926,7 +938,7 @@ void QLLC::Sort()
 }
 void QLLC::ImportFromFile()
 {
-    ifstream FileIn("Database/LichChieu/lichchieu.txt", ios_base::in);
+    ifstream FileIn("Database/LichChieu/import.txt", ios_base::in);
     if (FileIn.fail())
     {
         cout << "Khong tim thay file Import! Import khong thanh cong" << endl;

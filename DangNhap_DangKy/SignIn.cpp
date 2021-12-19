@@ -1,3 +1,4 @@
+#pragma once
 #include "SignIn.h"
 #include <unistd.h>
 
@@ -80,7 +81,7 @@ int SignIn::DangNhap()
                 MenuChinh1(username);
             }
             else
-                MenuChinh2();
+                MenuChinh2(username);
             break;
         }
         else

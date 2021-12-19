@@ -96,7 +96,7 @@ int DSAccount::FindUsername(int id)
 
 string DSAccount::GivePass(int index)
 {
-    return (_DSAccount + index - 1)->Password();
+    return (_DSAccount + index)->Password();
 }
 
 void DSAccount::Update(const int &id)

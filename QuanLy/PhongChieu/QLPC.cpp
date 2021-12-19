@@ -65,6 +65,10 @@ void QLPC::Show()
         _QLPC[i].ShowPhongChieu();
     cout << "\t\t\t\t\t\t+================+==============+" << endl;
 }
+int QLPC::TraVeSoLuongGhe(int indexphongchieu)
+{
+    return (this->_QLPC + indexphongchieu)->SLGhe();
+}
 // Them doi tuong-------------------------------------------------
 //  + Them vao cuoi danh sach
 //  + Them vao dau danh sach
@@ -410,7 +414,7 @@ int QLPC::IndexOf(int id)
     return BinarySearch(0, _Quantity - 1, id);
 }
 // Sap xep(QuickSort) voi thuoc tinh _ID----------------
-// Ham TD vÃ  GD Ä‘Æ°á»£c Ä‘á»‹nh nghÄ©a á»Ÿ duoi
+// Ham TD vÃ  GD Ä‘Æ°á»£c Ä‘á»‹nh nghÄ©a á»Ÿ duoi
 int QLPC::Partition(int *arr, int low, int high, bool (*CTH)(int a, int b))
 {
     int pivot = (this->_QLPC + arr[high])->IDPhongChieu(); // pivot
@@ -456,7 +460,7 @@ void QLPC::Sort(bool (*CTH)(int a, int b))
     delete[] temp;
     delete[] arr;
 }
-// Nháº­p dá»¯ liá»‡u tá»« file vÃ o trong danh sÃ¡ch
+// Nháº­p dá»¯ liá»‡u tá»« file vÃ o trong danh sÃ¡ch
 void QLPC::ImportFromFile()
 {
     ifstream FileIn("Database/PhongChieu/phongchieu.txt", ios_base::in);

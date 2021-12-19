@@ -14,6 +14,7 @@ public:
     QLPC(const QLPC &);
     ~QLPC();
     void Show();
+    int TraVeSoLuongGhe(int); // Them phong chieu va update phong chieu
     int AddtotheEnd(PhongChieu &);
     void AddtotheEnd(PhongChieu &, ifstream &);
     void AddtoTop(PhongChieu &);

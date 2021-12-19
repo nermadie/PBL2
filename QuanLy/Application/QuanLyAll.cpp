@@ -351,8 +351,9 @@ void QuanLyLichChieu::ThemLichChieu()
     DanhSachLichChieu();
     QLLC tempQLLC;
     QLPC tempQLPC;
+    tempQLPC.Show();
     Ca tempCa;
-    int IDPhongChieu;
+    int IDPhongChieu, indexphongchieu;
     int Success;
     do
     {
@@ -361,7 +362,8 @@ void QuanLyLichChieu::ThemLichChieu()
         while (check)
         {
             cin >> IDPhongChieu;
-            if (-1 == tempQLPC.IndexOf(IDPhongChieu))
+            indexphongchieu = tempQLPC.IndexOf(IDPhongChieu);
+            if (-1 == indexphongchieu)
             {
                 cout << "\t\t\t\t\t\tHien khong co phong chieu co ID nay! Hay chon 1 phong chieu khac: ";
             }
@@ -376,6 +378,8 @@ void QuanLyLichChieu::ThemLichChieu()
                 {
                     QLP tempQLP;
                     int IDPhim, SLGhe, GiaVe;
+                    tempQLP.Sort();
+                    tempQLP.Show();
                     cout << "\t\t\t\t\t\tNhap ID phim cho lich chieu: ";
                     while (1)
                     {
@@ -387,8 +391,16 @@ void QuanLyLichChieu::ThemLichChieu()
                         else
                             cout << "\t\t\t\t\t\tID phim khong ton tai! Moi ban nhap lai: ";
                     }
-                    cout << "\t\t\t\t\t\tNhap so luong ghe cho lich chieu nay: ";
-                    cin >> SLGhe;
+                    cout << "\t\t\t\t\t\tNhap so luong ghe(ve) cho lich chieu nay: ";
+                    while (1)
+                    {
+                        cin >> SLGhe;
+                        int soluongghecuaphong = tempQLPC.TraVeSoLuongGhe(indexphongchieu);
+                        if (SLGhe > soluongghecuaphong)
+                            cout << "\t\t\t\t\t\tSo luong ghe(ve) nhieu hon so luong ghe(" << soluongghecuaphong << ") cua phong nay! Moi ban nhap lai: ";
+                        else
+                            break;
+                    }
                     cout << "\t\t\t\t\t\tNhap gia ve: ";
                     cin >> GiaVe;
                     LichChieu tempLich(IDPhim, IDPhongChieu, tempCa, SLGhe, SLGhe, GiaVe);
