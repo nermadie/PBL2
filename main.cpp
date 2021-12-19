@@ -6,10 +6,10 @@ void DangNhap_DangKy()
     PhanMoDau();
 Menu:
     system("cls");
-    TextColor(4);
-    cout << "\t\t\t\t      *********************************************" << endl;
+    TextColor(15);
+    cout << "\t\t\t\t       *********************************************" << endl;
     cout << "\t\t\t\t                  DANG NHAP HOAC DANG KY                       " << endl;
-    cout << "\t\t\t\t      *********************************************" << endl;
+    cout << "\t\t\t\t       *********************************************" << endl;
     TextColor(12);
     cout << "\n\n\t\t\t\t\t         -DANG NHAP HOAC DANG KY-";
     TextColor(14);
@@ -61,5 +61,19 @@ Menu:
 
 int main()
 {
-    DangNhap_DangKy();
+    try
+    {
+        fflush(stdin);
+        DangNhap_DangKy();
+    }
+    catch (const char *msg)
+    {
+        cout << endl
+             << "\t\t\t\t\t" << msg;
+    }
+    catch (string msg)
+    {
+        cout << endl
+             << "\t\t\t\t\t" << msg;
+    }
 }

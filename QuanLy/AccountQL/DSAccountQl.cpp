@@ -1,3 +1,4 @@
+#pragma once
 #include "DSAccountQL.h"
 #include <fstream>
 #include <conio.h>
@@ -98,12 +99,12 @@ string DSAccountQL::GivePass(int index)
 }
 void DSAccountQL::Update(const int &id)
 {
-    int index = -(id - 1);
+    int index = FindUsername(id);
     if (index >= 0)
     {
-        cout << "Moi ban nhap password moi: ";
+        cout << "\t\t\t\t\t\tMoi ban nhap password moi: ";
         cin >> (*(this->_DSAccountQL + index));
     }
     else
-        cout << "Khong co quan ly co ID: " << id << endl;
+        cout << "\t\t\t\t\t\tKhong co quan ly co ID: " << id << endl;
 }

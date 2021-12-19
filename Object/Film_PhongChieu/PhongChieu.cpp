@@ -17,7 +17,10 @@ PhongChieu::PhongChieu(const PhongChieu &pc)
 PhongChieu::~PhongChieu()
 {
 }
-
+int PhongChieu::SLGhe()
+{
+    return this->_SLGhe;
+}
 int PhongChieu::IDPhongChieu()
 {
     return _IDPhongChieu;
@@ -34,7 +37,7 @@ void PhongChieu::ShowPhongChieu()
 istream &operator>>(istream &in, PhongChieu &pc)
 {
     int check = 1;
-    cout << "Nhap so luong ghe: ";
+    cout << "\t\t\t\t\t\tNhap so luong ghe: ";
     while (check)
     {
         in >> pc._SLGhe;

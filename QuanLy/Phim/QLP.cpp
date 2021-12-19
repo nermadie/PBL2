@@ -332,6 +332,10 @@ void QLP::Update(const int &id)
     else
         cout << "\t\t\t\t\t\tKhong co phim co ID: " << id << endl;
 }
+void QLP::UpdatenotID(const int &index)
+{
+    cin >> *(this->_QLP + index);
+}
 // Xoa doi tuong---------------------------------------------------------
 //  + Xoa doi tuong dau tien
 void QLP::DeleteTop()

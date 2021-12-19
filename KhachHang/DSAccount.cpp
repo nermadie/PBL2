@@ -101,7 +101,7 @@ string DSAccount::GivePass(int index)
 
 void DSAccount::Update(const int &id)
 {
-    int index = id - 1;
+    int index = FindUsername(id);
     if (index >= 0)
     {
         cout << "\t\t\t\t\t\tMoi ban nhap password moi: ";

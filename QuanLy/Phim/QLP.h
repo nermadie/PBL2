@@ -25,6 +25,7 @@ public:
     void AddtoPosition(Film &, int);
     void AddtoPosition(Film &, int, ifstream &);
     void Update(const int &);
+    void UpdatenotID(const int &);
     void DeleteTop();
     void DeleteEnd();
     void DeleteatPosition(const int &);

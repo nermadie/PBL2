@@ -1,7 +1,8 @@
 #pragma once
-#include "../QuanLy/LichChieu/QLLC.cpp"
-#include "../QuanLy/NhanVien/QLNV.cpp"
-#include "../QuanLy/KhachHang/QLKH.cpp"
+#include "../LichChieu/QLLC.cpp"
+#include "../NhanVien/QLNV.cpp"
+#include "../KhachHang/QLKH.cpp"
+void TextColor(int);
 class DoanhThu
 {
 public:
@@ -28,7 +29,6 @@ public:
     static void XoaPhim();
     static void SuaThongTinPhim();
     static void TimKiemPhimTheoIDPhim();
-
 };
 
 class QuanLyLichChieu
@@ -59,6 +59,6 @@ public:
 class QuanLyTaiKhoanMatKhau
 {
     static int DangNhap();
-    static void DangNhapQuaSoLanQuyDinh(); 
+    static void DangNhapQuaSoLanQuyDinh();
     static void NhapThongTinKhachHang();
 };

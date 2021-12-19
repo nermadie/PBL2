@@ -24,6 +24,10 @@ int SoChuSo(int x)
 }
 void InTienVe(int x)
 {
+    if (x == 0)
+    {
+        cout << "0";
+    }
     int n = SoChuSo(x);
     string num = to_string(x);
     char str[n + 1];
@@ -41,4 +45,8 @@ void InTienVe(int x)
     str[z] = '\0';
     num = string(str);
     cout << num;
+}
+bool Isempty(ifstream &pFile)
+{
+    return pFile.peek() == std::ifstream::traits_type::eof();
 }

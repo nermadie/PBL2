@@ -1,4 +1,6 @@
+#pragma once
 #include "SignIn.h"
+#include <unistd.h>
 
 void SignIn::DangNhapQuaSoLanQuyDinh()
 {
@@ -42,7 +44,7 @@ int SignIn::DangNhap()
         {
             DangNhapQuaSoLanQuyDinh();
         }
-        cout << "Khong co username: " << username << "! Xin hay nhap lai username: ";
+        cout << "\t\t\t\t\tKhong co username: " << username << "! Xin hay nhap lai username: ";
         count++;
     }
     count = 0;
@@ -71,14 +73,15 @@ int SignIn::DangNhap()
         if (a == rightpassword)
         {
             cout << endl
-                 << "Ban da dang nhap thanh cong!";
+                 << "\t\t\t\t\tBan da dang nhap thanh cong!";
+            sleep(1);
             delete[] x;
             if (username > 0)
             {
                 MenuChinh1(username);
             }
             else
-                MenuChinh2();
+                MenuChinh2(username);
             break;
         }
         else
@@ -88,7 +91,7 @@ int SignIn::DangNhap()
                 DangNhapQuaSoLanQuyDinh();
             }
             cout << endl
-                 << "Ban nhap sai password! Xin hay nhap lai password: ";
+                 << "\t\t\t\t\tBan nhap sai password! Xin hay nhap lai password: ";
             delete[] x;
             x = new char[30];
             i = 0;

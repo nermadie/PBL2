@@ -1,5 +1,5 @@
 #include "MuaVe.h"
-
+bool Isempty(ifstream &);
 void MuaVe::XemDanhSachLichChieuHienCo()
 {
     QLLC temp;
@@ -34,7 +34,8 @@ void MuaVe::XemDanhSachLichChieutheoPhim()
 }
 void MuaVe::MuaVeXemPhim(int idkhachmua)
 {
-    while (1)
+    int checksum = 1;
+    while (checksum)
     {
         QLLC tempLich;
         tempLich.Sort();
@@ -48,29 +49,52 @@ void MuaVe::MuaVeXemPhim(int idkhachmua)
         cout << "\t\tNhap ca va ngay ban muon mua ve: " << endl;
         Ca tempCa;
         cin >> tempCa;
-        cout << "Ban muon xem phim o phong chieu nao (co the co nhieu phong): ";
+        cout << "\t\tBan muon xem phim o phong chieu nao (co the co nhieu phong): ";
         int maphong;
         cin >> maphong;
         int soluong;
-        cout << "Nhap so luong ve ban muon mua: ";
+        cout << "\t\tNhap so luong ve ban muon mua: ";
         cin >> soluong;
         int check = tempLich.DatMuaVe(tempCa, maphong, soluong);
         if (check != -1)
         {
             string Path = "Database/MuaVe/KH" + to_string(idkhachmua) + ".txt";
             ofstream FileOut(Path, ios_base::app);
-            FileOut << '\n' << maphim << "|";
+            FileOut << '\n'
+                    << maphim << "|";
             tempCa.InsertObjecttoFile(FileOut);
             FileOut << maphong << "|" << soluong << "|" << check;
             FileOut.close();
             break;
         }
+        else
+        {
+            TextColor(12);
+            cout << "\t\t\t\t\t\tDat mua ve khong thanh cong!";
+            cout << "\n\t\t\t\t\t\tBan co mua ve xem phim tiep?(y/n)";
+            TextColor(14);
+            while (1)
+            {
+                char condition = getch();
+                cout << endl;
+                if (condition == 'y' || condition == 'Y')
+                {
+                    break;
+                }
+                else if (condition == 'n' || condition == 'N')
+                {
+                    checksum = 0;
+                    system("cls");
+                    break;
+                }
+            }
         }
-        system("pause");
+    }
 }
 void MuaVe::XemLichSuMuaVe(int idkhachmua)
 {
     QLP temp;
+    int check = 1;
     int tongsotiendamua = 0;
     string Path = "Database/MuaVe/KH" + to_string(idkhachmua) + ".txt";
     ifstream FileIn(Path, ios_base::in);
@@ -79,7 +103,11 @@ void MuaVe::XemLichSuMuaVe(int idkhachmua)
     cout << "\t\t+========================================+============+===========+==========+==============+==========+============+" << endl;
     cout << "\t\t|               Ten phim                 | Ngay Chieu | Thoi Gian | Ma Phong | SL ve da mua |  Gia ve  | Thanh Tien |" << endl;
     cout << "\t\t+========================================+============+===========+==========+==============+==========+============+" << endl;
-    while (!FileIn.eof())
+    if (Isempty(FileIn))
+    {
+        check = 0;
+    }
+    while (!FileIn.eof() && check == 1)
     {
         char separator;
         int idphim;
@@ -109,12 +137,20 @@ void MuaVe::XemLichSuMuaVe(int idkhachmua)
         cout << "  |\n";
         tongsotiendamua += thanhtien;
     }
-    cout << "\t\t+========================================+============+===========+==========+==============+==========+============+" << endl;
-    cout << "\t\t| Tong so tien ban da mua ve :                                                                         | ";
-    cout << setw(9) << left;
-    InTienVe(tongsotiendamua);
-    cout << "  | " << endl;
-    cout
-        << "\t\t+======================================================================================================+============+" << endl;
-    FileIn.close();
+    if (check)
+    {
+        cout << "\t\t+========================================+============+===========+==========+==============+==========+============+" << endl;
+        cout << "\t\t| Tong so tien ban da mua ve :                                                                         | ";
+        cout << setw(9) << left;
+        InTienVe(tongsotiendamua);
+        cout << "  | " << endl;
+        cout
+            << "\t\t+======================================================================================================+============+" << endl;
+        FileIn.close();
+    }
+    else
+    {
+        cout << "\t\t+========================================+============+===========+==========+==============+==========+============+" << endl;
+        FileIn.close();
+    }
 }

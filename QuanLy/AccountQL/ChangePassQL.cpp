@@ -1,8 +1,9 @@
-#include "ChangePass.h"
+#pragma once
+#include "ChangePassQL.h"
 #include <conio.h>
-void ChangePass::DoiMatKhau(int username)
+void ChangePassQL::DoiMatKhauQL(int username)
 {
-    DSAccount temp;
+    DSAccountQL temp;
     string password, rightpassword;
     cout << "\t\t\t\t\t\tNhap password hien tai: ";
     while (1)

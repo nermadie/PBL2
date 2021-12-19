@@ -5,7 +5,7 @@
 
 bool GD(int a, int b);
 bool TD(int a, int b);
-class QLLC 
+class QLLC
 {
 private:
     LichChieu *_QLLC;
@@ -35,6 +35,7 @@ public:
     void DeleteTop();
     void DeleteEnd();
     void DeleteatPosition(const int &);
+    int FindIndexPhim(int);
     int FindIndexPhong(int, int);
     int FindIndex(int, const Ca &);
     // Bubble Sort
