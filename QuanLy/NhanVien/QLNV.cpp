@@ -147,7 +147,6 @@ void QLNV::AddtotheEnd(NhanVien &nv, ifstream &FileIn)
     this->_Quantity++;
 }
 
-
 void QLNV::AddtoTop(NhanVien &nv)
 {
     if (-1 != IndexOf(nv.ID()))
@@ -345,6 +344,7 @@ void QLNV::DeleteTop()
                 *(this->_QLNV + i) = *(temp + i + 1);
             }
         }
+        delete[] temp;
     }
     this->_Quantity--;
 }
@@ -374,6 +374,7 @@ void QLNV::DeleteEnd()
                 *(this->_QLNV + i) = *(temp + i + 1);
             }
         }
+        delete[] temp;
     }
     this->_Quantity--;
 }
@@ -404,6 +405,7 @@ void QLNV::DeleteatPosition(const int &position)
                 *(this->_QLNV + i) = *(temp + i + 1);
             }
         }
+        delete[] temp;
     }
     this->_Quantity--;
 }
